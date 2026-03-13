@@ -694,6 +694,7 @@
 
 <script>
   // Set minimum date for appointment to today
+  const SHEET_URL = "https://script.google.com/macros/s/AKfycbxaQFgMvURFpbsH2XO7MO5Gi_IsBWUhYOktdWWW3x695ypWptS76L3cSgeGX3-3vdSa/exec";
   const dateInput = document.getElementById('date');
   const today = new Date().toISOString().split('T')[0];
   dateInput.setAttribute('min', today);
