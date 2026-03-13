@@ -85,23 +85,55 @@
   .service-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 8px; }
   .service-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
 
-  /* DOCTORS */
+  /* DOCTORS — compact cards */
   #doctors { background: white; }
-  .doctors-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; margin-top: 48px; }
-  .doctor-card { background: var(--cream); border-radius: 20px; overflow: hidden; border: 1px solid rgba(26,107,74,0.10); transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; }
+  .doctors-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; margin-top: 48px; }
+
+  /* Compact card */
+  .doctor-card {
+    background: var(--cream); border-radius: 18px; overflow: hidden;
+    border: 1px solid rgba(26,107,74,0.10);
+    cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;
+    display: flex; flex-direction: column;
+  }
   .doctor-card:hover { transform: translateY(-5px); box-shadow: 0 8px 32px rgba(26,107,74,0.15); }
-  .doctor-photo-wrap { width: 100%; height: 210px; background: linear-gradient(135deg, var(--green) 0%, var(--green-light) 100%); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+  .doctor-photo-wrap { width: 100%; height: 160px; background: linear-gradient(135deg, var(--green) 0%, var(--green-light) 100%); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
   .doctor-photo-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
-  .doctor-photo-placeholder { font-size: 6rem; opacity: 0.22; }
-  .doctor-name-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(12,45,30,0.93) 0%, transparent 100%); padding: 30px 18px 14px; }
-  .doctor-name-overlay h3 { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: white; line-height: 1.3; }
-  .doctor-body { padding: 16px 20px 20px; flex: 1; display: flex; flex-direction: column; gap: 10px; }
-  .doctor-spec { font-size: 0.78rem; font-weight: 700; color: var(--green); background: var(--green-pale); display: inline-block; padding: 3px 10px; border-radius: 100px; width: fit-content; }
-  .doctor-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.65; flex: 1; }
-  .doctor-schedule { border-top: 1px solid rgba(26,107,74,0.1); padding-top: 10px; margin-top: 4px; }
-  .doctor-schedule .sch-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 6px; }
-  .sch-row { display: flex; gap: 7px; align-items: flex-start; font-size: 0.81rem; color: var(--text); margin-bottom: 4px; line-height: 1.5; }
+  .doctor-photo-placeholder { font-size: 5rem; opacity: 0.22; }
+  .doctor-name-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(12,45,30,0.93) 0%, transparent 100%); padding: 24px 14px 10px; }
+  .doctor-name-overlay h3 { font-family: 'Playfair Display', serif; font-size: 0.92rem; font-weight: 700; color: white; line-height: 1.3; }
+  .doctor-compact-body { padding: 12px 14px 14px; display: flex; flex-direction: column; gap: 6px; }
+  .doctor-spec { font-size: 0.74rem; font-weight: 700; color: var(--green); background: var(--green-pale); display: inline-block; padding: 2px 9px; border-radius: 100px; width: fit-content; }
+  .view-profile-btn { margin-top: 6px; font-size: 0.78rem; font-weight: 600; color: var(--green); background: none; border: 1px solid var(--green); border-radius: 7px; padding: 5px 12px; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.2s; width: fit-content; }
+  .view-profile-btn:hover { background: var(--green); color: white; }
+
+  /* DOCTOR DETAIL PANEL (slide in from right) */
+  .doc-panel-overlay { display: none; position: fixed; inset: 0; z-index: 500; background: rgba(0,0,0,0.45); backdrop-filter: blur(4px); }
+  .doc-panel-overlay.show { display: flex; justify-content: flex-end; }
+  .doc-panel {
+    background: white; width: min(520px, 100vw); height: 100vh;
+    overflow-y: auto; display: flex; flex-direction: column;
+    transform: translateX(100%); transition: transform 0.35s cubic-bezier(.4,0,.2,1);
+    box-shadow: -8px 0 40px rgba(0,0,0,0.18);
+  }
+  .doc-panel-overlay.show .doc-panel { transform: translateX(0); }
+  .doc-panel-hero { position: relative; height: 260px; background: linear-gradient(135deg, var(--green), var(--green-light)); flex-shrink: 0; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+  .doc-panel-hero img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+  .doc-panel-hero .ph { font-size: 8rem; opacity: 0.2; }
+  .doc-panel-hero-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(12,45,30,0.9), transparent); padding: 40px 24px 18px; }
+  .doc-panel-hero-overlay h2 { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: white; font-weight: 700; }
+  .doc-panel-close { position: absolute; top: 14px; right: 14px; width: 34px; height: 34px; border-radius: 50%; background: rgba(255,255,255,0.25); border: none; cursor: pointer; font-size: 1rem; color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; backdrop-filter: blur(4px); }
+  .doc-panel-close:hover { background: rgba(255,255,255,0.4); }
+  .doc-panel-body { padding: 24px 24px 40px; flex: 1; }
+  .doc-panel-spec { font-size: 0.82rem; font-weight: 700; color: var(--green); background: var(--green-pale); display: inline-block; padding: 4px 12px; border-radius: 100px; margin-bottom: 16px; }
+  .doc-panel-section { margin-bottom: 22px; }
+  .doc-panel-section h4 { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-muted); margin-bottom: 10px; }
+  .doc-panel-section p { font-size: 0.92rem; color: var(--text-muted); line-height: 1.75; }
+  .doc-panel-divider { height: 1px; background: var(--green-pale); margin: 18px 0; }
+  .sch-row { display: flex; gap: 8px; align-items: flex-start; font-size: 0.88rem; color: var(--text); margin-bottom: 6px; line-height: 1.5; }
   .sch-row .sch-icon { flex-shrink: 0; }
+  .doc-panel-book-btn { width: 100%; background: var(--green); color: white; border: none; padding: 14px; border-radius: 12px; font-size: 1rem; font-weight: 600; cursor: pointer; font-family: 'DM Sans', sans-serif; margin-top: 8px; transition: background 0.2s; }
+  .doc-panel-book-btn:hover { background: var(--green-light); }
 
   /* MEDICAL STORE */
   #store { background: var(--cream); }
@@ -293,149 +325,142 @@
   <div style="text-align:center; max-width:600px; margin:0 auto;">
     <div class="section-label">Our Specialists</div>
     <h2 class="section-title">Meet Our Doctors</h2>
-    <p class="section-desc" style="margin:0 auto;">Experienced specialists visiting Geeta Polyclinic on scheduled days. Book your appointment in advance.</p>
+    <p class="section-desc" style="margin:0 auto;">Click on any doctor to view their full profile, specialisation, and visiting schedule.</p>
   </div>
   <div class="doctors-grid">
 
     <!-- Dr. Anil Kumar Sahu -->
-    <div class="doctor-card">
+    <div class="doctor-card" onclick="openDoctorPanel('anil')">
       <div class="doctor-photo-wrap">
-        <!-- REPLACE src below with actual image URL for Dr. Anil Kumar Sahu -->
-        <img src="dr-anil.png" alt="Dr. Anil Kumar Sahu" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-        <div class="doctor-photo-placeholder" style="display:none; align-items:center; justify-content:center; width:100%; height:100%;">🧠</div>
+        <img src="dr-anil.png" alt="Dr. Anil Kumar Sahu" onerror="this.style.display='none';">
+        <div class="doctor-photo-placeholder">🧠</div>
         <div class="doctor-name-overlay"><h3>Dr. Anil Kumar Sahu</h3></div>
       </div>
-      <div id="badge-anil" class="doctor-body" style="padding:12px 20px 4px; border-bottom:1px solid rgba(26,107,74,0.08);">Loading schedule...</div>
-      <div class="doctor-body">
+      <div class="doctor-compact-body">
         <span class="doctor-spec">Neurologist</span>
-        <p class="doctor-desc">Specialist in diagnosing and treating disorders of the nervous system including epilepsy, stroke, Parkinson's disease, migraines, and neuropathy.</p>
-        <div class="doctor-schedule">
-          <div class="sch-label">⏰ Visiting Schedule</div>
-          <div class="sch-row"><span class="sch-icon">📅</span><span>Every <strong>1st Sunday</strong> — 9:00 AM – 3:00 PM</span></div>
-        </div>
+        <div id="badge-anil">Loading...</div>
+        <button class="view-profile-btn">View Profile →</button>
       </div>
     </div>
 
     <!-- Prof. Dr. Suvendu Narayan Mishra -->
-    <div class="doctor-card">
+    <div class="doctor-card" onclick="openDoctorPanel('suvendu')">
       <div class="doctor-photo-wrap">
-        <!-- REPLACE src below with actual image URL for Prof. Dr. Suvendu Narayan Mishra -->
-        <img src="dr-suvendu.png" alt="Prof. Dr. Suvendu Narayan Mishra" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-        <div class="doctor-photo-placeholder" style="display:none; align-items:center; justify-content:center; width:100%; height:100%;">🧬</div>
+        <img src="dr-suvendu.png" alt="Prof. Dr. Suvendu Narayan Mishra" onerror="this.style.display='none';">
+        <div class="doctor-photo-placeholder">🧬</div>
         <div class="doctor-name-overlay"><h3>Prof. Dr. Suvendu Narayan Mishra</h3></div>
       </div>
-      <div id="badge-suvendu" class="doctor-body" style="padding:12px 20px 4px; border-bottom:1px solid rgba(26,107,74,0.08);">Loading schedule...</div>
-      <div class="doctor-body">
+      <div class="doctor-compact-body">
         <span class="doctor-spec">Neuro Psychiatrist</span>
-        <p class="doctor-desc">Expert in neuropsychiatric conditions including depression, anxiety, schizophrenia, bipolar disorder, and other complex brain-behaviour disorders.</p>
-        <div class="doctor-schedule">
-          <div class="sch-label">⏰ Visiting Schedule</div>
-          <div class="sch-row"><span class="sch-icon">📅</span><span>Every <strong>2nd Saturday</strong> — 5:00 PM – 9:00 PM</span></div>
-          <div class="sch-row"><span class="sch-icon">📅</span><span>Every <strong>2nd Sunday</strong></span></div>
-        </div>
+        <div id="badge-suvendu">Loading...</div>
+        <button class="view-profile-btn">View Profile →</button>
       </div>
     </div>
 
     <!-- Dr. Srikant Swain -->
-    <div class="doctor-card">
+    <div class="doctor-card" onclick="openDoctorPanel('srikant')">
       <div class="doctor-photo-wrap">
-        <!-- REPLACE src below with actual image URL for Dr. Srikant Swain -->
-        <img src="dr-srikant.png" alt="Dr. Srikant Swain" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-        <div class="doctor-photo-placeholder" style="display:none; align-items:center; justify-content:center; width:100%; height:100%;">⚕️</div>
+        <img src="dr-srikant.png" alt="Dr. Srikant Swain" onerror="this.style.display='none';">
+        <div class="doctor-photo-placeholder">⚕️</div>
         <div class="doctor-name-overlay"><h3>Dr. Srikant Swain</h3></div>
       </div>
-      <div id="badge-srikant" class="doctor-body" style="padding:12px 20px 4px; border-bottom:1px solid rgba(26,107,74,0.08);">Loading schedule...</div>
-      <div class="doctor-body">
+      <div class="doctor-compact-body">
         <span class="doctor-spec">Neuro Surgeon</span>
-        <p class="doctor-desc">Highly skilled neurosurgeon specialising in brain tumours, spinal surgeries, head injuries, and complex neurological surgical procedures.</p>
-        <div class="doctor-schedule">
-          <div class="sch-label">⏰ Visiting Schedule</div>
-          <div class="sch-row"><span class="sch-icon">📅</span><span>Every <strong>3rd Sunday</strong> — 10:00 AM – 2:00 PM</span></div>
-        </div>
+        <div id="badge-srikant">Loading...</div>
+        <button class="view-profile-btn">View Profile →</button>
       </div>
     </div>
 
     <!-- Dr. Debabrata Nayak -->
-    <div class="doctor-card">
+    <div class="doctor-card" onclick="openDoctorPanel('debabrata')">
       <div class="doctor-photo-wrap">
-        <!-- REPLACE src below with actual image URL for Dr. Debabrata Nayak -->
-        <img src="dr-debabrata.png" alt="Dr. Debabrata Nayak" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-        <div class="doctor-photo-placeholder" style="display:none; align-items:center; justify-content:center; width:100%; height:100%;">🌿</div>
+        <img src="dr-debabrata.png" alt="Dr. Debabrata Nayak" onerror="this.style.display='none';">
+        <div class="doctor-photo-placeholder">🌿</div>
         <div class="doctor-name-overlay"><h3>Dr. Debabrata Nayak</h3></div>
       </div>
-      <div id="badge-debabrata" class="doctor-body" style="padding:12px 20px 4px; border-bottom:1px solid rgba(26,107,74,0.08);">Loading schedule...</div>
-      <div class="doctor-body">
+      <div class="doctor-compact-body">
         <span class="doctor-spec">Dermatologist</span>
-        <p class="doctor-desc">Specialist in skin, hair, and nail conditions including acne, eczema, psoriasis, fungal infections, hair loss, and cosmetic skin treatments.</p>
-        <div class="doctor-schedule">
-          <div class="sch-label">⏰ Visiting Schedule</div>
-          <div class="sch-row"><span class="sch-icon">📅</span><span>Every <strong>2nd & 4th Wednesday</strong> — 10:00 AM – 2:00 PM</span></div>
-        </div>
+        <div id="badge-debabrata">Loading...</div>
+        <button class="view-profile-btn">View Profile →</button>
       </div>
     </div>
 
     <!-- Dr. Jyoti Mohan Tosh -->
-    <div class="doctor-card">
+    <div class="doctor-card" onclick="openDoctorPanel('jyoti')">
       <div class="doctor-photo-wrap">
-        <!-- REPLACE src below with actual image URL for Dr. Jyoti Mohan Tosh -->
-        <img src="dr-jyoti.png" alt="Dr. Jyoti Mohan Tosh" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-        <div class="doctor-photo-placeholder" style="display:none; align-items:center; justify-content:center; width:100%; height:100%;">🫘</div>
+        <img src="dr-jyoti.png" alt="Dr. Jyoti Mohan Tosh" onerror="this.style.display='none';">
+        <div class="doctor-photo-placeholder">🫘</div>
         <div class="doctor-name-overlay"><h3>Dr. Jyoti Mohan Tosh</h3></div>
       </div>
-      <div id="badge-jyoti" class="doctor-body" style="padding:12px 20px 4px; border-bottom:1px solid rgba(26,107,74,0.08);">Loading schedule...</div>
-      <div class="doctor-body">
+      <div class="doctor-compact-body">
         <span class="doctor-spec">Urologist</span>
-        <p class="doctor-desc">Expert in urinary tract disorders, kidney stones, prostate conditions, bladder problems, and urological surgeries for both men and women.</p>
-        <div class="doctor-schedule">
-          <div class="sch-label">⏰ Visiting Schedule</div>
-          <div class="sch-row"><span class="sch-icon">📅</span><span>Every <strong>4th Friday</strong> — 2:00 PM – 4:00 PM</span></div>
-        </div>
+        <div id="badge-jyoti">Loading...</div>
+        <button class="view-profile-btn">View Profile →</button>
       </div>
     </div>
 
     <!-- Dr. Partha Sarthi Sahu -->
-    <div class="doctor-card">
+    <div class="doctor-card" onclick="openDoctorPanel('partha')">
       <div class="doctor-photo-wrap">
-        <!-- REPLACE src below with actual image URL for Dr. Partha Sarthi Sahu -->
-        <img src="dr-partha.png" alt="Dr. Partha Sarthi Sahu" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-        <div class="doctor-photo-placeholder" style="display:none; align-items:center; justify-content:center; width:100%; height:100%;">🫁</div>
+        <img src="dr-partha.png" alt="Dr. Partha Sarthi Sahu" onerror="this.style.display='none';">
+        <div class="doctor-photo-placeholder">🫁</div>
         <div class="doctor-name-overlay"><h3>Dr. Partha Sarthi Sahu</h3></div>
       </div>
-      <div id="badge-partha" class="doctor-body" style="padding:12px 20px 4px; border-bottom:1px solid rgba(26,107,74,0.08);">Loading schedule...</div>
-      <div class="doctor-body">
+      <div class="doctor-compact-body">
         <span class="doctor-spec">Gastro & Hepatologist</span>
-        <p class="doctor-desc">Specialist in digestive system disorders, liver diseases, gastritis, IBS, jaundice, hepatitis, and conditions of the stomach, intestines, and liver.</p>
-        <div class="doctor-schedule">
-          <div class="sch-label">⏰ Visiting Schedule</div>
-          <div class="sch-row"><span class="sch-icon">📅</span><span>Every <strong>2nd & 4th Wednesday</strong> — 10:00 AM – 2:00 PM</span></div>
-        </div>
+        <div id="badge-partha">Loading...</div>
+        <button class="view-profile-btn">View Profile →</button>
       </div>
     </div>
 
     <!-- Dr. Ratnakar Das -->
-    <div class="doctor-card">
+    <div class="doctor-card" onclick="openDoctorPanel('ratnakar')">
       <div class="doctor-photo-wrap">
-        <!-- REPLACE src below with actual image URL for Dr. Ratnakar Das -->
-        <img src="dr-ratnakar.png" alt="Dr. Ratnakar Das" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-        <div class="doctor-photo-placeholder" style="display:none; align-items:center; justify-content:center; width:100%; height:100%;">💊</div>
+        <img src="dr-ratnakar.png" alt="Dr. Ratnakar Das" onerror="this.style.display='none';">
+        <div class="doctor-photo-placeholder">💊</div>
         <div class="doctor-name-overlay"><h3>Dr. Ratnakar Das</h3></div>
       </div>
-      <div id="badge-ratnakar" class="doctor-body" style="padding:12px 20px 4px; border-bottom:1px solid rgba(26,107,74,0.08);">Loading schedule...</div>
-      <div class="doctor-body">
+      <div class="doctor-compact-body">
         <span class="doctor-spec">Medicine Specialist</span>
-        <p class="doctor-desc">Experienced physician treating a wide range of general medical conditions including fever, diabetes, hypertension, infections, and chronic illnesses.</p>
-        <div class="doctor-schedule">
-          <div class="sch-label">⏰ Visiting Schedule</div>
-          <div class="sch-row"><span class="sch-icon">📅</span><span><strong>Mon, Tue, Fri</strong> — 8–9 AM · 12:30–2 PM · 7–9 PM</span></div>
-          <div class="sch-row"><span class="sch-icon">📅</span><span><strong>Wednesday</strong> — 7:00 PM – 9:00 PM</span></div>
-          <div class="sch-row"><span class="sch-icon">📅</span><span><strong>Thursday</strong> — 10:00 AM – 1:00 PM</span></div>
-          <div class="sch-row"><span class="sch-icon">📅</span><span><strong>Sunday</strong> — 8–9 AM · 12:30–2 PM</span></div>
-        </div>
+        <div id="badge-ratnakar">Loading...</div>
+        <button class="view-profile-btn">View Profile →</button>
       </div>
     </div>
 
   </div>
 </section>
+
+<!-- DOCTOR DETAIL PANEL -->
+<div class="doc-panel-overlay" id="docPanelOverlay" onclick="closePanelOnOverlay(event)">
+  <div class="doc-panel" id="docPanel">
+    <div class="doc-panel-hero" id="panelHero">
+      <img id="panelImg" src="" alt="" onerror="this.style.display='none';">
+      <div class="ph" id="panelEmoji"></div>
+      <button class="doc-panel-close" onclick="closeDoctorPanel()">✕</button>
+      <div class="doc-panel-hero-overlay">
+        <h2 id="panelName"></h2>
+      </div>
+    </div>
+    <div class="doc-panel-body">
+      <span class="doc-panel-spec" id="panelSpec"></span>
+      <div class="doc-panel-section">
+        <h4>About</h4>
+        <p id="panelDesc"></p>
+      </div>
+      <div class="doc-panel-divider"></div>
+      <div class="doc-panel-section">
+        <h4>Appointment Status</h4>
+        <div id="panelBadge"></div>
+      </div>
+      <div class="doc-panel-divider"></div>
+      <div class="doc-panel-section">
+        <h4>Visiting Schedule</h4>
+        <div id="panelSchedule"></div>
+      </div>
+      <button class="doc-panel-book-btn" onclick="closeDoctorPanel(); document.getElementById('appointment').scrollIntoView({behavior:'smooth'});">📅 Book Appointment</button>
+    </div>
+  </div>
+</div>
 
 <!-- MEDICAL STORE -->
 <section id="store">
@@ -588,286 +613,201 @@
 </footer>
 
 <script>
-  // =============================================
-  // YOUR GOOGLE APPS SCRIPT URL
-  // =============================================
   const SHEET_URL = "https://script.google.com/macros/s/AKfycbxaQFgMvURFpbsH2XO7MO5Gi_IsBWUhYOktdWWW3x695ypWptS76L3cSgeGX3-3vdSa/exec";
 
-  // ─────────────────────────────────────────────
-  // DATE HELPERS
-  // ─────────────────────────────────────────────
+  // ── DATE HELPERS ────────────────────────────────
   function getNthWeekday(year, month, weekday, nth) {
-    let count = 0, d = new Date(year, month, 1);
-    while (true) {
-      if (d.getDay() === weekday) { count++; if (count === nth) return new Date(d); }
-      d.setDate(d.getDate() + 1);
-      if (d.getMonth() !== month) return null;
-    }
+    let count=0, d=new Date(year,month,1);
+    while(true){ if(d.getDay()===weekday){count++;if(count===nth)return new Date(d);} d.setDate(d.getDate()+1); if(d.getMonth()!==month)return null; }
   }
-
-  function formatDate(d) {
-    if (!d) return 'TBA';
-    const day = d.getDate();
-    const s = day%10===1&&day!==11?'st':day%10===2&&day!==12?'nd':day%10===3&&day!==13?'rd':'th';
-    const mo = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  function formatDate(d){
+    if(!d)return'TBA';
+    const day=d.getDate(), s=day%10===1&&day!==11?'st':day%10===2&&day!==12?'nd':day%10===3&&day!==13?'rd':'th';
+    const mo=['January','February','March','April','May','June','July','August','September','October','November','December'];
     return `${day}${s} ${mo[d.getMonth()]} ${d.getFullYear()}`;
   }
-
-  function isToday(d) {
-    if (!d) return false;
-    const t = new Date();
-    return d.getDate()===t.getDate() && d.getMonth()===t.getMonth() && d.getFullYear()===t.getFullYear();
-  }
-
-  function getMondayOfWeek(d) {
-    // Returns the Monday of the same ISO week as date d
-    const day = new Date(d); day.setHours(0,0,0,0);
-    const dow = day.getDay(); // 0=Sun
-    // If Sunday (0), Monday is 6 days before; else subtract (dow-1)
-    const diff = dow === 0 ? -6 : 1 - dow;
-    day.setDate(day.getDate() + diff);
-    return day;
-  }
-
-  function nextNthWeekday(weekday, nth) {
-    const today = new Date(); today.setHours(0,0,0,0);
-    for (let m = 0; m <= 3; m++) {
-      const base = new Date(today.getFullYear(), today.getMonth() + m, 1);
-      const d = getNthWeekday(base.getFullYear(), base.getMonth(), weekday, nth);
-      if (d && d >= today) return d;
-    }
+  function isToday(d){ if(!d)return false; const t=new Date(); return d.getDate()===t.getDate()&&d.getMonth()===t.getMonth()&&d.getFullYear()===t.getFullYear(); }
+  function getMondayOfWeek(d){ const day=new Date(d); day.setHours(0,0,0,0); const dow=day.getDay(); day.setDate(day.getDate()+(dow===0?-6:1-dow)); return day; }
+  function nextNthWeekday(weekday,nth){
+    const today=new Date(); today.setHours(0,0,0,0);
+    for(let m=0;m<=3;m++){ const base=new Date(today.getFullYear(),today.getMonth()+m,1); const d=getNthWeekday(base.getFullYear(),base.getMonth(),weekday,nth); if(d&&d>=today)return d; }
     return null;
   }
+  function nextRatnakarDate(){ const wd=[0,1,2,3,4,5],today=new Date(); today.setHours(0,0,0,0); for(let i=0;i<=7;i++){const d=new Date(today);d.setDate(today.getDate()+i);if(wd.includes(d.getDay()))return d;} return null; }
 
-  function nextRatnakarDate() {
-    const workDays = [0,1,2,3,4,5];
-    const today = new Date(); today.setHours(0,0,0,0);
-    for (let i = 0; i <= 7; i++) {
-      const d = new Date(today); d.setDate(today.getDate() + i);
-      if (workDays.includes(d.getDay())) return d;
+  // ── DOCTOR DATA ─────────────────────────────────
+  const DOCTORS = {
+    anil: {
+      name: "Dr. Anil Kumar Sahu", spec: "Neurologist", emoji: "🧠", img: "dr-anil.png",
+      desc: "Specialist in diagnosing and treating disorders of the nervous system including epilepsy, stroke, Parkinson's disease, migraines, and neuropathy.",
+      schedule: [["Every 1st Sunday", "9:00 AM – 3:00 PM"]],
+      rule: () => nextNthWeekday(0,1)
+    },
+    suvendu: {
+      name: "Prof. Dr. Suvendu Narayan Mishra", spec: "Neuro Psychiatrist", emoji: "🧬", img: "dr-suvendu.png",
+      desc: "Expert in neuropsychiatric conditions including depression, anxiety, schizophrenia, bipolar disorder, and other complex brain-behaviour disorders.",
+      schedule: [["Every 2nd Saturday","5:00 PM – 9:00 PM"],["Every 2nd Sunday",""]],
+      rule: () => { const a=nextNthWeekday(6,2),b=nextNthWeekday(0,2); if(!a)return b; if(!b)return a; return a<=b?a:b; }
+    },
+    srikant: {
+      name: "Dr. Srikant Swain", spec: "Neuro Surgeon", emoji: "⚕️", img: "dr-srikant.png",
+      desc: "Highly skilled neurosurgeon specialising in brain tumours, spinal surgeries, head injuries, and complex neurological surgical procedures.",
+      schedule: [["Every 3rd Sunday","10:00 AM – 2:00 PM"]],
+      rule: () => nextNthWeekday(0,3)
+    },
+    debabrata: {
+      name: "Dr. Debabrata Nayak", spec: "Dermatologist", emoji: "🌿", img: "dr-debabrata.png",
+      desc: "Specialist in skin, hair, and nail conditions including acne, eczema, psoriasis, fungal infections, hair loss, and cosmetic skin treatments.",
+      schedule: [["Every 2nd & 4th Wednesday","10:00 AM – 2:00 PM"]],
+      rule: () => { const a=nextNthWeekday(3,2),b=nextNthWeekday(3,4); if(!a)return b; if(!b)return a; return a<=b?a:b; }
+    },
+    jyoti: {
+      name: "Dr. Jyoti Mohan Tosh", spec: "Urologist", emoji: "🫘", img: "dr-jyoti.png",
+      desc: "Expert in urinary tract disorders, kidney stones, prostate conditions, bladder problems, and urological surgeries for both men and women.",
+      schedule: [["Every 4th Friday","2:00 PM – 4:00 PM"]],
+      rule: () => nextNthWeekday(5,4)
+    },
+    partha: {
+      name: "Dr. Partha Sarthi Sahu", spec: "Gastro & Hepatologist", emoji: "🫁", img: "dr-partha.png",
+      desc: "Specialist in digestive system disorders, liver diseases, gastritis, IBS, jaundice, hepatitis, and conditions of the stomach, intestines, and liver.",
+      schedule: [["Every 2nd & 4th Wednesday","10:00 AM – 2:00 PM"]],
+      rule: () => { const a=nextNthWeekday(3,2),b=nextNthWeekday(3,4); if(!a)return b; if(!b)return a; return a<=b?a:b; }
+    },
+    ratnakar: {
+      name: "Dr. Ratnakar Das", spec: "Medicine Specialist", emoji: "💊", img: "dr-ratnakar.png",
+      desc: "Experienced physician treating a wide range of general medical conditions including fever, diabetes, hypertension, infections, and chronic illnesses.",
+      schedule: [["Mon, Tue, Fri","8–9 AM · 12:30–2 PM · 7–9 PM"],["Wednesday","7:00 PM – 9:00 PM"],["Thursday","10:00 AM – 1:00 PM"],["Sunday","8–9 AM · 12:30–2 PM"]],
+      rule: () => nextRatnakarDate()
     }
-    return null;
-  }
-
-  // ─────────────────────────────────────────────
-  // DOCTOR RULES
-  // Each returns next visit Date
-  // ─────────────────────────────────────────────
-  const doctorRules = {
-    "anil":     () => nextNthWeekday(0, 1),
-    "suvendu":  () => { const a=nextNthWeekday(6,2), b=nextNthWeekday(0,2); if(!a)return b; if(!b)return a; return a<=b?a:b; },
-    "srikant":  () => nextNthWeekday(0, 3),
-    "debabrata":() => { const a=nextNthWeekday(3,2), b=nextNthWeekday(3,4); if(!a)return b; if(!b)return a; return a<=b?a:b; },
-    "jyoti":    () => nextNthWeekday(5, 4),
-    "partha":   () => { const a=nextNthWeekday(3,2), b=nextNthWeekday(3,4); if(!a)return b; if(!b)return a; return a<=b?a:b; },
-    "ratnakar": () => nextRatnakarDate()
   };
 
-  // Map doctor dropdown value → rule key
   const doctorKeyMap = {
-    "Dr. Anil Kumar Sahu":              "anil",
-    "Prof. Dr. Suvendu Narayan Mishra": "suvendu",
-    "Dr. Srikant Swain":                "srikant",
-    "Dr. Debabrata Nayak":              "debabrata",
-    "Dr. Jyoti Mohan Tosh":             "jyoti",
-    "Dr. Partha Sarthi Sahu":           "partha",
-    "Dr. Ratnakar Das":                 "ratnakar"
+    "Dr. Anil Kumar Sahu":"anil","Prof. Dr. Suvendu Narayan Mishra":"suvendu",
+    "Dr. Srikant Swain":"srikant","Dr. Debabrata Nayak":"debabrata",
+    "Dr. Jyoti Mohan Tosh":"jyoti","Dr. Partha Sarthi Sahu":"partha","Dr. Ratnakar Das":"ratnakar"
   };
 
-  // ─────────────────────────────────────────────
-  // BOOKING WINDOW CHECK
-  // For all doctors except Ratnakar:
-  //   Booking opens on the Monday of the visiting week
-  //   Booking closes after the visit day
-  // For Ratnakar:
-  //   Booking only allowed on the same day (today === visit day)
-  // Returns: { allowed: bool, opensOn: Date|null, visitDate: Date }
-  // ─────────────────────────────────────────────
-  function checkBookingWindow(doctorKey) {
-    const today = new Date(); today.setHours(0,0,0,0);
-    const visitDate = doctorRules[doctorKey]();
-    if (!visitDate) return { allowed: false, opensOn: null, visitDate: null };
+  // ── BOOKING WINDOW ──────────────────────────────
+  function checkBookingWindow(key){
+    const today=new Date(); today.setHours(0,0,0,0);
+    const visitDate=DOCTORS[key].rule();
+    if(!visitDate)return{allowed:false,opensOn:null,visitDate:null};
+    if(key==='ratnakar'){ return{allowed:isToday(visitDate),opensOn:visitDate,visitDate}; }
+    const openDate=getMondayOfWeek(visitDate);
+    return{allowed:today>=openDate&&today<=visitDate,opensOn:openDate,visitDate};
+  }
 
-    if (doctorKey === 'ratnakar') {
-      // Only allow booking on the actual visit day
-      const allowed = isToday(visitDate);
-      return { allowed, opensOn: visitDate, visitDate };
+  // ── BUILD BADGE HTML ────────────────────────────
+  function buildBadgeHTML(key, compact=true){
+    const visitDate = DOCTORS[key].rule();
+    const {allowed, opensOn} = checkBookingWindow(key);
+    const open = isToday(visitDate);
+    if(open){
+      return `<span class="appt-status open"><span class="dot"></span>🟢 Open Today!</span>
+              <br><span class="next-date-badge">📅 Today: ${formatDate(visitDate)}</span>`;
+    } else if(allowed){
+      return `<span class="appt-status open"><span class="dot"></span>🟢 Booking Now Open!</span>
+              <br><span class="next-date-badge">📅 Visit: ${formatDate(visitDate)}</span>`;
     } else {
-      // Booking opens Monday of the visit week
-      const openDate = getMondayOfWeek(visitDate);
-      const allowed = today >= openDate && today <= visitDate;
-      return { allowed, opensOn: openDate, visitDate };
+      const openLabel = key==='ratnakar' ? 'Book on:' : '🔓 Opens:';
+      return `<span class="appt-status closed"><span class="dot"></span>🔴 Not Open Yet</span>
+              <br><span class="next-date-badge">📅 Next Visit: ${formatDate(visitDate)}</span>
+              ${!compact?`<br><span class="next-date-badge" style="background:#fff3e0;color:#b35a00;border:1px solid #f5c97a;">${openLabel} ${formatDate(opensOn)}</span>`:''}`;
     }
   }
 
-  // ─────────────────────────────────────────────
-  // SHOW BLOCKED MODAL
-  // ─────────────────────────────────────────────
-  function showBlockedModal(doctorKey, doctorName) {
-    const { opensOn, visitDate } = checkBookingWindow(doctorKey);
-    const modal = document.getElementById('bookingModal');
-    const msgEl = document.getElementById('modalMessage');
-    const dateEl = document.getElementById('modalDate');
-
-    if (doctorKey === 'ratnakar') {
-      msgEl.innerHTML = `Appointments for <strong>${doctorName}</strong> can only be booked on the day of the visit. Please come back on the visiting day to book.`;
-      dateEl.textContent = `📅 Next Available: ${formatDate(visitDate)}`;
-    } else {
-      msgEl.innerHTML = `Appointments for <strong>${doctorName}</strong> are not open yet. Booking opens on the <strong>Monday of the visiting week</strong>.`;
-      dateEl.textContent = `📅 Booking Opens: ${formatDate(opensOn)}`;
-    }
-    modal.classList.add('show');
-  }
-
-  // ─────────────────────────────────────────────
-  // RENDER DOCTOR BADGES
-  // ─────────────────────────────────────────────
-  function renderDoctorBadges() {
-    const cards = [
-      { id:'badge-anil',      key:'anil'      },
-      { id:'badge-suvendu',   key:'suvendu'   },
-      { id:'badge-srikant',   key:'srikant'   },
-      { id:'badge-debabrata', key:'debabrata' },
-      { id:'badge-jyoti',     key:'jyoti'     },
-      { id:'badge-partha',    key:'partha'    },
-      { id:'badge-ratnakar',  key:'ratnakar'  },
-    ];
-    cards.forEach(({ id, key }) => {
-      const el = document.getElementById(id);
-      if (!el) return;
-      const visitDate = doctorRules[key]();
-      const { allowed } = checkBookingWindow(key);
-      const open = isToday(visitDate);
-
-      let badge = '';
-      if (open) {
-        badge = `<span class="appt-status open"><span class="dot"></span>🟢 Appointments Open Today!</span><br>
-                 <span class="next-date-badge">📅 Today: ${formatDate(visitDate)}</span>`;
-      } else if (allowed) {
-        badge = `<span class="appt-status open"><span class="dot"></span>🟢 Booking Now Open!</span><br>
-                 <span class="next-date-badge">📅 Visit Date: ${formatDate(visitDate)}</span>`;
-      } else {
-        const { opensOn } = checkBookingWindow(key);
-        const openLabel = key === 'ratnakar' ? 'Book on visit day:' : 'Booking opens:';
-        badge = `<span class="appt-status closed"><span class="dot"></span>🔴 Appointments Not Open Yet</span><br>
-                 <span class="next-date-badge">📅 Next Visit: ${formatDate(visitDate)}</span><br>
-                 <span class="next-date-badge" style="margin-top:4px; background:#fff3e0; color:#b35a00; border:1px solid #f5c97a;">🔓 ${openLabel} ${formatDate(opensOn)}</span>`;
-      }
-      el.innerHTML = badge;
+  function renderDoctorBadges(){
+    Object.keys(DOCTORS).forEach(key => {
+      const el = document.getElementById('badge-'+key);
+      if(el) el.innerHTML = buildBadgeHTML(key, true);
     });
   }
-
   document.addEventListener('DOMContentLoaded', renderDoctorBadges);
 
-  // ─────────────────────────────────────────────
-  // TIME SLOTS
-  // ─────────────────────────────────────────────
+  // ── DOCTOR PANEL ────────────────────────────────
+  function openDoctorPanel(key){
+    const d = DOCTORS[key];
+    document.getElementById('panelName').textContent  = d.name;
+    document.getElementById('panelSpec').textContent  = d.spec;
+    document.getElementById('panelDesc').textContent  = d.desc;
+    document.getElementById('panelEmoji').textContent = d.emoji;
+    const img = document.getElementById('panelImg');
+    img.src = d.img; img.alt = d.name; img.style.display = 'block';
+    // Schedule rows
+    document.getElementById('panelSchedule').innerHTML = d.schedule.map(([day,time]) =>
+      `<div class="sch-row"><span class="sch-icon">📅</span><span><strong>${day}</strong>${time?' — '+time:''}</span></div>`
+    ).join('');
+    // Badge (full version with booking opens date)
+    document.getElementById('panelBadge').innerHTML = buildBadgeHTML(key, false);
+    // Show panel
+    const overlay = document.getElementById('docPanelOverlay');
+    overlay.classList.add('show');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeDoctorPanel(){
+    document.getElementById('docPanelOverlay').classList.remove('show');
+    document.body.style.overflow = '';
+  }
+  function closePanelOnOverlay(e){
+    if(e.target===document.getElementById('docPanelOverlay')) closeDoctorPanel();
+  }
+
+  // ── MODAL (booking blocked) ─────────────────────
+  function showBlockedModal(doctorKey, doctorName){
+    const {opensOn, visitDate} = checkBookingWindow(doctorKey);
+    document.getElementById('modalMessage').innerHTML = doctorKey==='ratnakar'
+      ? `Appointments for <strong>${doctorName}</strong> can only be booked on the visit day.`
+      : `Appointments for <strong>${doctorName}</strong> are not open yet. Booking opens on the <strong>Monday of the visiting week</strong>.`;
+    document.getElementById('modalDate').textContent =
+      doctorKey==='ratnakar' ? `📅 Next Available: ${formatDate(visitDate)}` : `📅 Booking Opens: ${formatDate(opensOn)}`;
+    document.getElementById('bookingModal').classList.add('show');
+  }
+
+  // ── TIME SLOTS ──────────────────────────────────
   const doctorSlots = {
-    "Dr. Anil Kumar Sahu":               ["9:00 AM – 12:00 PM", "12:00 PM – 3:00 PM"],
-    "Prof. Dr. Suvendu Narayan Mishra":  ["5:00 PM – 7:00 PM", "7:00 PM – 9:00 PM"],
-    "Dr. Srikant Swain":                 ["10:00 AM – 12:00 PM", "12:00 PM – 2:00 PM"],
-    "Dr. Debabrata Nayak":               ["10:00 AM – 12:00 PM", "12:00 PM – 2:00 PM"],
-    "Dr. Jyoti Mohan Tosh":              ["2:00 PM – 3:00 PM", "3:00 PM – 4:00 PM"],
-    "Dr. Partha Sarthi Sahu":            ["10:00 AM – 12:00 PM", "12:00 PM – 2:00 PM"],
-    "Dr. Ratnakar Das":                  ["8:00 AM – 9:00 AM", "12:30 PM – 2:00 PM", "7:00 PM – 9:00 PM", "10:00 AM – 1:00 PM"]
+    "Dr. Anil Kumar Sahu":               ["9:00 AM – 12:00 PM","12:00 PM – 3:00 PM"],
+    "Prof. Dr. Suvendu Narayan Mishra":  ["5:00 PM – 7:00 PM","7:00 PM – 9:00 PM"],
+    "Dr. Srikant Swain":                 ["10:00 AM – 12:00 PM","12:00 PM – 2:00 PM"],
+    "Dr. Debabrata Nayak":               ["10:00 AM – 12:00 PM","12:00 PM – 2:00 PM"],
+    "Dr. Jyoti Mohan Tosh":              ["2:00 PM – 3:00 PM","3:00 PM – 4:00 PM"],
+    "Dr. Partha Sarthi Sahu":            ["10:00 AM – 12:00 PM","12:00 PM – 2:00 PM"],
+    "Dr. Ratnakar Das":                  ["8:00 AM – 9:00 AM","12:30 PM – 2:00 PM","7:00 PM – 9:00 PM","10:00 AM – 1:00 PM"]
   };
-
-  function updateTimeSlots() {
-    const doctor = document.getElementById('dept').value;
-    const timeSelect = document.getElementById('time');
-    timeSelect.innerHTML = '<option value="">Select time slot</option>';
-    if (doctor && doctorSlots[doctor]) {
-      doctorSlots[doctor].forEach(slot => {
-        const opt = document.createElement('option');
-        opt.value = slot; opt.textContent = slot;
-        timeSelect.appendChild(opt);
-      });
-    }
+  function updateTimeSlots(){
+    const doctor=document.getElementById('dept').value, ts=document.getElementById('time');
+    ts.innerHTML='<option value="">Select time slot</option>';
+    if(doctor&&doctorSlots[doctor]) doctorSlots[doctor].forEach(s=>{const o=document.createElement('option');o.value=s;o.textContent=s;ts.appendChild(o);});
   }
 
-  // Set min date
-  const dateInput = document.getElementById('date');
-  dateInput.setAttribute('min', new Date().toISOString().split('T')[0]);
+  document.getElementById('date').setAttribute('min', new Date().toISOString().split('T')[0]);
 
-  // ─────────────────────────────────────────────
-  // SUBMIT APPOINTMENT
-  // ─────────────────────────────────────────────
-  function submitAppointment() {
-    const name   = document.getElementById('name').value.trim();
-    const phone  = document.getElementById('phone').value.trim();
-    const dept   = document.getElementById('dept').value;
-    const date   = document.getElementById('date').value;
-    const gender = document.getElementById('gender').value;
-
-    if (!name || !phone || !dept || !date) {
-      alert('Please fill in all required fields: Name, Phone, Doctor and Date.');
-      return;
-    }
-    if (phone.replace(/\D/g,'').length < 10) {
-      alert('Please enter a valid 10-digit phone number.');
-      return;
-    }
-
-    // ── BOOKING WINDOW GATE ──────────────────────
-    const doctorKey = doctorKeyMap[dept];
-    if (doctorKey) {
-      const { allowed } = checkBookingWindow(doctorKey);
-      if (!allowed) {
-        showBlockedModal(doctorKey, dept);
-        return; // Stop submission
-      }
-    }
-    // ─────────────────────────────────────────────
-
-    const btn = document.querySelector('.submit-btn');
-    btn.textContent = '⏳ Submitting...';
-    btn.disabled = true;
-
-    const formData = {
-      date:        date,
-      name:        name,
-      gender:      gender || 'Not specified',
-      phone:       phone,
-      submittedAt: new Date().toLocaleString('en-IN'),
-      doctor:      dept,
-      time:        document.getElementById('time').value || 'Not specified',
-      symptoms:    document.getElementById('symptoms').value || ''
-    };
-
-    fetch(SHEET_URL, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData)
-    })
-    .then(() => {
-      document.getElementById('successMsg').style.display = 'block';
-      btn.textContent = '✅ Confirm Appointment';
-      btn.disabled = false;
-      ['name','phone','age','gender','dept','date','symptoms'].forEach(id => {
-        document.getElementById(id).value = '';
-      });
-      document.getElementById('time').innerHTML = '<option value="">Select doctor first</option>';
-      setTimeout(() => { document.getElementById('successMsg').style.display = 'none'; }, 6000);
-    })
-    .catch(() => {
-      alert('Something went wrong. Please try again or call us on +91-9525300999.');
-      btn.textContent = '✅ Confirm Appointment';
-      btn.disabled = false;
-    });
+  // ── SUBMIT ──────────────────────────────────────
+  function submitAppointment(){
+    const name=document.getElementById('name').value.trim(), phone=document.getElementById('phone').value.trim(),
+          dept=document.getElementById('dept').value, date=document.getElementById('date').value,
+          gender=document.getElementById('gender').value;
+    if(!name||!phone||!dept||!date){ alert('Please fill in all required fields: Name, Phone, Doctor and Date.'); return; }
+    if(phone.replace(/\D/g,'').length<10){ alert('Please enter a valid 10-digit phone number.'); return; }
+    const dk=doctorKeyMap[dept];
+    if(dk){ const{allowed}=checkBookingWindow(dk); if(!allowed){ showBlockedModal(dk,dept); return; } }
+    const btn=document.querySelector('.submit-btn');
+    btn.textContent='⏳ Submitting...'; btn.disabled=true;
+    fetch(SHEET_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({date,name,gender:gender||'Not specified',phone,submittedAt:new Date().toLocaleString('en-IN'),doctor:dept,time:document.getElementById('time').value||'Not specified',symptoms:document.getElementById('symptoms').value||''})
+    }).then(()=>{
+      document.getElementById('successMsg').style.display='block';
+      btn.textContent='✅ Confirm Appointment'; btn.disabled=false;
+      ['name','phone','age','gender','dept','date','symptoms'].forEach(id=>document.getElementById(id).value='');
+      document.getElementById('time').innerHTML='<option value="">Select doctor first</option>';
+      setTimeout(()=>document.getElementById('successMsg').style.display='none',6000);
+    }).catch(()=>{ alert('Something went wrong. Please call us on +91-9525300999.'); btn.textContent='✅ Confirm Appointment'; btn.disabled=false; });
   }
 
-  // Close modal when clicking outside
-  document.getElementById('bookingModal').addEventListener('click', function(e) {
-    if (e.target === this) this.classList.remove('show');
-  });
+  document.getElementById('bookingModal').addEventListener('click',function(e){ if(e.target===this)this.classList.remove('show'); });
 
-  // Smooth scroll
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      const el = document.getElementById(a.getAttribute('href').slice(1));
-      if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
-    });
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',e=>{ const el=document.getElementById(a.getAttribute('href').slice(1)); if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'});} });
   });
 </script>
 
