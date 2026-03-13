@@ -232,6 +232,57 @@
   .modal-box .modal-date { display: inline-block; background: var(--green-pale); color: var(--green); font-weight: 700; font-size: 0.95rem; padding: 8px 18px; border-radius: 8px; margin-bottom: 22px; border: 1px solid rgba(26,107,74,0.2); }
   .modal-close { background: var(--green); color: white; border: none; padding: 12px 32px; border-radius: 10px; font-size: 0.95rem; font-weight: 600; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: background 0.2s; }
   .modal-close:hover { background: var(--green-light); }
+
+  /* CLINIC IMAGE HERO BANNER */
+  .clinic-banner {
+    width: 100%; height: 420px; position: relative; overflow: hidden;
+    background: linear-gradient(135deg, var(--green) 0%, #0d3d26 100%);
+    display: flex; align-items: flex-end;
+  }
+  .clinic-banner img {
+    width: 100%; height: 100%; object-fit: cover; object-position: center;
+    display: block; opacity: 0.55; position: absolute; inset: 0;
+  }
+  .clinic-banner-overlay {
+    position: relative; z-index: 2; padding: 40px 5%;
+    background: linear-gradient(to top, rgba(10,40,25,0.92) 0%, transparent 100%);
+    width: 100%;
+  }
+  .clinic-banner-overlay h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem,3vw,2.4rem); color: white; font-weight: 700; margin-bottom: 8px; }
+  .clinic-banner-overlay p { color: rgba(255,255,255,0.8); font-size: 0.97rem; max-width: 520px; line-height: 1.6; }
+  .clinic-banner-overlay .banner-btns { display: flex; gap: 12px; margin-top: 18px; flex-wrap: wrap; }
+  .banner-btn-white { background: white; color: var(--green); border: none; padding: 10px 22px; border-radius: 8px; font-size: 0.9rem; font-weight: 700; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.2s; text-decoration: none; }
+  .banner-btn-white:hover { background: var(--green-pale); }
+  .banner-btn-outline { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.7); padding: 8px 20px; border-radius: 8px; font-size: 0.9rem; font-weight: 600; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.2s; text-decoration: none; }
+  .banner-btn-outline:hover { background: rgba(255,255,255,0.15); }
+  .no-photo-hint { position: absolute; top: 14px; right: 14px; z-index: 3; background: rgba(0,0,0,0.45); color: rgba(255,255,255,0.7); font-size: 0.75rem; padding: 5px 11px; border-radius: 6px; backdrop-filter: blur(4px); }
+
+  /* ABOUT PANEL (slide in from left) */
+  .about-panel-overlay { display: none; position: fixed; inset: 0; z-index: 500; background: rgba(0,0,0,0.45); backdrop-filter: blur(4px); justify-content: flex-start; }
+  .about-panel-overlay.show { display: flex; }
+  .about-panel {
+    background: white; width: min(580px, 100vw); height: 100vh; overflow-y: auto;
+    transform: translateX(-100%); transition: transform 0.35s cubic-bezier(.4,0,.2,1);
+    box-shadow: 8px 0 40px rgba(0,0,0,0.18); display: flex; flex-direction: column;
+  }
+  .about-panel-overlay.show .about-panel { transform: translateX(0); }
+  .about-panel-top { background: linear-gradient(135deg, var(--green), #0d3d26); padding: 0; position: relative; height: 200px; overflow: hidden; flex-shrink: 0; display: flex; align-items: flex-end; }
+  .about-panel-top img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.45; }
+  .about-panel-top-overlay { position: relative; z-index: 2; padding: 28px 28px 22px; background: linear-gradient(to top, rgba(10,40,25,0.88), transparent); width: 100%; }
+  .about-panel-top-overlay h2 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: white; font-weight: 700; }
+  .about-panel-top-overlay p { color: rgba(255,255,255,0.75); font-size: 0.85rem; margin-top: 4px; }
+  .about-panel-close { position: absolute; top: 14px; right: 14px; width: 34px; height: 34px; border-radius: 50%; background: rgba(255,255,255,0.25); border: none; cursor: pointer; font-size: 1rem; color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; backdrop-filter: blur(4px); z-index: 10; }
+  .about-panel-close:hover { background: rgba(255,255,255,0.4); }
+  .about-panel-body { padding: 28px; flex: 1; }
+  .about-panel-body p { color: var(--text-muted); line-height: 1.8; font-size: 0.94rem; margin-bottom: 16px; }
+  .about-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 20px 0; }
+  .about-info-tile { background: var(--green-pale); border-radius: 12px; padding: 14px 16px; border: 1px solid rgba(26,107,74,0.12); }
+  .about-info-tile .tile-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 4px; }
+  .about-info-tile .tile-val { font-size: 0.95rem; font-weight: 700; color: var(--green); }
+  .about-feature-list { list-style: none; margin-top: 8px; }
+  .about-feature-list li { display: flex; align-items: flex-start; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--green-pale); font-size: 0.92rem; color: var(--text); }
+  .about-feature-list li:last-child { border-bottom: none; }
+  .about-section-head { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-muted); margin: 22px 0 10px; }
 </style>
 </head>
 <body>
@@ -243,7 +294,7 @@
     Geeta Polyclinic
   </a>
   <ul class="nav-links">
-    <li><a href="#about">About</a></li>
+    <li><a href="#about" onclick="event.preventDefault(); document.getElementById('about').scrollIntoView({behavior:'smooth'}); setTimeout(openAboutPanel, 400);">About</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#doctors">Doctors</a></li>
     <li><a href="#store">Medical Store</a></li>
@@ -270,36 +321,57 @@
   </div>
 </section>
 
-<!-- ABOUT -->
-<section id="about">
-  <div style="text-align:center; max-width:600px; margin:0 auto;">
-    <div class="section-label">Who We Are</div>
-    <h2 class="section-title">About Geeta Polyclinic</h2>
-    <p class="section-desc" style="margin:0 auto;">A trusted name in healthcare, serving our community with dedication, care, and modern medical expertise.</p>
+<!-- ABOUT BANNER -->
+<div class="clinic-banner" id="about">
+  <img src="clinic.jpg" alt="Geeta Polyclinic" onerror="this.style.display='none';">
+  <div class="no-photo-hint" id="clinicPhotoHint">📸 Upload clinic.jpg to show clinic photo</div>
+  <div class="clinic-banner-overlay">
+    <h2>🏥 Geeta Polyclinic &amp; Medical Store</h2>
+    <p>A trusted name in healthcare, serving the Balasore community with dedication, care, and modern medical expertise since 2005.</p>
+    <div class="banner-btns">
+      <button class="banner-btn-white" onclick="openAboutPanel()">Learn More About Us →</button>
+      <a class="banner-btn-outline" href="#contact">📍 Find Us</a>
+    </div>
   </div>
-  <div class="about-grid">
-    <div class="about-text">
-      <p>Geeta Polyclinic has been a cornerstone of healthcare in our community for over two decades. Founded with the vision of providing accessible, quality medical care to every patient, we have grown into a comprehensive healthcare facility trusted by thousands of families.</p>
+</div>
+
+<!-- ABOUT PANEL -->
+<div class="about-panel-overlay" id="aboutPanelOverlay" onclick="closeAboutOnOverlay(event)">
+  <div class="about-panel" id="aboutPanel">
+    <div class="about-panel-top">
+      <img src="clinic.jpg" alt="Geeta Polyclinic" onerror="this.style.display='none';">
+      <button class="about-panel-close" onclick="closeAboutPanel()">✕</button>
+      <div class="about-panel-top-overlay">
+        <h2>About Geeta Polyclinic</h2>
+        <p>Station Club Market Complex, OT Rd, Balasore, Odisha</p>
+      </div>
+    </div>
+    <div class="about-panel-body">
+      <p>Geeta Polyclinic has been a cornerstone of healthcare in Balasore for over two decades. Founded with the vision of providing accessible, quality medical care to every patient, we have grown into a comprehensive healthcare facility trusted by thousands of families across the region.</p>
       <p>Our team of experienced doctors and healthcare professionals work together to provide personalized care. We believe every patient deserves to be treated with compassion, respect, and the highest standard of medical excellence.</p>
-      <ul class="feature-list">
-        <li><span class="icon">✅</span> Experienced and qualified medical professionals</li>
-        <li><span class="icon">🕐</span> Timely appointments with minimal waiting time</li>
-        <li><span class="icon">💊</span> Attached medical store for all your medicine needs</li>
-        <li><span class="icon">🧪</span> Diagnostic tests and health checkup packages</li>
-        <li><span class="icon">🌿</span> Holistic and patient-centered care approach</li>
+
+      <div class="about-section-head">Clinic At a Glance</div>
+      <div class="about-info-grid">
+        <div class="about-info-tile"><div class="tile-label">Established</div><div class="tile-val">2005</div></div>
+        <div class="about-info-tile"><div class="tile-label">Type</div><div class="tile-val">Polyclinic + Medical Store</div></div>
+        <div class="about-info-tile"><div class="tile-label">Specialists</div><div class="tile-val">7 Visiting Doctors</div></div>
+        <div class="about-info-tile"><div class="tile-label">Patients Served</div><div class="tile-val">5000+</div></div>
+        <div class="about-info-tile"><div class="tile-label">Location</div><div class="tile-val">Balasore, Odisha</div></div>
+        <div class="about-info-tile"><div class="tile-label">Emergency</div><div class="tile-val">Available on call</div></div>
+      </div>
+
+      <div class="about-section-head">Why Choose Us</div>
+      <ul class="about-feature-list">
+        <li>✅ Experienced and qualified medical professionals</li>
+        <li>🕐 Timely appointments with minimal waiting time</li>
+        <li>💊 Attached medical store for all your medicine needs</li>
+        <li>🧪 Diagnostic tests and health checkup packages</li>
+        <li>🌿 Holistic and patient-centered care approach</li>
+        <li>📍 Conveniently located near Hotel Panchajanya, OT Road</li>
       </ul>
     </div>
-    <div class="about-visual">
-      <h3>Clinic Information</h3>
-      <div class="info-row"><span class="key">Established</span><span>2005</span></div>
-      <div class="info-row"><span class="key">Type</span><span>Polyclinic + Medical Store</span></div>
-      <div class="info-row"><span class="key">Doctors</span><span>7 Visiting Specialists</span></div>
-      <div class="info-row"><span class="key">Patients</span><span>5000+ Served</span></div>
-      <div class="info-row"><span class="key">Location</span><span>Balasore, Odisha</span></div>
-      <div class="info-row"><span class="key">Emergency</span><span>Available on call</span></div>
-    </div>
   </div>
-</section>
+</div>
 
 <!-- SERVICES -->
 <section id="services">
@@ -805,6 +877,28 @@
   }
 
   document.getElementById('bookingModal').addEventListener('click',function(e){ if(e.target===this)this.classList.remove('show'); });
+
+
+  // ── ABOUT PANEL ─────────────────────────────────
+  function openAboutPanel(){
+    document.getElementById('aboutPanelOverlay').classList.add('show');
+    document.body.style.overflow='hidden';
+  }
+  function closeAboutPanel(){
+    document.getElementById('aboutPanelOverlay').classList.remove('show');
+    document.body.style.overflow='';
+  }
+  function closeAboutOnOverlay(e){
+    if(e.target===document.getElementById('aboutPanelOverlay')) closeAboutPanel();
+  }
+  // Hide upload hint once clinic image loads
+  document.addEventListener('DOMContentLoaded', () => {
+    const img = document.querySelector('.clinic-banner img');
+    if(img) img.addEventListener('load', () => {
+      const hint = document.getElementById('clinicPhotoHint');
+      if(hint) hint.style.display='none';
+    });
+  });
 
   document.querySelectorAll('a[href^="#"]').forEach(a=>{
     a.addEventListener('click',e=>{ const el=document.getElementById(a.getAttribute('href').slice(1)); if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'});} });
