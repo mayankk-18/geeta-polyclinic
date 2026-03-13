@@ -112,6 +112,17 @@
   .store-item h4 { font-size: 0.88rem; font-weight: 600; color: var(--text); }
   .store-item p { font-size: 0.8rem; color: var(--text-muted); margin-top: 3px; }
 
+
+  /* APPOINTMENT STATUS BADGE */
+  .appt-status { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 100px; font-size: 0.78rem; font-weight: 700; margin-bottom: 10px; }
+  .appt-status.open { background: #d4f5e2; color: #0f6b35; border: 1px solid #7dd4a8; }
+  .appt-status.closed { background: #fdecea; color: #c0392b; border: 1px solid #f5a89e; }
+  .appt-status .dot { width: 7px; height: 7px; border-radius: 50%; }
+  .appt-status.open .dot { background: #0f6b35; animation: pulse 1.5s infinite; }
+  .appt-status.closed .dot { background: #c0392b; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.3)} }
+  .next-date-badge { font-size: 0.8rem; color: var(--green); font-weight: 600; background: var(--green-pale); display: inline-block; padding: 3px 10px; border-radius: 6px; margin-bottom: 8px; }
+
   /* APPOINTMENT */
   #appointment { background: var(--green-pale); }
   .appt-wrapper { display: grid; grid-template-columns: 1fr 1.3fr; gap: 60px; align-items: start; margin-top: 48px; }
@@ -168,6 +179,27 @@
     .store-items { grid-template-columns: 1fr; }
     .doctors-grid { grid-template-columns: 1fr; }
   }
+
+  /* BOOKING BLOCKED MODAL */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0; z-index: 9999;
+    background: rgba(0,0,0,0.55); backdrop-filter: blur(4px);
+    align-items: center; justify-content: center;
+  }
+  .modal-overlay.show { display: flex; }
+  .modal-box {
+    background: white; border-radius: 20px; padding: 36px 32px;
+    max-width: 420px; width: 90%; text-align: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+    animation: modalPop 0.25s ease;
+  }
+  @keyframes modalPop { from { transform: scale(0.85); opacity:0; } to { transform: scale(1); opacity:1; } }
+  .modal-icon { font-size: 3rem; margin-bottom: 12px; }
+  .modal-box h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--text); margin-bottom: 10px; }
+  .modal-box p { font-size: 0.92rem; color: var(--text-muted); line-height: 1.65; margin-bottom: 20px; }
+  .modal-box .modal-date { display: inline-block; background: var(--green-pale); color: var(--green); font-weight: 700; font-size: 0.95rem; padding: 8px 18px; border-radius: 8px; margin-bottom: 22px; border: 1px solid rgba(26,107,74,0.2); }
+  .modal-close { background: var(--green); color: white; border: none; padding: 12px 32px; border-radius: 10px; font-size: 0.95rem; font-weight: 600; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: background 0.2s; }
+  .modal-close:hover { background: var(--green-light); }
 </style>
 </head>
 <body>
@@ -273,6 +305,7 @@
         <div class="doctor-photo-placeholder" style="display:none; align-items:center; justify-content:center; width:100%; height:100%;">🧠</div>
         <div class="doctor-name-overlay"><h3>Dr. Anil Kumar Sahu</h3></div>
       </div>
+      <div id="badge-anil" class="doctor-body" style="padding:12px 20px 4px; border-bottom:1px solid rgba(26,107,74,0.08);">Loading schedule...</div>
       <div class="doctor-body">
         <span class="doctor-spec">Neurologist</span>
         <p class="doctor-desc">Specialist in diagnosing and treating disorders of the nervous system including epilepsy, stroke, Parkinson's disease, migraines, and neuropathy.</p>
@@ -291,6 +324,7 @@
         <div class="doctor-photo-placeholder" style="display:none; align-items:center; justify-content:center; width:100%; height:100%;">🧬</div>
         <div class="doctor-name-overlay"><h3>Prof. Dr. Suvendu Narayan Mishra</h3></div>
       </div>
+      <div id="badge-suvendu" class="doctor-body" style="padding:12px 20px 4px; border-bottom:1px solid rgba(26,107,74,0.08);">Loading schedule...</div>
       <div class="doctor-body">
         <span class="doctor-spec">Neuro Psychiatrist</span>
         <p class="doctor-desc">Expert in neuropsychiatric conditions including depression, anxiety, schizophrenia, bipolar disorder, and other complex brain-behaviour disorders.</p>
@@ -310,6 +344,7 @@
         <div class="doctor-photo-placeholder" style="display:none; align-items:center; justify-content:center; width:100%; height:100%;">⚕️</div>
         <div class="doctor-name-overlay"><h3>Dr. Srikant Swain</h3></div>
       </div>
+      <div id="badge-srikant" class="doctor-body" style="padding:12px 20px 4px; border-bottom:1px solid rgba(26,107,74,0.08);">Loading schedule...</div>
       <div class="doctor-body">
         <span class="doctor-spec">Neuro Surgeon</span>
         <p class="doctor-desc">Highly skilled neurosurgeon specialising in brain tumours, spinal surgeries, head injuries, and complex neurological surgical procedures.</p>
@@ -328,6 +363,7 @@
         <div class="doctor-photo-placeholder" style="display:none; align-items:center; justify-content:center; width:100%; height:100%;">🌿</div>
         <div class="doctor-name-overlay"><h3>Dr. Debabrata Nayak</h3></div>
       </div>
+      <div id="badge-debabrata" class="doctor-body" style="padding:12px 20px 4px; border-bottom:1px solid rgba(26,107,74,0.08);">Loading schedule...</div>
       <div class="doctor-body">
         <span class="doctor-spec">Dermatologist</span>
         <p class="doctor-desc">Specialist in skin, hair, and nail conditions including acne, eczema, psoriasis, fungal infections, hair loss, and cosmetic skin treatments.</p>
@@ -346,6 +382,7 @@
         <div class="doctor-photo-placeholder" style="display:none; align-items:center; justify-content:center; width:100%; height:100%;">🫘</div>
         <div class="doctor-name-overlay"><h3>Dr. Jyoti Mohan Tosh</h3></div>
       </div>
+      <div id="badge-jyoti" class="doctor-body" style="padding:12px 20px 4px; border-bottom:1px solid rgba(26,107,74,0.08);">Loading schedule...</div>
       <div class="doctor-body">
         <span class="doctor-spec">Urologist</span>
         <p class="doctor-desc">Expert in urinary tract disorders, kidney stones, prostate conditions, bladder problems, and urological surgeries for both men and women.</p>
@@ -364,6 +401,7 @@
         <div class="doctor-photo-placeholder" style="display:none; align-items:center; justify-content:center; width:100%; height:100%;">🫁</div>
         <div class="doctor-name-overlay"><h3>Dr. Partha Sarthi Sahu</h3></div>
       </div>
+      <div id="badge-partha" class="doctor-body" style="padding:12px 20px 4px; border-bottom:1px solid rgba(26,107,74,0.08);">Loading schedule...</div>
       <div class="doctor-body">
         <span class="doctor-spec">Gastro & Hepatologist</span>
         <p class="doctor-desc">Specialist in digestive system disorders, liver diseases, gastritis, IBS, jaundice, hepatitis, and conditions of the stomach, intestines, and liver.</p>
@@ -382,6 +420,7 @@
         <div class="doctor-photo-placeholder" style="display:none; align-items:center; justify-content:center; width:100%; height:100%;">💊</div>
         <div class="doctor-name-overlay"><h3>Dr. Ratnakar Das</h3></div>
       </div>
+      <div id="badge-ratnakar" class="doctor-body" style="padding:12px 20px 4px; border-bottom:1px solid rgba(26,107,74,0.08);">Loading schedule...</div>
       <div class="doctor-body">
         <span class="doctor-spec">Medicine Specialist</span>
         <p class="doctor-desc">Experienced physician treating a wide range of general medical conditions including fever, diabetes, hypertension, infections, and chronic illnesses.</p>
@@ -554,7 +593,175 @@
   // =============================================
   const SHEET_URL = "https://script.google.com/macros/s/AKfycbxaQFgMvURFpbsH2XO7MO5Gi_IsBWUhYOktdWWW3x695ypWptS76L3cSgeGX3-3vdSa/exec";
 
-  // Time slots per doctor
+  // ─────────────────────────────────────────────
+  // DATE HELPERS
+  // ─────────────────────────────────────────────
+  function getNthWeekday(year, month, weekday, nth) {
+    let count = 0, d = new Date(year, month, 1);
+    while (true) {
+      if (d.getDay() === weekday) { count++; if (count === nth) return new Date(d); }
+      d.setDate(d.getDate() + 1);
+      if (d.getMonth() !== month) return null;
+    }
+  }
+
+  function formatDate(d) {
+    if (!d) return 'TBA';
+    const day = d.getDate();
+    const s = day%10===1&&day!==11?'st':day%10===2&&day!==12?'nd':day%10===3&&day!==13?'rd':'th';
+    const mo = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    return `${day}${s} ${mo[d.getMonth()]} ${d.getFullYear()}`;
+  }
+
+  function isToday(d) {
+    if (!d) return false;
+    const t = new Date();
+    return d.getDate()===t.getDate() && d.getMonth()===t.getMonth() && d.getFullYear()===t.getFullYear();
+  }
+
+  function getMondayOfWeek(d) {
+    // Returns the Monday of the same ISO week as date d
+    const day = new Date(d); day.setHours(0,0,0,0);
+    const dow = day.getDay(); // 0=Sun
+    // If Sunday (0), Monday is 6 days before; else subtract (dow-1)
+    const diff = dow === 0 ? -6 : 1 - dow;
+    day.setDate(day.getDate() + diff);
+    return day;
+  }
+
+  function nextNthWeekday(weekday, nth) {
+    const today = new Date(); today.setHours(0,0,0,0);
+    for (let m = 0; m <= 3; m++) {
+      const base = new Date(today.getFullYear(), today.getMonth() + m, 1);
+      const d = getNthWeekday(base.getFullYear(), base.getMonth(), weekday, nth);
+      if (d && d >= today) return d;
+    }
+    return null;
+  }
+
+  function nextRatnakarDate() {
+    const workDays = [0,1,2,3,4,5];
+    const today = new Date(); today.setHours(0,0,0,0);
+    for (let i = 0; i <= 7; i++) {
+      const d = new Date(today); d.setDate(today.getDate() + i);
+      if (workDays.includes(d.getDay())) return d;
+    }
+    return null;
+  }
+
+  // ─────────────────────────────────────────────
+  // DOCTOR RULES
+  // Each returns next visit Date
+  // ─────────────────────────────────────────────
+  const doctorRules = {
+    "anil":     () => nextNthWeekday(0, 1),
+    "suvendu":  () => { const a=nextNthWeekday(6,2), b=nextNthWeekday(0,2); if(!a)return b; if(!b)return a; return a<=b?a:b; },
+    "srikant":  () => nextNthWeekday(0, 3),
+    "debabrata":() => { const a=nextNthWeekday(3,2), b=nextNthWeekday(3,4); if(!a)return b; if(!b)return a; return a<=b?a:b; },
+    "jyoti":    () => nextNthWeekday(5, 4),
+    "partha":   () => { const a=nextNthWeekday(3,2), b=nextNthWeekday(3,4); if(!a)return b; if(!b)return a; return a<=b?a:b; },
+    "ratnakar": () => nextRatnakarDate()
+  };
+
+  // Map doctor dropdown value → rule key
+  const doctorKeyMap = {
+    "Dr. Anil Kumar Sahu":              "anil",
+    "Prof. Dr. Suvendu Narayan Mishra": "suvendu",
+    "Dr. Srikant Swain":                "srikant",
+    "Dr. Debabrata Nayak":              "debabrata",
+    "Dr. Jyoti Mohan Tosh":             "jyoti",
+    "Dr. Partha Sarthi Sahu":           "partha",
+    "Dr. Ratnakar Das":                 "ratnakar"
+  };
+
+  // ─────────────────────────────────────────────
+  // BOOKING WINDOW CHECK
+  // For all doctors except Ratnakar:
+  //   Booking opens on the Monday of the visiting week
+  //   Booking closes after the visit day
+  // For Ratnakar:
+  //   Booking only allowed on the same day (today === visit day)
+  // Returns: { allowed: bool, opensOn: Date|null, visitDate: Date }
+  // ─────────────────────────────────────────────
+  function checkBookingWindow(doctorKey) {
+    const today = new Date(); today.setHours(0,0,0,0);
+    const visitDate = doctorRules[doctorKey]();
+    if (!visitDate) return { allowed: false, opensOn: null, visitDate: null };
+
+    if (doctorKey === 'ratnakar') {
+      // Only allow booking on the actual visit day
+      const allowed = isToday(visitDate);
+      return { allowed, opensOn: visitDate, visitDate };
+    } else {
+      // Booking opens Monday of the visit week
+      const openDate = getMondayOfWeek(visitDate);
+      const allowed = today >= openDate && today <= visitDate;
+      return { allowed, opensOn: openDate, visitDate };
+    }
+  }
+
+  // ─────────────────────────────────────────────
+  // SHOW BLOCKED MODAL
+  // ─────────────────────────────────────────────
+  function showBlockedModal(doctorKey, doctorName) {
+    const { opensOn, visitDate } = checkBookingWindow(doctorKey);
+    const modal = document.getElementById('bookingModal');
+    const msgEl = document.getElementById('modalMessage');
+    const dateEl = document.getElementById('modalDate');
+
+    if (doctorKey === 'ratnakar') {
+      msgEl.innerHTML = `Appointments for <strong>${doctorName}</strong> can only be booked on the day of the visit. Please come back on the visiting day to book.`;
+      dateEl.textContent = `📅 Next Available: ${formatDate(visitDate)}`;
+    } else {
+      msgEl.innerHTML = `Appointments for <strong>${doctorName}</strong> are not open yet. Booking opens on the <strong>Monday of the visiting week</strong>.`;
+      dateEl.textContent = `📅 Booking Opens: ${formatDate(opensOn)}`;
+    }
+    modal.classList.add('show');
+  }
+
+  // ─────────────────────────────────────────────
+  // RENDER DOCTOR BADGES
+  // ─────────────────────────────────────────────
+  function renderDoctorBadges() {
+    const cards = [
+      { id:'badge-anil',      key:'anil'      },
+      { id:'badge-suvendu',   key:'suvendu'   },
+      { id:'badge-srikant',   key:'srikant'   },
+      { id:'badge-debabrata', key:'debabrata' },
+      { id:'badge-jyoti',     key:'jyoti'     },
+      { id:'badge-partha',    key:'partha'    },
+      { id:'badge-ratnakar',  key:'ratnakar'  },
+    ];
+    cards.forEach(({ id, key }) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const visitDate = doctorRules[key]();
+      const { allowed } = checkBookingWindow(key);
+      const open = isToday(visitDate);
+
+      let badge = '';
+      if (open) {
+        badge = `<span class="appt-status open"><span class="dot"></span>🟢 Appointments Open Today!</span><br>
+                 <span class="next-date-badge">📅 Today: ${formatDate(visitDate)}</span>`;
+      } else if (allowed) {
+        badge = `<span class="appt-status open"><span class="dot"></span>🟢 Booking Now Open!</span><br>
+                 <span class="next-date-badge">📅 Visit Date: ${formatDate(visitDate)}</span>`;
+      } else {
+        const { opensOn } = checkBookingWindow(key);
+        const openLabel = key === 'ratnakar' ? 'Book on visit day:' : 'Booking opens:';
+        badge = `<span class="appt-status closed"><span class="dot"></span>🔴 Appointments Not Open Yet</span><br>
+                 <span class="next-date-badge">📅 Next Visit: ${formatDate(visitDate)}</span><br>
+                 <span class="next-date-badge" style="margin-top:4px; background:#fff3e0; color:#b35a00; border:1px solid #f5c97a;">🔓 ${openLabel} ${formatDate(opensOn)}</span>`;
+      }
+      el.innerHTML = badge;
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', renderDoctorBadges);
+
+  // ─────────────────────────────────────────────
+  // TIME SLOTS
+  // ─────────────────────────────────────────────
   const doctorSlots = {
     "Dr. Anil Kumar Sahu":               ["9:00 AM – 12:00 PM", "12:00 PM – 3:00 PM"],
     "Prof. Dr. Suvendu Narayan Mishra":  ["5:00 PM – 7:00 PM", "7:00 PM – 9:00 PM"],
@@ -578,11 +785,13 @@
     }
   }
 
-  // Set minimum date to today
+  // Set min date
   const dateInput = document.getElementById('date');
-  const today = new Date().toISOString().split('T')[0];
-  dateInput.setAttribute('min', today);
+  dateInput.setAttribute('min', new Date().toISOString().split('T')[0]);
 
+  // ─────────────────────────────────────────────
+  // SUBMIT APPOINTMENT
+  // ─────────────────────────────────────────────
   function submitAppointment() {
     const name   = document.getElementById('name').value.trim();
     const phone  = document.getElementById('phone').value.trim();
@@ -599,11 +808,21 @@
       return;
     }
 
+    // ── BOOKING WINDOW GATE ──────────────────────
+    const doctorKey = doctorKeyMap[dept];
+    if (doctorKey) {
+      const { allowed } = checkBookingWindow(doctorKey);
+      if (!allowed) {
+        showBlockedModal(doctorKey, dept);
+        return; // Stop submission
+      }
+    }
+    // ─────────────────────────────────────────────
+
     const btn = document.querySelector('.submit-btn');
     btn.textContent = '⏳ Submitting...';
     btn.disabled = true;
 
-    // Data sent to Google Sheets — columns: Date, Name, Gender, Phone, Submitted At
     const formData = {
       date:        date,
       name:        name,
@@ -629,16 +848,19 @@
         document.getElementById(id).value = '';
       });
       document.getElementById('time').innerHTML = '<option value="">Select doctor first</option>';
-      setTimeout(() => {
-        document.getElementById('successMsg').style.display = 'none';
-      }, 6000);
+      setTimeout(() => { document.getElementById('successMsg').style.display = 'none'; }, 6000);
     })
     .catch(() => {
-      alert('Something went wrong. Please try again or call us directly on +91-9525300999.');
+      alert('Something went wrong. Please try again or call us on +91-9525300999.');
       btn.textContent = '✅ Confirm Appointment';
       btn.disabled = false;
     });
   }
+
+  // Close modal when clicking outside
+  document.getElementById('bookingModal').addEventListener('click', function(e) {
+    if (e.target === this) this.classList.remove('show');
+  });
 
   // Smooth scroll
   document.querySelectorAll('a[href^="#"]').forEach(a => {
@@ -648,5 +870,18 @@
     });
   });
 </script>
+
+<!-- BOOKING BLOCKED MODAL -->
+<div class="modal-overlay" id="bookingModal">
+  <div class="modal-box">
+    <div class="modal-icon">🗓️</div>
+    <h3>Appointment Slots Not Open Yet</h3>
+    <p id="modalMessage">Booking for this doctor opens on Monday of the visiting week.</p>
+    <div class="modal-date" id="modalDate"></div>
+    <br>
+    <button class="modal-close" onclick="document.getElementById('bookingModal').classList.remove('show')">Got it</button>
+  </div>
+</div>
 </body>
 </html>
+
