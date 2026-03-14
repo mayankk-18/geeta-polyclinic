@@ -53,7 +53,7 @@ button, a { -webkit-tap-highlight-color: transparent; outline: none; }
 .hero h1 span { color: var(--green); }
 .hero p { font-size: 1.05rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 36px; animation: fadeUp 0.6s 0.2s ease both; }
 .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; animation: fadeUp 0.6s 0.3s ease both; }
-.btn-primary { background: var(--green); color: white; padding: 14px 28px; border-radius: 10px; font-size: 1rem; font-weight: 600; cursor: pointer; border: none; text-decoration: none; transition: background 0.2s, transform 0.15s, box-shadow 0.2s; font-family: 'DM Sans', sans-serif; box-shadow: 0 4px 16px rgba(26,107,74,0.25); }
+.btn-primary { background: var(--green); color: white; padding: 14px 28px; border-radius: 10px; font-size: 1rem; font-weight: 600; cursor: pointer; border: none; text-decoration: none; display: inline-block; transition: background 0.2s, transform 0.15s, box-shadow 0.2s; font-family: 'DM Sans', sans-serif; box-shadow: 0 4px 16px rgba(26,107,74,0.25); }
 .btn-primary:hover { background: var(--green-light); transform: translateY(-2px); box-shadow: 0 6px 24px rgba(26,107,74,0.3); }
 .btn-secondary { background: transparent; color: var(--green); border: 2px solid var(--green); padding: 12px 26px; border-radius: 10px; font-size: 1rem; font-weight: 600; cursor: pointer; text-decoration: none; transition: all 0.2s; font-family: 'DM Sans', sans-serif; }
 .btn-secondary:hover { background: var(--green-pale); }
@@ -201,14 +201,15 @@ button, a { -webkit-tap-highlight-color: transparent; outline: none; }
   @keyframes fadeLeft { from { opacity: 0; transform: translate(30px, -50%); } to { opacity: 1; transform: translate(0, -50%); } }
 
 @media (max-width: 900px) {
-  .hamburger { display: flex !important; }
-  .desktop-only { display: none !important; }
-  .nav-links { display: none !important; }
+  .hamburger { display: flex; }
+  .desktop-only { display: none; }
+  .nav-links { display: none; }
   .hero { padding-top: 76px; min-height: auto; padding-bottom: 40px; }
-  .hero-cards { display: none !important; }
+  .hero-cards { display: none; }
   .about-grid, .store-grid, .appt-wrapper { grid-template-columns: 1fr; gap: 30px; }
   .contact-grid { grid-template-columns: 1fr; }
-}
+  #appointment { scroll-margin-top: 68px; }
+ }
 @media (max-width: 600px) {
     .form-row { grid-template-columns: 1fr; }
     .services-grid { grid-template-columns: 1fr 1fr; }
