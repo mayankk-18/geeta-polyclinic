@@ -23,7 +23,9 @@ html { scroll-behavior: smooth; }
 body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
 button, a { -webkit-tap-highlight-color: transparent; outline: none; }
 .hamburger, .view-profile-btn, .btn-primary, .btn-secondary, .nav-cta, .submit-btn, .doc-panel-book-btn, .modal-close, .about-panel-close, .doc-panel-close { -webkit-tap-highlight-color: transparent !important; outline: none !important; }
-.hamburger:focus, .view-profile-btn:focus, .btn-primary:focus, .btn-secondary:focus, .nav-cta:focus, .submit-btn:focus { outline: none !important; box-shadow: none !important; background-color: unset; }
+.hamburger:focus, .view-profile-btn:focus, .btn-secondary:focus, .submit-btn:focus { outline: none !important; }
+.btn-primary:focus { outline: none !important; background: var(--green); color: white; }
+.nav-cta:focus { outline: none !important; background: var(--green); color: white; }
 .doctor-card { -webkit-tap-highlight-color: transparent !important; }
 
   /* NAV */
@@ -328,7 +330,7 @@ nav {
   <div class="hero-decor2"></div>
   <div class="hero-content">
     <div class="hero-badge">🌿 Trusted Healthcare Since 1994</div>
-    <h1>Your Health,<span>Our Priority</span></h1>
+    <h1>Your Health,<br><span>Our Priority</span></h1>
     <p>Geeta Polyclinic & Medical Store offers comprehensive healthcare services and quality medicines — all under one roof, right in your neighbourhood.</p>
     <p>Our in-house pathology lab provides fast and accurate diagnostic tests for your convenience — no need to visit a separate lab. From routine blood tests to advanced diagnostics, everything is available right here.</p>
     <div class="hero-btns">
