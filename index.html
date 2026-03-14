@@ -862,8 +862,6 @@
     if(e.target===document.getElementById('aboutPanelOverlay')) closeAboutPanel();
   }
   // Hide upload hint once clinic image loads
-  document.addEventListener('DOMContentLoaded', () => {
-    const img = document.querySelector('.clinic-banner img');
     if(img) img.addEventListener('load', () => {
       const hint = document.getElementById('clinicPhotoHint');
       if(hint) hint.style.display='none';
