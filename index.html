@@ -18,9 +18,13 @@
     --white: #ffffff;
     --shadow: 0 4px 24px rgba(26,107,74,0.10);
   }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; tap-highlight-color: transparent; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
+button, a { -webkit-tap-highlight-color: transparent; outline: none; }
+.hamburger, .view-profile-btn, .btn-primary, .btn-secondary, .nav-cta, .submit-btn, .doc-panel-book-btn, .modal-close, .about-panel-close, .doc-panel-close { -webkit-tap-highlight-color: transparent !important; outline: none !important; }
+.hamburger:focus, .view-profile-btn:focus, .btn-primary:focus, .btn-secondary:focus, .nav-cta:focus, .submit-btn:focus { outline: none !important; box-shadow: none !important; background-color: unset; }
+.doctor-card { -webkit-tap-highlight-color: transparent !important; }
 
   /* NAV */
   nav {
@@ -301,7 +305,7 @@
     <li><a href="#contact">Contact</a></li>
   </ul>
   <a class="nav-cta desktop-only" href="#appointment">Book Appointment</a>
-  <button class="hamburger" onclick="toggleMobileMenu()" aria-label="Menu">
+  <button class="hamburger" onclick="toggleMobileMenu()" aria-label="Menu" style="background:none; border:none; box-shadow:none;">
     <span></span><span></span><span></span>
   </button>
 </nav>
