@@ -735,13 +735,27 @@ button, a { -webkit-tap-highlight-color: transparent; outline: none; }
   };
 
   // ── BOOKING WINDOW ──────────────────────────────
-  function checkBookingWindow(key){
+function checkBookingWindow(key){
     const today=new Date(); today.setHours(0,0,0,0);
     const visitDate=DOCTORS[key].rule();
     if(!visitDate)return{allowed:false,opensOn:null,visitDate:null};
-    if(key==='ratnakar'){ return{allowed:isToday(visitDate),opensOn:visitDate,visitDate}; }
-    const openDate=getMondayOfWeek(visitDate);
-    return{allowed:today>=openDate&&today<=visitDate,opensOn:openDate,visitDate};
+
+    // Dr. Ratnakar — same day only
+    if(key==='ratnakar'){
+      return{allowed:isToday(visitDate),opensOn:visitDate,visitDate};
+    }
+
+    // Sunday doctors (anil, suvendu, srikant) — opens Monday of visit week
+    const sundayDoctors = ['anil','suvendu','srikant'];
+    if(sundayDoctors.includes(key)){
+      const openDate = getMondayOfWeek(visitDate);
+      return{allowed:today>=openDate&&today<=visitDate,opensOn:openDate,visitDate};
+    }
+
+    // Wednesday & Friday doctors (partha, debabrata, jyoti) — opens 7 days before
+    const sevenDaysBefore = new Date(visitDate);
+    sevenDaysBefore.setDate(visitDate.getDate()-7);
+    return{allowed:today>=sevenDaysBefore&&today<=visitDate,opensOn:sevenDaysBefore,visitDate};
   }
 
   // ── BUILD BADGE HTML ────────────────────────────
