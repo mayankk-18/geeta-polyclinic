@@ -820,6 +820,7 @@ function checkBookingWindow(key){
 
   // ── DOCTOR PANEL ────────────────────────────────
   function openDoctorPanel(key){
+    pushPanelState();
     const d = DOCTORS[key];
     document.getElementById('panelName').textContent  = d.name;
     document.getElementById('panelSpec').textContent  = d.spec;
@@ -909,6 +910,7 @@ function checkBookingWindow(key){
 
   // ── ABOUT PANEL ─────────────────────────────────
   function openAboutPanel(){
+    pushPanelState();
     document.getElementById('aboutPanelOverlay').classList.add('show');
     document.body.style.overflow='hidden';
   }
@@ -969,6 +971,27 @@ function clearMobileSearch(){
   document.getElementById('searchClearBtn').style.display = 'none';
   document.getElementById('mobileSearchInput').focus();
 }
+  
+  // ── BACK BUTTON HANDLING ─────────────────────────
+window.addEventListener('popstate', function(){
+  if(document.getElementById('docPanelOverlay').classList.contains('show')){
+    closeDoctorPanel(); return;
+  }
+  if(document.getElementById('aboutPanelOverlay').classList.contains('show')){
+    closeAboutPanel(); return;
+  }
+  if(document.getElementById('servicesPanelOverlay').classList.contains('show')){
+    closeServicesPanel(); return;
+  }
+  if(document.getElementById('bookingModal').classList.contains('show')){
+    document.getElementById('bookingModal').classList.remove('show'); return;
+  }
+});
+
+function pushPanelState(){
+  history.pushState({panel: true}, '');
+}
+  
   // ── HAMBURGER MENU ──────────────────────────────
   function toggleMobileMenu(){
     const menu = document.getElementById('mobileMenu');
