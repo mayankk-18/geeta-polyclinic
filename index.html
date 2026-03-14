@@ -163,7 +163,8 @@ nav {
   .next-date-badge { font-size: 0.8rem; color: var(--green); font-weight: 600; background: var(--green-pale); display: inline-block; padding: 3px 10px; border-radius: 6px; margin-bottom: 8px; }
 
   /* APPOINTMENT */
-  #appointment { background: var(--green-pale); }
+  #appointment { background: var(--green-pale); scroll-margin-top: 68px; }
+  #appt-form { scroll-margin-top: 80px; }
   .appt-wrapper { display: grid; grid-template-columns: 1fr 1.3fr; gap: 60px; align-items: start; margin-top: 48px; }
   .appt-info h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; margin-bottom: 16px; }
   .appt-info p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; margin-bottom: 24px; }
@@ -332,7 +333,7 @@ nav {
   <li><a href="#store">Medical Store</a></li>
   <li><a href="#contact">Contact</a></li>
 </ul>
-<a class="nav-cta desktop-only" href="#appointment">Book Appointment</a>
+<a class="nav-cta desktop-only" href="#appt-form">Book Appointment</a>
 <button class="hamburger" onclick="toggleMobileMenu()" aria-label="Menu" style="background:none; border:none; box-shadow:none;">
   <span></span><span></span><span></span>
 </button>
@@ -362,8 +363,8 @@ nav {
     <p>Geeta Polyclinic & Medical Store offers comprehensive healthcare services and quality medicines — all under one roof, right in your neighbourhood.</p>
     <p>Our in-house pathology lab provides fast and accurate diagnostic tests for your convenience — no need to visit a separate lab. From routine blood tests to advanced diagnostics, everything is available right here.</p>
     <div class="hero-btns">
-      <a class="btn-primary" href="#appointment">📅 Book Appointment</a>
-      <a class="btn-secondary" href="#services">Our Services</a>
+      <a class="btn-primary" href="#appt-form">📅 Book Appointment</a>
+      <a class="btn-secondary" onclick="event.preventDefault(); openServicesPanel();" href="#">Our Services</a>
     </div>
   </div>
 <div class="hero-cards">
@@ -575,11 +576,6 @@ nav {
 
 <!-- APPOINTMENT -->
 <section id="appointment">
-  <div style="text-align:center; max-width:600px; margin:0 auto;">
-    <div class="section-label">Book Now</div>
-    <h2 class="section-title">Schedule an Appointment</h2>
-    <p class="section-desc" style="margin:0 auto;">Fill in the form below and our team will confirm your appointment. Easy, quick, and hassle-free.</p>
-  </div>
   <div class="appt-wrapper">
     <div class="appt-info">
       <h3>Clinic Timings</h3>
@@ -589,13 +585,8 @@ nav {
         <div class="timing-row"><span class="day">Sunday</span><span class="time">7:00 AM – 2:00 PM</span></div>
         <div class="timing-row"><span class="day">Emergency</span><span class="time">+91-9525300999</span></div>
       </div>
-      <div style="margin-top:20px; background: white; border-radius:14px; padding:18px; border:1px solid rgba(26,107,74,0.12);">
-        <p style="font-size:0.85rem; color:var(--text-muted); line-height:1.6;">📍 <strong>Address:</strong> Station Club Market Complex, Near Hotel Panchajanya, O.T.Road Balasore, Odisha, India</p>
-      </div>
     </div>
-
-    <div class="appt-form">
-      <h3>Book Your Appointment</h3>
+    <div class="appt-form" id="appt-form">
       <div class="form-row">
         <div class="form-group">
           <label>Full Name *</label>
@@ -641,6 +632,11 @@ nav {
         🎉 Your appointment has been booked! Check your whatsapp for confirmation.
       </div>
     </div>
+  </div>
+  <div style="text-align:center; max-width:600px; margin:40px auto 0;">
+    <div class="section-label">Book Now</div>
+    <h2 class="section-title">Schedule an Appointment</h2>
+    <p class="section-desc" style="margin:0 auto;">Fill in the form below and our team will confirm your appointment. Easy, quick, and hassle-free.</p>
   </div>
 </section>
 
