@@ -332,11 +332,26 @@
       <a class="btn-secondary" href="#services">Our Services</a>
     </div>
   </div>
-  <div class="hero-cards">
-    <div class="stat-card"><div class="num">10000+</div><div class="label">Happy Patients</div></div>
-    <div class="stat-card"><div class="num">30+</div><div class="label">Years of Service</div></div>
-    <div class="stat-card"><div class="num">7</div><div class="label">Specialist Doctors</div></div>
+<div class="hero-cards">
+  <div style="position:relative;">
+    <img src="clinic.jpg" alt="Geeta Polyclinic"
+         style="width:380px; height:420px; object-fit:cover; border-radius:24px; box-shadow:0 20px 60px rgba(26,107,74,0.25); display:block;">
+    <div style="position:absolute; top:-24px; left:50%; transform:translateX(-50%); display:flex; gap:10px; white-space:nowrap;">
+      <div class="stat-card" style="min-width:unset; padding:10px 14px; text-align:center;">
+        <div class="num" style="font-size:1.3rem;">10000+</div>
+        <div class="label">Patients</div>
+      </div>
+      <div class="stat-card" style="min-width:unset; padding:10px 14px; text-align:center;">
+        <div class="num" style="font-size:1.3rem;">30+</div>
+        <div class="label">Years</div>
+      </div>
+      <div class="stat-card" style="min-width:unset; padding:10px 14px; text-align:center;">
+        <div class="num" style="font-size:1.3rem;">7</div>
+        <div class="label">Doctors</div>
+      </div>
+    </div>
   </div>
+</div>
 </section>
 
 <!-- DOCTORS -->
@@ -808,7 +823,7 @@
     const btn=document.querySelector('.submit-btn');
     btn.textContent='⏳ Submitting...'; btn.disabled=true;
     fetch(SHEET_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({date,name,gender:gender||'Not specified',phone,submittedAt:new Date().toLocaleString('en-IN'),doctor:dept})
+      body:JSON.stringify({name,gender:gender||'Not specified',phone,submittedAt:new Date().toLocaleString('en-IN'),doctor:dept})
     }).then(()=>{
       document.getElementById('successMsg').style.display='block';
       btn.textContent='✅ Confirm Appointment'; btn.disabled=false;
@@ -819,19 +834,6 @@
 
   document.getElementById('bookingModal').addEventListener('click',function(e){ if(e.target===this)this.classList.remove('show'); });
 
-
-  // ── SERVICES PANEL ──────────────────────────────
-  function openServicesPanel(){
-    document.getElementById('servicesPanelOverlay').classList.add('show');
-    document.body.style.overflow='hidden';
-  }
-  function closeServicesPanel(){
-    document.getElementById('servicesPanelOverlay').classList.remove('show');
-    document.body.style.overflow='';
-  }
-  function closeServicesPanelOnOverlay(e){
-    if(e.target===document.getElementById('servicesPanelOverlay')) closeServicesPanel();
-  }
 
   // ── SERVICES PANEL ──────────────────────────────
   function openServicesPanel(){
