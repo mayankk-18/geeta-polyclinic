@@ -34,9 +34,9 @@ nav {
   padding: 0 4%; display: flex; align-items: center; justify-content: space-between; height: 68px;
 }
 .logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
-.logo-icon { width: 42px; height: 42px; background: var(--green); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
-.logo-text { display: flex; flex-direction: column; line-height: 1.2; }
-.logo-text .logo-top { font-family: 'Merriweather', serif; font-size: 1.15rem; font-weight: 700; color: var(--green); letter-spacing: 0.5px; }
+.logo-icon { width: 54px; height: 54px; background: var(--green); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0; }
+.logo-text { display: flex; flex-direction: row; align-items: center; }
+.logo-text .logo-top { font-family: 'Merriweather', serif; font-size: 2rem; font-weight: 700; color: var(--green); letter-spacing: 0.5px; white-space: nowrap; }
 .logo-text .logo-bottom { font-family: 'Inter', sans-serif; font-size: 0.72rem; font-weight: 500; color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase; }
 .nav-links { display: flex; gap: 28px; list-style: none; }
 .nav-links a { text-decoration: none; color: var(--text-muted); font-size: 0.88rem; font-weight: 500; transition: color 0.2s; }
@@ -293,12 +293,11 @@ nav {
 <a class="logo" href="#">
   <div class="logo-icon">
     <img src="logo.png" alt="Geeta Polyclinic"
-         style="width:42px; height:42px; border-radius:10px; object-fit:cover;"
+         style="width:54px; height:54px; border-radius:12px; object-fit:cover;"
          onerror="this.style.display='none'; this.parentElement.innerHTML='🏥';">
   </div>
   <div class="logo-text">
-    <span class="logo-top">Geeta</span>
-    <span class="logo-bottom">Polyclinic</span>
+    <span class="logo-top">Geeta Polyclinic</span>
   </div>
 </a>
 <ul class="nav-links">
