@@ -229,6 +229,9 @@ nav {
   .about-grid, .store-grid, .appt-wrapper { grid-template-columns: 1fr; gap: 30px; }
   .contact-grid { grid-template-columns: 1fr; }
   #appointment { scroll-margin-top: 60px; }
+  .appt-wrapper { display: flex; flex-direction: column; }
+  .appt-form { order: 1; }
+  .appt-info { order: 2; }
 }
 
 @media (max-width: 600px) {
@@ -576,6 +579,11 @@ nav {
 
 <!-- APPOINTMENT -->
 <section id="appointment">
+  <div style="text-align:center; max-width:600px; margin:0 auto 40px;">
+    <div class="section-label">Book Now</div>
+    <h2 class="section-title">Schedule an Appointment</h2>
+    <p class="section-desc" style="margin:0 auto;">Fill in the form below and our team will confirm your appointment. Easy, quick, and hassle-free.</p>
+  </div>
   <div class="appt-wrapper">
     <div class="appt-info">
       <h3>Clinic Timings</h3>
@@ -632,11 +640,6 @@ nav {
         🎉 Your appointment has been booked! Check your whatsapp for confirmation.
       </div>
     </div>
-  </div>
-  <div style="text-align:center; max-width:600px; margin:40px auto 0;">
-    <div class="section-label">Book Now</div>
-    <h2 class="section-title">Schedule an Appointment</h2>
-    <p class="section-desc" style="margin:0 auto;">Fill in the form below and our team will confirm your appointment. Easy, quick, and hassle-free.</p>
   </div>
 </section>
 
