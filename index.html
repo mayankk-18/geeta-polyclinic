@@ -299,22 +299,6 @@
   .services-banner-overlay p { color: rgba(255,255,255,0.78); font-size: 0.95rem; max-width: 500px; line-height: 1.6; }
   .services-panel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 0; }
   @media(max-width:500px){ .services-panel-grid { grid-template-columns: 1fr; } }
-
-  /* SERVICES BANNER */
-  .services-banner {
-    width: 100%; height: 300px; position: relative; overflow: hidden;
-    background: linear-gradient(135deg, #0d4a35 0%, #1a6b4a 100%);
-    display: flex; align-items: flex-end;
-  }
-  .services-banner-overlay {
-    position: relative; z-index: 2; padding: 36px 5%;
-    background: linear-gradient(to top, rgba(10,40,25,0.92) 0%, rgba(10,40,25,0.3) 100%);
-    width: 100%;
-  }
-  .services-banner-overlay h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem,3vw,2.2rem); color: white; font-weight: 700; margin-bottom: 8px; }
-  .services-banner-overlay p { color: rgba(255,255,255,0.78); font-size: 0.95rem; max-width: 500px; line-height: 1.6; }
-  .services-panel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  @media(max-width:500px){ .services-panel-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -327,7 +311,7 @@
   </a>
   <ul class="nav-links">
     <li><a href="#" onclick="event.preventDefault(); openAboutPanel();">About</a></li>
-    <li><a href="#services" onclick="event.preventDefault(); document.getElementById('services').scrollIntoView({behavior:'smooth'}); setTimeout(openServicesPanel,400);">Services</a></li>
+    <li><a href="#" onclick="event.preventDefault(); openServicesPanel();">Services</a></li>
     <li><a href="#doctors">Doctors</a></li>
     <li><a href="#store">Medical Store</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -338,7 +322,7 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-content">
-    <div class="hero-badge">🌿 Trusted Healthcare Since 1994</div>
+    <div class="hero-badge">🌿 Trusted Healthcare Since 2005</div>
     <h1>Your Health, Our <span>Priority</span></h1>
     <p>Geeta Polyclinic & Medical Store offers comprehensive healthcare services and quality medicines — all under one roof, right in your neighbourhood.</p>
     <div class="hero-btns">
@@ -462,17 +446,6 @@
 
   </div>
 </section>
-
-<!-- SERVICES BANNER -->
-<div class="services-banner" id="services">
-  <div class="services-banner-overlay">
-    <h2>🩺 Our Medical Services</h2>
-    <p>From general consultations to specialist care — comprehensive healthcare under one roof.</p>
-    <div class="banner-btns" style="margin-top:16px;">
-      <button class="banner-btn-white" onclick="openServicesPanel()">View All Services →</button>
-    </div>
-  </div>
-</div>
 
 <!-- SERVICES PANEL -->
 <div class="about-panel-overlay" id="servicesPanelOverlay" onclick="closeServicesPanelOnOverlay(event)">
@@ -607,7 +580,7 @@
       <div class="form-row">
         <div class="form-group">
           <label>Select Doctor *</label>
-          <select id="dept" required onchange="updateTimeSlots()">
+          <select id="dept" required>
             <option value="">Select a doctor</option>
             <option value="Dr. Anil Kumar Sahu">Dr. Anil Kumar Sahu – Neurologist</option>
             <option value="Prof. Dr. Suvendu Narayan Mishra">Prof. Dr. Suvendu Narayan Mishra – Neuro Psychiatrist</option>
@@ -618,20 +591,6 @@
             <option value="Dr. Ratnakar Das">Dr. Ratnakar Das – Medicine Specialist</option>
           </select>
         </div>
-        <div class="form-group">
-          <label>Preferred Date *</label>
-          <input type="date" id="date" required>
-        </div>
-      </div>
-      <div class="form-group">
-        <label>Preferred Time Slot</label>
-        <select id="time">
-          <option value="">Select doctor first</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Symptoms / Reason for Visit</label>
-        <textarea id="symptoms" placeholder="Briefly describe your symptoms or reason for visit..."></textarea>
       </div>
       <button class="submit-btn" onclick="submitAppointment()">✅ Confirm Appointment</button>
       <div class="success-msg" id="successMsg">
@@ -834,41 +793,23 @@
   }
 
   // ── TIME SLOTS ──────────────────────────────────
-  const doctorSlots = {
-    "Dr. Anil Kumar Sahu":               ["9:00 AM – 12:00 PM","12:00 PM – 3:00 PM"],
-    "Prof. Dr. Suvendu Narayan Mishra":  ["5:00 PM – 7:00 PM","7:00 PM – 9:00 PM"],
-    "Dr. Srikant Swain":                 ["10:00 AM – 12:00 PM","12:00 PM – 2:00 PM"],
-    "Dr. Debabrata Nayak":               ["10:00 AM – 12:00 PM","12:00 PM – 2:00 PM"],
-    "Dr. Jyoti Mohan Tosh":              ["2:00 PM – 3:00 PM","3:00 PM – 4:00 PM"],
-    "Dr. Partha Sarthi Sahu":            ["10:00 AM – 12:00 PM","12:00 PM – 2:00 PM"],
-    "Dr. Ratnakar Das":                  ["8:00 AM – 9:00 AM","12:30 PM – 2:00 PM","7:00 PM – 9:00 PM","10:00 AM – 1:00 PM"]
-  };
-  function updateTimeSlots(){
-    const doctor=document.getElementById('dept').value, ts=document.getElementById('time');
-    ts.innerHTML='<option value="">Select time slot</option>';
-    if(doctor&&doctorSlots[doctor]) doctorSlots[doctor].forEach(s=>{const o=document.createElement('option');o.value=s;o.textContent=s;ts.appendChild(o);});
-  }
-
-  document.getElementById('date').setAttribute('min', new Date().toISOString().split('T')[0]);
-
   // ── SUBMIT ──────────────────────────────────────
   function submitAppointment(){
     const name=document.getElementById('name').value.trim(), phone=document.getElementById('phone').value.trim(),
-          dept=document.getElementById('dept').value, date=document.getElementById('date').value,
+          dept=document.getElementById('dept').value,
           gender=document.getElementById('gender').value;
-    if(!name||!phone||!dept||!date){ alert('Please fill in all required fields: Name, Phone, Doctor and Date.'); return; }
+    if(!name||!phone||!dept){ alert('Please fill in all required fields: Name, Phone, and Doctor.'); return; }
     if(phone.replace(/\D/g,'').length<10){ alert('Please enter a valid 10-digit phone number.'); return; }
     const dk=doctorKeyMap[dept];
     if(dk){ const{allowed}=checkBookingWindow(dk); if(!allowed){ showBlockedModal(dk,dept); return; } }
     const btn=document.querySelector('.submit-btn');
     btn.textContent='⏳ Submitting...'; btn.disabled=true;
     fetch(SHEET_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({date,name,gender:gender||'Not specified',phone,submittedAt:new Date().toLocaleString('en-IN'),doctor:dept,time:document.getElementById('time').value||'Not specified',symptoms:document.getElementById('symptoms').value||''})
+      body:JSON.stringify({date,name,gender:gender||'Not specified',phone,submittedAt:new Date().toLocaleString('en-IN'),doctor:dept})
     }).then(()=>{
       document.getElementById('successMsg').style.display='block';
       btn.textContent='✅ Confirm Appointment'; btn.disabled=false;
-      ['name','phone','age','gender','dept','date','symptoms'].forEach(id=>document.getElementById(id).value='');
-      document.getElementById('time').innerHTML='<option value="">Select doctor first</option>';
+      ['name','phone','age','gender','dept'].forEach(id=>document.getElementById(id).value='');
       setTimeout(()=>document.getElementById('successMsg').style.display='none',6000);
     }).catch(()=>{ alert('Something went wrong. Please call us on +91-9525300999.'); btn.textContent='✅ Confirm Appointment'; btn.disabled=false; });
   }
@@ -945,7 +886,7 @@
 
       <div class="about-section-head">Clinic At a Glance</div>
       <div class="about-info-grid">
-        <div class="about-info-tile"><div class="tile-label">Established</div><div class="tile-val">1994</div></div>
+        <div class="about-info-tile"><div class="tile-label">Established</div><div class="tile-val">2005</div></div>
         <div class="about-info-tile"><div class="tile-label">Type</div><div class="tile-val">Polyclinic + Medical Store</div></div>
         <div class="about-info-tile"><div class="tile-label">Specialists</div><div class="tile-val">7 Visiting Doctors</div></div>
         <div class="about-info-tile"><div class="tile-label">Patients Served</div><div class="tile-val">5000+</div></div>
