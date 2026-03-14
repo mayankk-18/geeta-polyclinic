@@ -56,7 +56,7 @@ nav {
 .hero h1 span { color: var(--green); }
 .hero p { font-size: 1.05rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 36px; animation: fadeUp 0.6s 0.2s ease both; }
 .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; animation: fadeUp 0.6s 0.3s ease both; }
-.btn-primary { background: var(--green); color: white; padding: 14px 28px; border-radius: 10px; font-size: 1rem; font-weight: 600; cursor: pointer; border: none; text-decoration: none; display: inline-block; transition: background 0.2s, transform 0.15s, box-shadow 0.2s; font-family: 'DM Sans', sans-serif; box-shadow: 0 4px 16px rgba(26,107,74,0.25); }
+.btn-primary { background: var(--green); color: white; padding: 14px 28px; border-radius: 10px; font-size: 1rem; font-weight: 600; cursor: pointer; border: none; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: background 0.2s, transform 0.15s, box-shadow 0.2s; font-family: 'DM Sans', sans-serif; box-shadow: 0 8px 20px rgba(20,90,50,0.15), 0 4px 16px rgba(26,107,74,0.25); letter-spacing: 0.2px; }
 .btn-primary:hover { background: var(--green-light); transform: translateY(-2px); box-shadow: 0 6px 24px rgba(26,107,74,0.3); }
 .btn-secondary { background: transparent; color: var(--green); border: 2px solid var(--green); padding: 12px 26px; border-radius: 10px; font-size: 1rem; font-weight: 600; cursor: pointer; text-decoration: none; transition: all 0.2s; font-family: 'DM Sans', sans-serif; }
 .btn-secondary:hover { background: var(--green-pale); }
@@ -337,26 +337,26 @@ nav {
       <a class="btn-secondary" href="#services">Our Services</a>
     </div>
   </div>
-  <div class="hero-cards">
-    <div style="display:flex; flex-direction:column; gap:16px;">
-      <img src="clinic.png" alt="Geeta Polyclinic"
-           style="width:518px; height:305px; object-fit:cover; object-position:center 40%; border-radius:24px; box-shadow:0 20px 60px rgba(26,107,74,0.25); display:block;">
-      <div style="display:flex; gap:12px; justify-content:center; padding-top:8px;">
-        <div style="background:white; border-radius:14px; padding:14px 22px; text-align:center; box-shadow:0 8px 28px rgba(26,107,74,0.18); border:1px solid rgba(26,107,74,0.08);">
-          <div style="font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:700; color:#1a6b4a;">10000+</div>
-          <div style="font-size:0.72rem; color:#5a7068; margin-top:2px; font-weight:600; letter-spacing:0.5px;">PATIENTS</div>
-        </div>
-        <div style="background:white; border-radius:14px; padding:14px 22px; text-align:center; box-shadow:0 8px 28px rgba(26,107,74,0.18); border:1px solid rgba(26,107,74,0.08);">
-          <div style="font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:700; color:#1a6b4a;">30+</div>
-          <div style="font-size:0.72rem; color:#5a7068; margin-top:2px; font-weight:600; letter-spacing:0.5px;">YEARS</div>
-        </div>
-        <div style="background:white; border-radius:14px; padding:14px 22px; text-align:center; box-shadow:0 8px 28px rgba(26,107,74,0.18); border:1px solid rgba(26,107,74,0.08);">
-          <div style="font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:700; color:#1a6b4a;">7</div>
-          <div style="font-size:0.72rem; color:#5a7068; margin-top:2px; font-weight:600; letter-spacing:0.5px;">DOCTORS</div>
-        </div>
+<div class="hero-cards">
+  <div style="display:flex; flex-direction:column; gap:16px;">
+    <img src="clinic.png" alt="Geeta Polyclinic"
+         style="width:518px; height:305px; object-fit:cover; object-position:center 40%; border-radius:24px; box-shadow:0 20px 60px rgba(26,107,74,0.25); display:block;">
+    <div style="display:flex; gap:12px; justify-content:center; padding-top:8px;">
+      <div style="background:white; border-radius:14px; padding:14px 0; text-align:center; box-shadow:0 8px 28px rgba(26,107,74,0.18); border:1px solid rgba(26,107,74,0.08); width:140px; flex-shrink:0;">
+        <div style="font-family:'Merriweather',serif; font-size:1.4rem; font-weight:700; color:#1a6b4a; line-height:1;">10000+</div>
+        <div style="font-family:'Inter',sans-serif; font-size:0.68rem; color:#5a7068; margin-top:4px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase;">Patients</div>
+      </div>
+      <div style="background:white; border-radius:14px; padding:14px 0; text-align:center; box-shadow:0 8px 28px rgba(26,107,74,0.18); border:1px solid rgba(26,107,74,0.08); width:140px; flex-shrink:0;">
+        <div style="font-family:'Merriweather',serif; font-size:1.4rem; font-weight:700; color:#1a6b4a; line-height:1;">30+</div>
+        <div style="font-family:'Inter',sans-serif; font-size:0.68rem; color:#5a7068; margin-top:4px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase;">Years</div>
+      </div>
+      <div style="background:white; border-radius:14px; padding:14px 0; text-align:center; box-shadow:0 8px 28px rgba(26,107,74,0.18); border:1px solid rgba(26,107,74,0.08); width:140px; flex-shrink:0;">
+        <div style="font-family:'Merriweather',serif; font-size:1.4rem; font-weight:700; color:#1a6b4a; line-height:1;">7</div>
+        <div style="font-family:'Inter',sans-serif; font-size:0.68rem; color:#5a7068; margin-top:4px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase;">Doctors</div>
       </div>
     </div>
   </div>
+</div>
 </section>
 
 <!-- DOCTORS -->
