@@ -283,6 +283,38 @@
   .about-feature-list li { display: flex; align-items: flex-start; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--green-pale); font-size: 0.92rem; color: var(--text); }
   .about-feature-list li:last-child { border-bottom: none; }
   .about-section-head { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-muted); margin: 22px 0 10px; }
+
+  /* SERVICES PANEL BANNER */
+  .services-banner {
+    width: 100%; height: 300px; position: relative; overflow: hidden;
+    background: linear-gradient(135deg, #0d4a35 0%, #1a6b4a 100%);
+    display: flex; align-items: flex-end;
+  }
+  .services-banner-overlay {
+    position: relative; z-index: 2; padding: 36px 5%;
+    background: linear-gradient(to top, rgba(10,40,25,0.92) 0%, rgba(10,40,25,0.3) 100%);
+    width: 100%;
+  }
+  .services-banner-overlay h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem,3vw,2.2rem); color: white; font-weight: 700; margin-bottom: 8px; }
+  .services-banner-overlay p { color: rgba(255,255,255,0.78); font-size: 0.95rem; max-width: 500px; line-height: 1.6; }
+  .services-panel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 0; }
+  @media(max-width:500px){ .services-panel-grid { grid-template-columns: 1fr; } }
+
+  /* SERVICES BANNER */
+  .services-banner {
+    width: 100%; height: 300px; position: relative; overflow: hidden;
+    background: linear-gradient(135deg, #0d4a35 0%, #1a6b4a 100%);
+    display: flex; align-items: flex-end;
+  }
+  .services-banner-overlay {
+    position: relative; z-index: 2; padding: 36px 5%;
+    background: linear-gradient(to top, rgba(10,40,25,0.92) 0%, rgba(10,40,25,0.3) 100%);
+    width: 100%;
+  }
+  .services-banner-overlay h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem,3vw,2.2rem); color: white; font-weight: 700; margin-bottom: 8px; }
+  .services-banner-overlay p { color: rgba(255,255,255,0.78); font-size: 0.95rem; max-width: 500px; line-height: 1.6; }
+  .services-panel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media(max-width:500px){ .services-panel-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -294,8 +326,8 @@
     Geeta Polyclinic
   </a>
   <ul class="nav-links">
-    <li><a href="#about" onclick="event.preventDefault(); document.getElementById('about').scrollIntoView({behavior:'smooth'}); setTimeout(openAboutPanel, 400);">About</a></li>
-    <li><a href="#services">Services</a></li>
+    <li><a href="#" onclick="event.preventDefault(); openAboutPanel();">About</a></li>
+    <li><a href="#services" onclick="event.preventDefault(); document.getElementById('services').scrollIntoView({behavior:'smooth'}); setTimeout(openServicesPanel,400);">Services</a></li>
     <li><a href="#doctors">Doctors</a></li>
     <li><a href="#store">Medical Store</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -306,7 +338,7 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-content">
-    <div class="hero-badge">🌿 Trusted Healthcare Since 1994</div>
+    <div class="hero-badge">🌿 Trusted Healthcare Since 2005</div>
     <h1>Your Health, Our <span>Priority</span></h1>
     <p>Geeta Polyclinic & Medical Store offers comprehensive healthcare services and quality medicines — all under one roof, right in your neighbourhood.</p>
     <div class="hero-btns">
@@ -318,77 +350,6 @@
     <div class="stat-card"><div class="num">5000+</div><div class="label">Happy Patients</div></div>
     <div class="stat-card"><div class="num">20+</div><div class="label">Years of Service</div></div>
     <div class="stat-card"><div class="num">7</div><div class="label">Specialist Doctors</div></div>
-  </div>
-</section>
-
-<!-- ABOUT BANNER -->
-<div class="clinic-banner" id="about">
-  <img src="clinic.jpg" alt="Geeta Polyclinic" onerror="this.style.display='none';">
-  <div class="no-photo-hint" id="clinicPhotoHint">📸 Upload clinic.jpg to show clinic photo</div>
-  <div class="clinic-banner-overlay">
-    <h2>🏥 Geeta Polyclinic &amp; Medical Store</h2>
-    <p>A trusted name in healthcare, serving the Balasore community with dedication, care, and modern medical expertise since 1994.</p>
-    <div class="banner-btns">
-      <button class="banner-btn-white" onclick="openAboutPanel()">Learn More About Us →</button>
-      <a class="banner-btn-outline" href="#contact">📍 Find Us</a>
-    </div>
-  </div>
-</div>
-
-<!-- ABOUT PANEL -->
-<div class="about-panel-overlay" id="aboutPanelOverlay" onclick="closeAboutOnOverlay(event)">
-  <div class="about-panel" id="aboutPanel">
-    <div class="about-panel-top">
-      <img src="clinic.jpg" alt="Geeta Polyclinic" onerror="this.style.display='none';">
-      <button class="about-panel-close" onclick="closeAboutPanel()">✕</button>
-      <div class="about-panel-top-overlay">
-        <h2>About Geeta Polyclinic</h2>
-        <p>Station Club Market Complex, OT Rd, Balasore, Odisha</p>
-      </div>
-    </div>
-    <div class="about-panel-body">
-      <p>Geeta Polyclinic has been a cornerstone of healthcare in Balasore for over two decades. Founded with the vision of providing accessible, quality medical care to every patient, we have grown into a comprehensive healthcare facility trusted by thousands of families across the region.</p>
-      <p>Our team of experienced doctors and healthcare professionals work together to provide personalized care. We believe every patient deserves to be treated with compassion, respect, and the highest standard of medical excellence.</p>
-
-      <div class="about-section-head">Clinic At a Glance</div>
-      <div class="about-info-grid">
-        <div class="about-info-tile"><div class="tile-label">Established</div><div class="tile-val">1994</div></div>
-        <div class="about-info-tile"><div class="tile-label">Type</div><div class="tile-val">Polyclinic + Medical Store</div></div>
-        <div class="about-info-tile"><div class="tile-label">Specialists</div><div class="tile-val">7 Visiting Doctors</div></div>
-        <div class="about-info-tile"><div class="tile-label">Patients Served</div><div class="tile-val">5000+</div></div>
-        <div class="about-info-tile"><div class="tile-label">Location</div><div class="tile-val">Balasore, Odisha</div></div>
-        <div class="about-info-tile"><div class="tile-label">Emergency</div><div class="tile-val">Available on call</div></div>
-      </div>
-
-      <div class="about-section-head">Why Choose Us</div>
-      <ul class="about-feature-list">
-        <li>✅ Experienced and qualified medical professionals</li>
-        <li>🕐 Timely appointments with minimal waiting time</li>
-        <li>💊 Attached medical store for all your medicine needs</li>
-        <li>🧪 Diagnostic tests and health checkup packages</li>
-        <li>🌿 Holistic and patient-centered care approach</li>
-        <li>📍 Conveniently located near Hotel Panchajanya, OT Road</li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<!-- SERVICES -->
-<section id="services">
-  <div style="text-align:center; max-width:600px; margin:0 auto;">
-    <div class="section-label">What We Offer</div>
-    <h2 class="section-title">Our Medical Services</h2>
-    <p class="section-desc" style="margin:0 auto;">From general consultations to specialist care — we cover a wide range of medical services to keep you healthy.</p>
-  </div>
-  <div class="services-grid">
-    <div class="service-card"><div class="service-icon">🩺</div><h3>General Medicine</h3><p>Expert diagnosis and treatment for common illnesses, fevers, infections, and general health concerns.</p></div>
-    <div class="service-card"><div class="service-icon">🧠</div><h3>Neurology</h3><p>Diagnosis and management of neurological disorders including migraines, seizures, and more.</p></div>
-    <div class="service-card"><div class="service-icon">🧬</div><h3>Neuro Psychiatry</h3><p>Mental health care, psychiatric evaluation and treatment for neurological-psychiatric conditions.</p></div>
-    <div class="service-card"><div class="service-icon">⚕️</div><h3>Neuro Surgery</h3><p>Specialist surgical care for complex neurological and spinal conditions.</p></div>
-    <div class="service-card"><div class="service-icon">🌿</div><h3>Dermatology</h3><p>Treatment for skin, hair and nail conditions including infections, acne, eczema and more.</p></div>
-    <div class="service-card"><div class="service-icon">🫘</div><h3>Urology</h3><p>Care for urinary tract and male reproductive health issues.</p></div>
-    <div class="service-card"><div class="service-icon">🫁</div><h3>Gastrology & Hepatology</h3><p>Treatment for digestive system disorders, liver, stomach and intestinal conditions.</p></div>
-    <div class="service-card"><div class="service-icon">🔬</div><h3>Pathology & Lab</h3><p>In-house diagnostic lab for blood tests, urine tests, and routine health checkups.</p></div>
   </div>
 </section>
 
@@ -501,6 +462,42 @@
 
   </div>
 </section>
+
+<!-- SERVICES BANNER -->
+<div class="services-banner" id="services">
+  <div class="services-banner-overlay">
+    <h2>🩺 Our Medical Services</h2>
+    <p>From general consultations to specialist care — comprehensive healthcare under one roof.</p>
+    <div class="banner-btns" style="margin-top:16px;">
+      <button class="banner-btn-white" onclick="openServicesPanel()">View All Services →</button>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES PANEL -->
+<div class="about-panel-overlay" id="servicesPanelOverlay" onclick="closeServicesPanelOnOverlay(event)">
+  <div class="about-panel" id="servicesPanel">
+    <div class="about-panel-top" style="background:linear-gradient(135deg,#0d4a35,#1a6b4a); height:160px;">
+      <button class="about-panel-close" onclick="closeServicesPanel()">✕</button>
+      <div class="about-panel-top-overlay">
+        <h2>Our Medical Services</h2>
+        <p>Comprehensive healthcare under one roof</p>
+      </div>
+    </div>
+    <div class="about-panel-body">
+      <div class="services-panel-grid">
+        <div class="service-card"><div class="service-icon">🩺</div><h3>General Medicine</h3><p>Expert diagnosis and treatment for common illnesses, fevers, infections, and general health concerns.</p></div>
+        <div class="service-card"><div class="service-icon">🧠</div><h3>Neurology</h3><p>Diagnosis and management of neurological disorders including migraines, seizures, and more.</p></div>
+        <div class="service-card"><div class="service-icon">🧬</div><h3>Neuro Psychiatry</h3><p>Mental health care, psychiatric evaluation and treatment for neurological-psychiatric conditions.</p></div>
+        <div class="service-card"><div class="service-icon">⚕️</div><h3>Neuro Surgery</h3><p>Specialist surgical care for complex neurological and spinal conditions.</p></div>
+        <div class="service-card"><div class="service-icon">🌿</div><h3>Dermatology</h3><p>Treatment for skin, hair and nail conditions including infections, acne, eczema and more.</p></div>
+        <div class="service-card"><div class="service-icon">🫘</div><h3>Urology</h3><p>Care for urinary tract and male reproductive health issues.</p></div>
+        <div class="service-card"><div class="service-icon">🫁</div><h3>Gastrology &amp; Hepatology</h3><p>Treatment for digestive system disorders, liver, stomach and intestinal conditions.</p></div>
+        <div class="service-card"><div class="service-icon">🔬</div><h3>Pathology &amp; Lab</h3><p>In-house diagnostic lab for blood tests, urine tests, and routine health checkups.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- DOCTOR DETAIL PANEL -->
 <div class="doc-panel-overlay" id="docPanelOverlay" onclick="closePanelOnOverlay(event)">
@@ -879,6 +876,32 @@
   document.getElementById('bookingModal').addEventListener('click',function(e){ if(e.target===this)this.classList.remove('show'); });
 
 
+  // ── SERVICES PANEL ──────────────────────────────
+  function openServicesPanel(){
+    document.getElementById('servicesPanelOverlay').classList.add('show');
+    document.body.style.overflow='hidden';
+  }
+  function closeServicesPanel(){
+    document.getElementById('servicesPanelOverlay').classList.remove('show');
+    document.body.style.overflow='';
+  }
+  function closeServicesPanelOnOverlay(e){
+    if(e.target===document.getElementById('servicesPanelOverlay')) closeServicesPanel();
+  }
+
+  // ── SERVICES PANEL ──────────────────────────────
+  function openServicesPanel(){
+    document.getElementById('servicesPanelOverlay').classList.add('show');
+    document.body.style.overflow='hidden';
+  }
+  function closeServicesPanel(){
+    document.getElementById('servicesPanelOverlay').classList.remove('show');
+    document.body.style.overflow='';
+  }
+  function closeServicesPanelOnOverlay(e){
+    if(e.target===document.getElementById('servicesPanelOverlay')) closeServicesPanel();
+  }
+
   // ── ABOUT PANEL ─────────────────────────────────
   function openAboutPanel(){
     document.getElementById('aboutPanelOverlay').classList.add('show');
@@ -904,6 +927,44 @@
     a.addEventListener('click',e=>{ const el=document.getElementById(a.getAttribute('href').slice(1)); if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'});} });
   });
 </script>
+
+<!-- ABOUT PANEL -->
+<div class="about-panel-overlay" id="aboutPanelOverlay" onclick="closeAboutOnOverlay(event)">
+  <div class="about-panel" id="aboutPanel">
+    <div class="about-panel-top">
+      <img src="clinic.jpg" alt="Geeta Polyclinic" onerror="this.style.display='none';">
+      <button class="about-panel-close" onclick="closeAboutPanel()">✕</button>
+      <div class="about-panel-top-overlay">
+        <h2>About Geeta Polyclinic</h2>
+        <p>Station Club Market Complex, OT Rd, Balasore, Odisha</p>
+      </div>
+    </div>
+    <div class="about-panel-body">
+      <p>Geeta Polyclinic has been a cornerstone of healthcare in Balasore for over two decades. Founded with the vision of providing accessible, quality medical care to every patient, we have grown into a comprehensive healthcare facility trusted by thousands of families across the region.</p>
+      <p>Our team of experienced doctors and healthcare professionals work together to provide personalized care. We believe every patient deserves to be treated with compassion, respect, and the highest standard of medical excellence.</p>
+
+      <div class="about-section-head">Clinic At a Glance</div>
+      <div class="about-info-grid">
+        <div class="about-info-tile"><div class="tile-label">Established</div><div class="tile-val">2005</div></div>
+        <div class="about-info-tile"><div class="tile-label">Type</div><div class="tile-val">Polyclinic + Medical Store</div></div>
+        <div class="about-info-tile"><div class="tile-label">Specialists</div><div class="tile-val">7 Visiting Doctors</div></div>
+        <div class="about-info-tile"><div class="tile-label">Patients Served</div><div class="tile-val">5000+</div></div>
+        <div class="about-info-tile"><div class="tile-label">Location</div><div class="tile-val">Balasore, Odisha</div></div>
+        <div class="about-info-tile"><div class="tile-label">Emergency</div><div class="tile-val">Available on call</div></div>
+      </div>
+
+      <div class="about-section-head">Why Choose Us</div>
+      <ul class="about-feature-list">
+        <li>✅ Experienced and qualified medical professionals</li>
+        <li>🕐 Timely appointments with minimal waiting time</li>
+        <li>💊 Attached medical store for all your medicine needs</li>
+        <li>🧪 Diagnostic tests and health checkup packages</li>
+        <li>🌿 Holistic and patient-centered care approach</li>
+        <li>📍 Conveniently located near Hotel Panchajanya, OT Road</li>
+      </ul>
+    </div>
+  </div>
+</div>
 
 <!-- BOOKING BLOCKED MODAL -->
 <div class="modal-overlay" id="bookingModal">
