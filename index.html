@@ -232,30 +232,6 @@
   .modal-close { background: var(--green); color: white; border: none; padding: 12px 32px; border-radius: 10px; font-size: 0.95rem; font-weight: 600; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: background 0.2s; }
   .modal-close:hover { background: var(--green-light); }
 
-  /* CLINIC IMAGE HERO BANNER */
-  .clinic-banner {
-    width: 100%; height: 420px; position: relative; overflow: hidden;
-    background: linear-gradient(135deg, var(--green) 0%, #0d3d26 100%);
-    display: flex; align-items: flex-end;
-  }
-  .clinic-banner img {
-    width: 100%; height: 100%; object-fit: cover; object-position: center;
-    display: block; opacity: 0.55; position: absolute; inset: 0;
-  }
-  .clinic-banner-overlay {
-    position: relative; z-index: 2; padding: 40px 5%;
-    background: linear-gradient(to top, rgba(10,40,25,0.92) 0%, transparent 100%);
-    width: 100%;
-  }
-  .clinic-banner-overlay h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem,3vw,2.4rem); color: white; font-weight: 700; margin-bottom: 8px; }
-  .clinic-banner-overlay p { color: rgba(255,255,255,0.8); font-size: 0.97rem; max-width: 520px; line-height: 1.6; }
-  .clinic-banner-overlay .banner-btns { display: flex; gap: 12px; margin-top: 18px; flex-wrap: wrap; }
-  .banner-btn-white { background: white; color: var(--green); border: none; padding: 10px 22px; border-radius: 8px; font-size: 0.9rem; font-weight: 700; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.2s; text-decoration: none; }
-  .banner-btn-white:hover { background: var(--green-pale); }
-  .banner-btn-outline { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.7); padding: 8px 20px; border-radius: 8px; font-size: 0.9rem; font-weight: 600; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.2s; text-decoration: none; }
-  .banner-btn-outline:hover { background: rgba(255,255,255,0.15); }
-  .no-photo-hint { position: absolute; top: 14px; right: 14px; z-index: 3; background: rgba(0,0,0,0.45); color: rgba(255,255,255,0.7); font-size: 0.75rem; padding: 5px 11px; border-radius: 6px; backdrop-filter: blur(4px); }
-
   /* ABOUT PANEL (slide in from left) */
   .about-panel-overlay { display: none; position: fixed; inset: 0; z-index: 500; background: rgba(0,0,0,0.45); backdrop-filter: blur(4px); justify-content: flex-start; }
   .about-panel-overlay.show { display: flex; }
@@ -282,25 +258,6 @@
   .about-feature-list li { display: flex; align-items: flex-start; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--green-pale); font-size: 0.92rem; color: var(--text); }
   .about-feature-list li:last-child { border-bottom: none; }
   .about-section-head { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-muted); margin: 22px 0 10px; }
-
-  /* SERVICES PANEL BANNER */
-  .services-banner {
-    width: 100%; height: 300px; position: relative; overflow: hidden;
-    background: linear-gradient(135deg, #0d4a35 0%, #1a6b4a 100%);
-    display: flex; align-items: flex-end;
-  }
-  .services-banner-overlay {
-    position: relative; z-index: 2; padding: 36px 5%;
-    background: linear-gradient(to top, rgba(10,40,25,0.92) 0%, rgba(10,40,25,0.3) 100%);
-    width: 100%;
-  }
-  .services-banner-overlay h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem,3vw,2.2rem); color: white; font-weight: 700; margin-bottom: 8px; }
-  .services-banner-overlay p { color: rgba(255,255,255,0.78); font-size: 0.95rem; max-width: 500px; line-height: 1.6; }
-  .services-panel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 0; }
-  @media(max-width:500px){ .services-panel-grid { grid-template-columns: 1fr; } }
-</style>
-</head>
-<body>
 
 <!-- NAV -->
 <nav>
@@ -861,12 +818,6 @@
   function closeAboutOnOverlay(e){
     if(e.target===document.getElementById('aboutPanelOverlay')) closeAboutPanel();
   }
-  // Hide upload hint once clinic image loads
-    if(img) img.addEventListener('load', () => {
-      const hint = document.getElementById('clinicPhotoHint');
-      if(hint) hint.style.display='none';
-    });
-  });
 
   document.querySelectorAll('a[href^="#"]').forEach(a=>{
     a.addEventListener('click',e=>{ const el=document.getElementById(a.getAttribute('href').slice(1)); if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'});} });
