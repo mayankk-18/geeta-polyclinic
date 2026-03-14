@@ -38,9 +38,11 @@ button, a { -webkit-tap-highlight-color: transparent; outline: none; }
 
   /* NAV */
 nav {
+nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   background: rgba(253,249,243,0.95); backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(26,107,74,0.12);
+  border-bottom: 2px solid rgba(26,107,74,0.2);
+  box-shadow: 0 2px 16px rgba(26,107,74,0.08);
   padding: 0 4%; display: flex; align-items: center; justify-content: space-between; height: 68px;
 }
 .logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
@@ -55,7 +57,7 @@ nav {
 .nav-cta:hover { background: var(--green-light); transform: translateY(-1px); }
   
 /* HERO */
-.hero { min-height: 100vh; display: flex; align-items: center; padding: 100px 5% 60px; background: linear-gradient(135deg, var(--cream) 40%, #d4ede1 100%); position: relative; overflow: hidden; }
+..hero { min-height: 100vh; display: flex; align-items: center; justify-content: space-between; padding: 100px 8% 60px;
 .hero::before { content: ''; position: absolute; right: -100px; top: -100px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(26,107,74,0.12) 0%, transparent 65%); border-radius: 50%; }
 .hero::after { content: ''; position: absolute; left: -60px; bottom: -60px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(232,160,32,0.12) 0%, transparent 65%); border-radius: 50%; }
 .hero-content { max-width: 620px; position: relative; z-index: 1; }
