@@ -29,7 +29,7 @@
     border-bottom: 1px solid rgba(26,107,74,0.12);
     padding: 0 5%; display: flex; align-items: center; justify-content: space-between; height: 68px;
   }
-  .logo { display: flex; align-items: center; gap: 10px; font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 700; color: var(--green); text-decoration: none; }
+  .logo { display: flex; align-items: center; gap: 10px; font-family: 'Cinzel', serif; font-size: 1.3rem; font-weight: 700; color: var(--green); text-decoration: none; }
   .logo-icon { width: 38px; height: 38px; background: var(--green); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
   .nav-links { display: flex; gap: 32px; list-style: none; }
   .nav-links a { text-decoration: none; color: var(--text-muted); font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
@@ -260,6 +260,9 @@
   .about-feature-list li { display: flex; align-items: flex-start; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--green-pale); font-size: 0.92rem; color: var(--text); }
   .about-feature-list li:last-child { border-bottom: none; }
   .about-section-head { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-muted); margin: 22px 0 10px; }
+.about-section-head { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-muted); margin: 22px 0 10px; }
+.services-panel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media(max-width:500px){ .services-panel-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -286,6 +289,8 @@
 
 <!-- HERO -->
 <section class="hero">
+  <div class="hero-decor"></div>
+  <div class="hero-decor2"></div>
   <div class="hero-content">
     <div class="hero-badge">🌿 Trusted Healthcare Since 1994</div>
     <h1>Your Health, Our <span>Priority</span></h1>
