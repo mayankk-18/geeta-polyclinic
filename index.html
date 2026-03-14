@@ -304,10 +304,14 @@
 
 <!-- NAV -->
 <nav>
-  <a class="logo" href="#">
-    <div class="logo-icon">🏥</div>
-    Geeta Polyclinic
-  </a>
+<a class="logo" href="#">
+  <div class="logo-icon">
+    <img src="logo.png" alt="Geeta Polyclinic" 
+         style="width:38px; height:38px; border-radius:10px; object-fit:cover;"
+         onerror="this.style.display='none'; this.parentElement.innerHTML='🏥';">
+  </div>
+  Geeta Polyclinic
+</a>
   <ul class="nav-links">
     <li><a href="#" onclick="event.preventDefault(); openAboutPanel();">About</a></li>
     <li><a href="#" onclick="event.preventDefault(); openServicesPanel();">Services</a></li>
