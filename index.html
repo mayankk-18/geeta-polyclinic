@@ -260,9 +260,28 @@
   .about-feature-list li { display: flex; align-items: flex-start; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--green-pale); font-size: 0.92rem; color: var(--text); }
   .about-feature-list li:last-child { border-bottom: none; }
   .about-section-head { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-muted); margin: 22px 0 10px; }
-.about-section-head { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-muted); margin: 22px 0 10px; }
-.services-panel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-@media(max-width:500px){ .services-panel-grid { grid-template-columns: 1fr; } }
+  .services-panel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media(max-width:500px){ .services-panel-grid { grid-template-columns: 1fr; } }
+
+  /* HAMBURGER */
+.hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; z-index: 101; }
+.hamburger span { display: block; width: 24px; height: 2.5px; background: var(--green); border-radius: 2px; transition: all 0.3s; }
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+/* MOBILE MENU */
+.mobile-menu { display: none; position: fixed; top: 68px; left: 0; right: 0; background: white; z-index: 99; flex-direction: column; padding: 16px 5%; border-bottom: 1px solid rgba(26,107,74,0.12); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+.mobile-menu.open { display: flex; }
+.mobile-menu a { padding: 14px 0; font-size: 0.95rem; font-weight: 500; color: var(--text); text-decoration: none; border-bottom: 1px solid var(--green-pale); }
+.mobile-menu a:last-child { border-bottom: none; }
+.mobile-menu a:hover { color: var(--green); }
+.mobile-book-btn { background: var(--green); color: white !important; text-align: center; border-radius: 10px; padding: 14px !important; margin-top: 8px; font-weight: 600 !important; border-bottom: none !important; }
+
+@media (max-width: 900px) {
+  .hamburger { display: flex; }
+  .desktop-only { display: none; }
+}
 </style>
 </head>
 <body>
@@ -284,8 +303,21 @@
     <li><a href="#store">Medical Store</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <a class="nav-cta" href="#appointment">Book Appointment</a>
+  <a class="nav-cta desktop-only" href="#appointment">Book Appointment</a>
+  <button class="hamburger" onclick="toggleMobileMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#" onclick="openAboutPanel(); closeMobileMenu();">About</a>
+  <a href="#doctors" onclick="closeMobileMenu();">Doctors</a>
+  <a href="#" onclick="openServicesPanel(); closeMobileMenu();">Services</a>
+  <a href="#store" onclick="closeMobileMenu();">Medical Store</a>
+  <a href="#contact" onclick="closeMobileMenu();">Contact</a>
+  <a href="#appointment" onclick="closeMobileMenu();" class="mobile-book-btn">📅 Book Appointment</a>
+</div>
 
 <!-- HERO -->
 <section class="hero">
