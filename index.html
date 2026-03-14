@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Geeta Polyclinic & Medical Store</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --green: #1a6b4a;
@@ -29,7 +28,7 @@
     border-bottom: 1px solid rgba(26,107,74,0.12);
     padding: 0 5%; display: flex; align-items: center; justify-content: space-between; height: 68px;
   }
-  .logo { display: flex; align-items: center; gap: 10px; font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 700; color: var(--green); text-decoration: none; }
+  .logo { display: flex; align-items: center; gap: 10px; font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--green); text-decoration: none; }
   .logo-icon { width: 38px; height: 38px; background: var(--green); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
   .nav-links { display: flex; gap: 32px; list-style: none; }
   .nav-links a { text-decoration: none; color: var(--text-muted); font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
@@ -38,9 +37,11 @@
   .nav-cta:hover { background: var(--green-light); transform: translateY(-1px); }
 
   /* HERO */
-  .hero { min-height: 100vh; display: flex; align-items: center; padding: 100px 5% 60px; background: linear-gradient(135deg, var(--cream) 55%, var(--green-pale) 100%); position: relative; overflow: hidden; }
-  .hero::before { content: ''; position: absolute; right: -80px; top: -80px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(26,107,74,0.08) 0%, transparent 70%); border-radius: 50%; }
-  .hero::after { content: ''; position: absolute; right: 10%; bottom: 10%; width: 200px; height: 200px; background: radial-gradient(circle, rgba(232,160,32,0.10) 0%, transparent 70%); border-radius: 50%; }
+  .hero { min-height: 100vh; display: flex; align-items: center; padding: 100px 5% 60px; background: linear-gradient(135deg, var(--cream) 40%, #d4ede1 100%); position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; right: -100px; top: -100px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(26,107,74,0.12) 0%, transparent 65%); border-radius: 50%; }
+  .hero::after { content: ''; position: absolute; left: -60px; bottom: -60px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(232,160,32,0.12) 0%, transparent 65%); border-radius: 50%; }
+  .hero-decor { position: absolute; top: 120px; left: 42%; width: 180px; height: 180px; background-image: radial-gradient(circle, rgba(26,107,74,0.15) 1.5px, transparent 1.5px); background-size: 18px 18px; border-radius: 50%; z-index: 0; }
+  .hero-decor2 { position: absolute; bottom: 80px; right: 38%; width: 120px; height: 120px; background-image: radial-gradient(circle, rgba(26,107,74,0.1) 1.5px, transparent 1.5px); background-size: 14px 14px; border-radius: 50%; z-index: 0; }
   .hero-content { max-width: 620px; position: relative; z-index: 1; }
   .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--green-pale); border: 1px solid rgba(26,107,74,0.2); color: var(--green); padding: 6px 14px; border-radius: 100px; font-size: 0.82rem; font-weight: 600; margin-bottom: 28px; animation: fadeUp 0.6s ease both; }
   .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.4rem, 5vw, 3.8rem); line-height: 1.15; font-weight: 700; color: var(--text); margin-bottom: 20px; animation: fadeUp 0.6s 0.1s ease both; }
@@ -77,10 +78,6 @@
   .info-row:last-child { border-bottom: none; }
   .info-row .key { opacity: 0.75; min-width: 90px; }
 
-  /* DOCTORS — compact cards */
-  #doctors { background: white; }
-  .doctors-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; margin-top: 48px; }
-  
   /* SERVICES */
   #services { background: var(--cream); }
   .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; margin-top: 48px; }
@@ -89,6 +86,10 @@
   .service-icon { width: 52px; height: 52px; background: var(--green-pale); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 18px; }
   .service-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 8px; }
   .service-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
+
+  /* DOCTORS — compact cards */
+  #doctors { background: white; }
+  .doctors-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; margin-top: 48px; }
 
   /* Compact card */
   .doctor-card {
@@ -135,7 +136,17 @@
   .doc-panel-book-btn { width: 100%; background: var(--green); color: white; border: none; padding: 14px; border-radius: 12px; font-size: 1rem; font-weight: 600; cursor: pointer; font-family: 'DM Sans', sans-serif; margin-top: 8px; transition: background 0.2s; }
   .doc-panel-book-btn:hover { background: var(--green-light); }
 
-    /* APPOINTMENT STATUS BADGE */
+  /* MEDICAL STORE */
+  #store { background: var(--cream); }
+  .store-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; margin-top: 50px; }
+  .store-items { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .store-item { background: white; border-radius: 12px; padding: 18px; border: 1px solid rgba(26,107,74,0.1); }
+  .store-item .emoji { font-size: 1.6rem; margin-bottom: 8px; }
+  .store-item h4 { font-size: 0.88rem; font-weight: 600; color: var(--text); }
+  .store-item p { font-size: 0.8rem; color: var(--text-muted); margin-top: 3px; }
+
+
+  /* APPOINTMENT STATUS BADGE */
   .appt-status { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 100px; font-size: 0.78rem; font-weight: 700; margin-bottom: 10px; }
   .appt-status.open { background: #d4f5e2; color: #0f6b35; border: 1px solid #7dd4a8; }
   .appt-status.closed { background: #fdecea; color: #c0392b; border: 1px solid #f5a89e; }
@@ -167,15 +178,6 @@
   .submit-btn:hover { background: var(--green-light); transform: translateY(-1px); }
   .submit-btn:disabled { background: #aaa; cursor: not-allowed; transform: none; }
   .success-msg { display: none; background: var(--green-pale); border: 1px solid var(--green); border-radius: 10px; padding: 14px 18px; margin-top: 16px; color: var(--green); font-weight: 600; text-align: center; font-size: 0.95rem; }
-  
-  /* MEDICAL STORE */
-  #store { background: var(--cream); }
-  .store-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; margin-top: 50px; }
-  .store-items { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  .store-item { background: white; border-radius: 12px; padding: 18px; border: 1px solid rgba(26,107,74,0.1); }
-  .store-item .emoji { font-size: 1.6rem; margin-bottom: 8px; }
-  .store-item h4 { font-size: 0.88rem; font-weight: 600; color: var(--text); }
-  .store-item p { font-size: 0.8rem; color: var(--text-muted); margin-top: 3px; }
 
   /* CONTACT */
   #contact { background: white; }
@@ -232,6 +234,30 @@
   .modal-close { background: var(--green); color: white; border: none; padding: 12px 32px; border-radius: 10px; font-size: 0.95rem; font-weight: 600; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: background 0.2s; }
   .modal-close:hover { background: var(--green-light); }
 
+  /* CLINIC IMAGE HERO BANNER */
+  .clinic-banner {
+    width: 100%; height: 420px; position: relative; overflow: hidden;
+    background: linear-gradient(135deg, var(--green) 0%, #0d3d26 100%);
+    display: flex; align-items: flex-end;
+  }
+  .clinic-banner img {
+    width: 100%; height: 100%; object-fit: cover; object-position: center;
+    display: block; opacity: 0.55; position: absolute; inset: 0;
+  }
+  .clinic-banner-overlay {
+    position: relative; z-index: 2; padding: 40px 5%;
+    background: linear-gradient(to top, rgba(10,40,25,0.92) 0%, transparent 100%);
+    width: 100%;
+  }
+  .clinic-banner-overlay h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem,3vw,2.4rem); color: white; font-weight: 700; margin-bottom: 8px; }
+  .clinic-banner-overlay p { color: rgba(255,255,255,0.8); font-size: 0.97rem; max-width: 520px; line-height: 1.6; }
+  .clinic-banner-overlay .banner-btns { display: flex; gap: 12px; margin-top: 18px; flex-wrap: wrap; }
+  .banner-btn-white { background: white; color: var(--green); border: none; padding: 10px 22px; border-radius: 8px; font-size: 0.9rem; font-weight: 700; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.2s; text-decoration: none; }
+  .banner-btn-white:hover { background: var(--green-pale); }
+  .banner-btn-outline { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.7); padding: 8px 20px; border-radius: 8px; font-size: 0.9rem; font-weight: 600; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.2s; text-decoration: none; }
+  .banner-btn-outline:hover { background: rgba(255,255,255,0.15); }
+  .no-photo-hint { position: absolute; top: 14px; right: 14px; z-index: 3; background: rgba(0,0,0,0.45); color: rgba(255,255,255,0.7); font-size: 0.75rem; padding: 5px 11px; border-radius: 6px; backdrop-filter: blur(4px); }
+
   /* ABOUT PANEL (slide in from left) */
   .about-panel-overlay { display: none; position: fixed; inset: 0; z-index: 500; background: rgba(0,0,0,0.45); backdrop-filter: blur(4px); justify-content: flex-start; }
   .about-panel-overlay.show { display: flex; }
@@ -258,20 +284,32 @@
   .about-feature-list li { display: flex; align-items: flex-start; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--green-pale); font-size: 0.92rem; color: var(--text); }
   .about-feature-list li:last-child { border-bottom: none; }
   .about-section-head { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-muted); margin: 22px 0 10px; }
+
+  /* SERVICES PANEL BANNER */
+  .services-banner {
+    width: 100%; height: 300px; position: relative; overflow: hidden;
+    background: linear-gradient(135deg, #0d4a35 0%, #1a6b4a 100%);
+    display: flex; align-items: flex-end;
+  }
+  .services-banner-overlay {
+    position: relative; z-index: 2; padding: 36px 5%;
+    background: linear-gradient(to top, rgba(10,40,25,0.92) 0%, rgba(10,40,25,0.3) 100%);
+    width: 100%;
+  }
+  .services-banner-overlay h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem,3vw,2.2rem); color: white; font-weight: 700; margin-bottom: 8px; }
+  .services-banner-overlay p { color: rgba(255,255,255,0.78); font-size: 0.95rem; max-width: 500px; line-height: 1.6; }
+  .services-panel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 0; }
+  @media(max-width:500px){ .services-panel-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
-  
+
 <!-- NAV -->
 <nav>
-<a class="logo" href="#">
-  <div class="logo-icon">
-    <img src="logo.png" alt="Geeta Polyclinic" 
-         style="width:38px; height:38px; border-radius:10px; object-fit:cover;"
-         onerror="this.style.display='none'; this.parentElement.innerHTML='🏥';">
-  </div>
-  Geeta Polyclinic
-</a>
+  <a class="logo" href="#">
+    <div class="logo-icon">🏥</div>
+    Geeta Polyclinic
+  </a>
   <ul class="nav-links">
     <li><a href="#" onclick="event.preventDefault(); openAboutPanel();">About</a></li>
     <li><a href="#" onclick="event.preventDefault(); openServicesPanel();">Services</a></li>
@@ -284,37 +322,376 @@
 
 <!-- HERO -->
 <section class="hero">
+  <div class="hero-decor"></div>
+  <div class="hero-decor2"></div>
   <div class="hero-content">
-    <div class="hero-badge">🌿 Trusted Healthcare Since 1994</div>
+    <div class="hero-badge">🌿 Trusted Healthcare Since 2005</div>
     <h1>Your Health, Our <span>Priority</span></h1>
     <p>Geeta Polyclinic & Medical Store offers comprehensive healthcare services and quality medicines — all under one roof, right in your neighbourhood.</p>
-    <p>Our in-house pathology lab provides fast and accurate diagnostic tests for your convenience — no need to visit a separate lab. From routine blood tests to advanced diagnostics, everything is available right here.</p>
     <div class="hero-btns">
       <a class="btn-primary" href="#appointment">📅 Book Appointment</a>
       <a class="btn-secondary" href="#services">Our Services</a>
     </div>
   </div>
-<div class="hero-cards">
-  <div style="position:relative; display:inline-block;">
+  <div class="hero-cards">
+  <div style="display:flex; flex-direction:column; gap:20px;">
     <img src="clinic.png" alt="Geeta Polyclinic"
-         style="width:320px; height:420px; object-fit:cover; object-position:center center; border-radius:24px; box-shadow:0 20px 60px rgba(26,107,74,0.25); display:block;">
-    <!-- Stats with offset pop-out effect -->
-    <div style="position:absolute; bottom:-22px; left:50%; transform:translateX(-50%); display:flex; gap:12px; white-space:nowrap;">
-      <div style="background:white; border-radius:14px; padding:12px 20px; text-align:center; box-shadow:0 8px 28px rgba(26,107,74,0.18); border:1px solid rgba(26,107,74,0.08);">
-        <div style="font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:700; color:#1a6b4a;">10000+</div>
-        <div style="font-size:0.72rem; color:#5a7068; margin-top:2px; font-weight:600; letter-spacing:0.5px;">PATIENTS</div>
+         style="width:480px; height:300px; object-fit:cover; object-position:center 40%; border-radius:24px; box-shadow:0 20px 60px rgba(26,107,74,0.25); display:block;">
+    <div style="display:flex; gap:14px; justify-content:center;">
+      <div style="background:white; border-radius:16px; padding:16px 24px; text-align:center; box-shadow:0 8px 32px rgba(26,107,74,0.14); border:1px solid rgba(26,107,74,0.08); flex:1;">
+        <div style="font-family:'Playfair Display',serif; font-size:1.5rem; font-weight:700; color:#1a6b4a;">10000+</div>
+        <div style="font-size:0.7rem; color:#5a7068; margin-top:3px; font-weight:600; letter-spacing:1px; text-transform:uppercase;">Patients</div>
       </div>
-      <div style="background:white; border-radius:14px; padding:12px 20px; text-align:center; box-shadow:0 8px 28px rgba(26,107,74,0.18); border:1px solid rgba(26,107,74,0.08);">
-        <div style="font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:700; color:#1a6b4a;">30+</div>
-        <div style="font-size:0.72rem; color:#5a7068; margin-top:2px; font-weight:600; letter-spacing:0.5px;">YEARS</div>
+      <div style="background:white; border-radius:16px; padding:16px 24px; text-align:center; box-shadow:0 8px 32px rgba(26,107,74,0.14); border:1px solid rgba(26,107,74,0.08); flex:1;">
+        <div style="font-family:'Playfair Display',serif; font-size:1.5rem; font-weight:700; color:#1a6b4a;">30+</div>
+        <div style="font-size:0.7rem; color:#5a7068; margin-top:3px; font-weight:600; letter-spacing:1px; text-transform:uppercase;">Years</div>
       </div>
-      <div style="background:white; border-radius:14px; padding:12px 20px; text-align:center; box-shadow:0 8px 28px rgba(26,107,74,0.18); border:1px solid rgba(26,107,74,0.08);">
-        <div style="font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:700; color:#1a6b4a;">7</div>
-        <div style="font-size:0.72rem; color:#5a7068; margin-top:2px; font-weight:600; letter-spacing:0.5px;">DOCTORS</div>
+      <div style="background:white; border-radius:16px; padding:16px 24px; text-align:center; box-shadow:0 8px 32px rgba(26,107,74,0.14); border:1px solid rgba(26,107,74,0.08); flex:1;">
+        <div style="font-family:'Playfair Display',serif; font-size:1.5rem; font-weight:700; color:#1a6b4a;">7</div>
+        <div style="font-size:0.7rem; color:#5a7068; margin-top:3px; font-weight:600; letter-spacing:1px; text-transform:uppercase;">Doctors</div>
       </div>
     </div>
   </div>
-</div>
+</div>TYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Geeta Polyclinic & Medical Store</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #1a6b4a;
+    --green-light: #2d9166;
+    --green-pale: #e8f5ef;
+    --cream: #fdf9f3;
+    --text: #1c2b22;
+    --text-muted: #5a7068;
+    --accent: #e8a020;
+    --white: #ffffff;
+    --shadow: 0 4px 24px rgba(26,107,74,0.10);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(253,249,243,0.95); backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(26,107,74,0.12);
+    padding: 0 5%; display: flex; align-items: center; justify-content: space-between; height: 68px;
+  }
+  .logo { display: flex; align-items: center; gap: 10px; font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--green); text-decoration: none; }
+  .logo-icon { width: 38px; height: 38px; background: var(--green); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { text-decoration: none; color: var(--text-muted); font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--green); }
+  .nav-cta { background: var(--green); color: white; border: none; padding: 10px 22px; border-radius: 8px; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: background 0.2s, transform 0.15s; font-family: 'DM Sans', sans-serif; text-decoration: none; }
+  .nav-cta:hover { background: var(--green-light); transform: translateY(-1px); }
+
+  /* HERO */
+  .hero { min-height: 100vh; display: flex; align-items: center; padding: 100px 5% 60px; background: linear-gradient(135deg, var(--cream) 40%, #d4ede1 100%); position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; right: -100px; top: -100px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(26,107,74,0.12) 0%, transparent 65%); border-radius: 50%; }
+  .hero::after { content: ''; position: absolute; left: -60px; bottom: -60px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(232,160,32,0.12) 0%, transparent 65%); border-radius: 50%; }
+  .hero-decor { position: absolute; top: 120px; left: 42%; width: 180px; height: 180px; background-image: radial-gradient(circle, rgba(26,107,74,0.15) 1.5px, transparent 1.5px); background-size: 18px 18px; border-radius: 50%; z-index: 0; }
+  .hero-decor2 { position: absolute; bottom: 80px; right: 38%; width: 120px; height: 120px; background-image: radial-gradient(circle, rgba(26,107,74,0.1) 1.5px, transparent 1.5px); background-size: 14px 14px; border-radius: 50%; z-index: 0; }
+  .hero-content { max-width: 620px; position: relative; z-index: 1; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--green-pale); border: 1px solid rgba(26,107,74,0.2); color: var(--green); padding: 6px 14px; border-radius: 100px; font-size: 0.82rem; font-weight: 600; margin-bottom: 28px; animation: fadeUp 0.6s ease both; }
+  .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.4rem, 5vw, 3.8rem); line-height: 1.15; font-weight: 700; color: var(--text); margin-bottom: 20px; animation: fadeUp 0.6s 0.1s ease both; }
+  .hero h1 span { color: var(--green); }
+  .hero p { font-size: 1.05rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 36px; animation: fadeUp 0.6s 0.2s ease both; }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; animation: fadeUp 0.6s 0.3s ease both; }
+  .btn-primary { background: var(--green); color: white; padding: 14px 28px; border-radius: 10px; font-size: 1rem; font-weight: 600; cursor: pointer; border: none; text-decoration: none; transition: background 0.2s, transform 0.15s, box-shadow 0.2s; font-family: 'DM Sans', sans-serif; box-shadow: 0 4px 16px rgba(26,107,74,0.25); }
+  .btn-primary:hover { background: var(--green-light); transform: translateY(-2px); box-shadow: 0 6px 24px rgba(26,107,74,0.3); }
+  .btn-secondary { background: transparent; color: var(--green); border: 2px solid var(--green); padding: 12px 26px; border-radius: 10px; font-size: 1rem; font-weight: 600; cursor: pointer; text-decoration: none; transition: all 0.2s; font-family: 'DM Sans', sans-serif; }
+  .btn-secondary:hover { background: var(--green-pale); }
+  .hero-cards { position: absolute; right: 5%; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 16px; animation: fadeLeft 0.7s 0.4s ease both; }
+  .stat-card { background: white; border-radius: 16px; padding: 20px 24px; box-shadow: var(--shadow); border: 1px solid rgba(26,107,74,0.08); min-width: 180px; }
+  .stat-card .num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--green); }
+  .stat-card .label { font-size: 0.82rem; color: var(--text-muted); margin-top: 2px; }
+
+  /* SECTIONS */
+  section { padding: 80px 5%; }
+  .section-label { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--green); margin-bottom: 12px; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 700; color: var(--text); margin-bottom: 16px; line-height: 1.25; }
+  .section-desc { font-size: 1rem; color: var(--text-muted); line-height: 1.7; max-width: 560px; }
+
+  /* ABOUT */
+  #about { background: white; }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin-top: 50px; }
+  .about-text p { color: var(--text-muted); line-height: 1.8; margin-bottom: 16px; font-size: 0.97rem; }
+  .feature-list { list-style: none; margin-top: 24px; }
+  .feature-list li { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--green-pale); font-size: 0.95rem; color: var(--text); }
+  .feature-list li:last-child { border-bottom: none; }
+  .feature-list .icon { width: 28px; height: 28px; background: var(--green-pale); border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.85rem; }
+  .about-visual { background: linear-gradient(135deg, var(--green) 0%, var(--green-light) 100%); border-radius: 24px; padding: 40px; color: white; position: relative; overflow: hidden; }
+  .about-visual::before { content: '🏥'; font-size: 8rem; position: absolute; right: -10px; bottom: -20px; opacity: 0.12; }
+  .about-visual h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 20px; position: relative; }
+  .info-row { display: flex; gap: 12px; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.15); font-size: 0.9rem; position: relative; }
+  .info-row:last-child { border-bottom: none; }
+  .info-row .key { opacity: 0.75; min-width: 90px; }
+
+  /* SERVICES */
+  #services { background: var(--cream); }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; margin-top: 48px; }
+  .service-card { background: white; border-radius: 16px; padding: 28px; border: 1px solid rgba(26,107,74,0.08); transition: transform 0.2s, box-shadow 0.2s; cursor: default; }
+  .service-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+  .service-icon { width: 52px; height: 52px; background: var(--green-pale); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 18px; }
+  .service-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 8px; }
+  .service-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
+
+  /* DOCTORS — compact cards */
+  #doctors { background: white; }
+  .doctors-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; margin-top: 48px; }
+
+  /* Compact card */
+  .doctor-card {
+    background: var(--cream); border-radius: 18px; overflow: hidden;
+    border: 1px solid rgba(26,107,74,0.10);
+    cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;
+    display: flex; flex-direction: column;
+  }
+  .doctor-card:hover { transform: translateY(-5px); box-shadow: 0 8px 32px rgba(26,107,74,0.15); }
+  .doctor-photo-wrap { width: 100%; height: 160px; background: linear-gradient(135deg, var(--green) 0%, var(--green-light) 100%); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+  .doctor-photo-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+  .doctor-name-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(12,45,30,0.93) 0%, transparent 100%); padding: 24px 14px 10px; }
+  .doctor-name-overlay h3 { font-family: 'Playfair Display', serif; font-size: 0.92rem; font-weight: 700; color: white; line-height: 1.3; }
+  .doctor-compact-body { padding: 12px 14px 14px; display: flex; flex-direction: column; gap: 6px; }
+  .doctor-spec { font-size: 0.74rem; font-weight: 700; color: var(--green); background: var(--green-pale); display: inline-block; padding: 2px 9px; border-radius: 100px; width: fit-content; }
+  .view-profile-btn { margin-top: 6px; font-size: 0.78rem; font-weight: 600; color: var(--green); background: none; border: 1px solid var(--green); border-radius: 7px; padding: 5px 12px; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.2s; width: fit-content; }
+  .view-profile-btn:hover { background: var(--green); color: white; }
+
+  /* DOCTOR DETAIL PANEL (slide in from right) */
+  .doc-panel-overlay { display: none; position: fixed; inset: 0; z-index: 500; background: rgba(0,0,0,0.45); backdrop-filter: blur(4px); }
+  .doc-panel-overlay.show { display: flex; justify-content: flex-end; }
+  .doc-panel {
+    background: white; width: min(520px, 100vw); height: 100vh;
+    overflow-y: auto; display: flex; flex-direction: column;
+    transform: translateX(100%); transition: transform 0.35s cubic-bezier(.4,0,.2,1);
+    box-shadow: -8px 0 40px rgba(0,0,0,0.18);
+  }
+  .doc-panel-overlay.show .doc-panel { transform: translateX(0); }
+  .doc-panel-hero { position: relative; height: 260px; background: linear-gradient(135deg, var(--green), var(--green-light)); flex-shrink: 0; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+  .doc-panel-hero img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+  .doc-panel-hero .ph { font-size: 8rem; opacity: 0.2; }
+  .doc-panel-hero-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(12,45,30,0.9), transparent); padding: 40px 24px 18px; }
+  .doc-panel-hero-overlay h2 { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: white; font-weight: 700; }
+  .doc-panel-close { position: absolute; top: 14px; right: 14px; width: 34px; height: 34px; border-radius: 50%; background: rgba(255,255,255,0.25); border: none; cursor: pointer; font-size: 1rem; color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; backdrop-filter: blur(4px); }
+  .doc-panel-close:hover { background: rgba(255,255,255,0.4); }
+  .doc-panel-body { padding: 24px 24px 40px; flex: 1; }
+  .doc-panel-spec { font-size: 0.82rem; font-weight: 700; color: var(--green); background: var(--green-pale); display: inline-block; padding: 4px 12px; border-radius: 100px; margin-bottom: 16px; }
+  .doc-panel-section { margin-bottom: 22px; }
+  .doc-panel-section h4 { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-muted); margin-bottom: 10px; }
+  .doc-panel-section p { font-size: 0.92rem; color: var(--text-muted); line-height: 1.75; }
+  .doc-panel-divider { height: 1px; background: var(--green-pale); margin: 18px 0; }
+  .sch-row { display: flex; gap: 8px; align-items: flex-start; font-size: 0.88rem; color: var(--text); margin-bottom: 6px; line-height: 1.5; }
+  .sch-row .sch-icon { flex-shrink: 0; }
+  .doc-panel-book-btn { width: 100%; background: var(--green); color: white; border: none; padding: 14px; border-radius: 12px; font-size: 1rem; font-weight: 600; cursor: pointer; font-family: 'DM Sans', sans-serif; margin-top: 8px; transition: background 0.2s; }
+  .doc-panel-book-btn:hover { background: var(--green-light); }
+
+  /* MEDICAL STORE */
+  #store { background: var(--cream); }
+  .store-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; margin-top: 50px; }
+  .store-items { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .store-item { background: white; border-radius: 12px; padding: 18px; border: 1px solid rgba(26,107,74,0.1); }
+  .store-item .emoji { font-size: 1.6rem; margin-bottom: 8px; }
+  .store-item h4 { font-size: 0.88rem; font-weight: 600; color: var(--text); }
+  .store-item p { font-size: 0.8rem; color: var(--text-muted); margin-top: 3px; }
+
+
+  /* APPOINTMENT STATUS BADGE */
+  .appt-status { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 100px; font-size: 0.78rem; font-weight: 700; margin-bottom: 10px; }
+  .appt-status.open { background: #d4f5e2; color: #0f6b35; border: 1px solid #7dd4a8; }
+  .appt-status.closed { background: #fdecea; color: #c0392b; border: 1px solid #f5a89e; }
+  .appt-status .dot { width: 7px; height: 7px; border-radius: 50%; }
+  .appt-status.open .dot { background: #0f6b35; animation: pulse 1.5s infinite; }
+  .appt-status.closed .dot { background: #c0392b; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.3)} }
+  .next-date-badge { font-size: 0.8rem; color: var(--green); font-weight: 600; background: var(--green-pale); display: inline-block; padding: 3px 10px; border-radius: 6px; margin-bottom: 8px; }
+
+  /* APPOINTMENT */
+  #appointment { background: var(--green-pale); }
+  .appt-wrapper { display: grid; grid-template-columns: 1fr 1.3fr; gap: 60px; align-items: start; margin-top: 48px; }
+  .appt-info h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; margin-bottom: 16px; }
+  .appt-info p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; margin-bottom: 24px; }
+  .timing-box { background: white; border-radius: 14px; padding: 20px; border: 1px solid rgba(26,107,74,0.12); }
+  .timing-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--green-pale); font-size: 0.9rem; }
+  .timing-row:last-child { border-bottom: none; }
+  .timing-row .day { font-weight: 500; }
+  .timing-row .time { color: var(--green); font-weight: 600; }
+  .appt-form { background: white; border-radius: 20px; padding: 36px; box-shadow: var(--shadow); border: 1px solid rgba(26,107,74,0.08); }
+  .appt-form h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 24px; color: var(--text); }
+  .form-group { margin-bottom: 18px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  label { display: block; font-size: 0.83rem; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+  input, select, textarea { width: 100%; padding: 11px 14px; border: 1.5px solid #dde8e3; border-radius: 9px; font-size: 0.93rem; font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--cream); transition: border-color 0.2s, box-shadow 0.2s; outline: none; }
+  input:focus, select:focus, textarea:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgba(26,107,74,0.1); }
+  textarea { resize: vertical; min-height: 90px; }
+  .submit-btn { width: 100%; background: var(--green); color: white; border: none; padding: 14px; border-radius: 10px; font-size: 1rem; font-weight: 600; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: background 0.2s, transform 0.15s; margin-top: 6px; }
+  .submit-btn:hover { background: var(--green-light); transform: translateY(-1px); }
+  .submit-btn:disabled { background: #aaa; cursor: not-allowed; transform: none; }
+  .success-msg { display: none; background: var(--green-pale); border: 1px solid var(--green); border-radius: 10px; padding: 14px 18px; margin-top: 16px; color: var(--green); font-weight: 600; text-align: center; font-size: 0.95rem; }
+
+  /* CONTACT */
+  #contact { background: white; }
+  .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+  .contact-card { background: var(--green-pale); border-radius: 16px; padding: 28px; border: 1px solid rgba(26,107,74,0.1); text-align: center; }
+  .contact-card .c-icon { font-size: 2rem; margin-bottom: 12px; }
+  .contact-card h4 { font-weight: 700; margin-bottom: 6px; }
+  .contact-card p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
+  .contact-card a { color: var(--green); text-decoration: none; font-weight: 600; }
+
+  /* FOOTER */
+  footer { background: var(--text); color: rgba(255,255,255,0.7); padding: 40px 5%; text-align: center; }
+  footer .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: white; font-weight: 700; margin-bottom: 12px; }
+  footer p { font-size: 0.88rem; line-height: 1.6; }
+  footer .footer-links { display: flex; gap: 24px; justify-content: center; margin: 16px 0; flex-wrap: wrap; }
+  footer .footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.85rem; }
+  footer .footer-links a:hover { color: white; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeLeft { from { opacity: 0; transform: translate(30px, -50%); } to { opacity: 1; transform: translate(0, -50%); } }
+
+  @media (max-width: 900px) {
+    .hero-cards { display: none; }
+    .about-grid, .store-grid, .appt-wrapper { grid-template-columns: 1fr; gap: 30px; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .hero { padding-top: 90px; }
+  }
+  @media (max-width: 600px) {
+    .form-row { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .store-items { grid-template-columns: 1fr; }
+    .doctors-grid { grid-template-columns: 1fr; }
+  }
+
+  /* BOOKING BLOCKED MODAL */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0; z-index: 9999;
+    background: rgba(0,0,0,0.55); backdrop-filter: blur(4px);
+    align-items: center; justify-content: center;
+  }
+  .modal-overlay.show { display: flex; }
+  .modal-box {
+    background: white; border-radius: 20px; padding: 36px 32px;
+    max-width: 420px; width: 90%; text-align: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+    animation: modalPop 0.25s ease;
+  }
+  @keyframes modalPop { from { transform: scale(0.85); opacity:0; } to { transform: scale(1); opacity:1; } }
+  .modal-icon { font-size: 3rem; margin-bottom: 12px; }
+  .modal-box h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--text); margin-bottom: 10px; }
+  .modal-box p { font-size: 0.92rem; color: var(--text-muted); line-height: 1.65; margin-bottom: 20px; }
+  .modal-box .modal-date { display: inline-block; background: var(--green-pale); color: var(--green); font-weight: 700; font-size: 0.95rem; padding: 8px 18px; border-radius: 8px; margin-bottom: 22px; border: 1px solid rgba(26,107,74,0.2); }
+  .modal-close { background: var(--green); color: white; border: none; padding: 12px 32px; border-radius: 10px; font-size: 0.95rem; font-weight: 600; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: background 0.2s; }
+  .modal-close:hover { background: var(--green-light); }
+
+  /* CLINIC IMAGE HERO BANNER */
+  .clinic-banner {
+    width: 100%; height: 420px; position: relative; overflow: hidden;
+    background: linear-gradient(135deg, var(--green) 0%, #0d3d26 100%);
+    display: flex; align-items: flex-end;
+  }
+  .clinic-banner img {
+    width: 100%; height: 100%; object-fit: cover; object-position: center;
+    display: block; opacity: 0.55; position: absolute; inset: 0;
+  }
+  .clinic-banner-overlay {
+    position: relative; z-index: 2; padding: 40px 5%;
+    background: linear-gradient(to top, rgba(10,40,25,0.92) 0%, transparent 100%);
+    width: 100%;
+  }
+  .clinic-banner-overlay h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem,3vw,2.4rem); color: white; font-weight: 700; margin-bottom: 8px; }
+  .clinic-banner-overlay p { color: rgba(255,255,255,0.8); font-size: 0.97rem; max-width: 520px; line-height: 1.6; }
+  .clinic-banner-overlay .banner-btns { display: flex; gap: 12px; margin-top: 18px; flex-wrap: wrap; }
+  .banner-btn-white { background: white; color: var(--green); border: none; padding: 10px 22px; border-radius: 8px; font-size: 0.9rem; font-weight: 700; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.2s; text-decoration: none; }
+  .banner-btn-white:hover { background: var(--green-pale); }
+  .banner-btn-outline { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.7); padding: 8px 20px; border-radius: 8px; font-size: 0.9rem; font-weight: 600; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.2s; text-decoration: none; }
+  .banner-btn-outline:hover { background: rgba(255,255,255,0.15); }
+  .no-photo-hint { position: absolute; top: 14px; right: 14px; z-index: 3; background: rgba(0,0,0,0.45); color: rgba(255,255,255,0.7); font-size: 0.75rem; padding: 5px 11px; border-radius: 6px; backdrop-filter: blur(4px); }
+
+  /* ABOUT PANEL (slide in from left) */
+  .about-panel-overlay { display: none; position: fixed; inset: 0; z-index: 500; background: rgba(0,0,0,0.45); backdrop-filter: blur(4px); justify-content: flex-start; }
+  .about-panel-overlay.show { display: flex; }
+  .about-panel {
+    background: white; width: min(580px, 100vw); height: 100vh; overflow-y: auto;
+    transform: translateX(-100%); transition: transform 0.35s cubic-bezier(.4,0,.2,1);
+    box-shadow: 8px 0 40px rgba(0,0,0,0.18); display: flex; flex-direction: column;
+  }
+  .about-panel-overlay.show .about-panel { transform: translateX(0); }
+  .about-panel-top { background: linear-gradient(135deg, var(--green), #0d3d26); padding: 0; position: relative; height: 200px; overflow: hidden; flex-shrink: 0; display: flex; align-items: flex-end; }
+  .about-panel-top img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.45; }
+  .about-panel-top-overlay { position: relative; z-index: 2; padding: 28px 28px 22px; background: linear-gradient(to top, rgba(10,40,25,0.88), transparent); width: 100%; }
+  .about-panel-top-overlay h2 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: white; font-weight: 700; }
+  .about-panel-top-overlay p { color: rgba(255,255,255,0.75); font-size: 0.85rem; margin-top: 4px; }
+  .about-panel-close { position: absolute; top: 14px; right: 14px; width: 34px; height: 34px; border-radius: 50%; background: rgba(255,255,255,0.25); border: none; cursor: pointer; font-size: 1rem; color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; backdrop-filter: blur(4px); z-index: 10; }
+  .about-panel-close:hover { background: rgba(255,255,255,0.4); }
+  .about-panel-body { padding: 28px; flex: 1; }
+  .about-panel-body p { color: var(--text-muted); line-height: 1.8; font-size: 0.94rem; margin-bottom: 16px; }
+  .about-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 20px 0; }
+  .about-info-tile { background: var(--green-pale); border-radius: 12px; padding: 14px 16px; border: 1px solid rgba(26,107,74,0.12); }
+  .about-info-tile .tile-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 4px; }
+  .about-info-tile .tile-val { font-size: 0.95rem; font-weight: 700; color: var(--green); }
+  .about-feature-list { list-style: none; margin-top: 8px; }
+  .about-feature-list li { display: flex; align-items: flex-start; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--green-pale); font-size: 0.92rem; color: var(--text); }
+  .about-feature-list li:last-child { border-bottom: none; }
+  .about-section-head { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-muted); margin: 22px 0 10px; }
+
+  /* SERVICES PANEL BANNER */
+  .services-banner {
+    width: 100%; height: 300px; position: relative; overflow: hidden;
+    background: linear-gradient(135deg, #0d4a35 0%, #1a6b4a 100%);
+    display: flex; align-items: flex-end;
+  }
+  .services-banner-overlay {
+    position: relative; z-index: 2; padding: 36px 5%;
+    background: linear-gradient(to top, rgba(10,40,25,0.92) 0%, rgba(10,40,25,0.3) 100%);
+    width: 100%;
+  }
+  .services-banner-overlay h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem,3vw,2.2rem); color: white; font-weight: 700; margin-bottom: 8px; }
+  .services-banner-overlay p { color: rgba(255,255,255,0.78); font-size: 0.95rem; max-width: 500px; line-height: 1.6; }
+  .services-panel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 0; }
+  @media(max-width:500px){ .services-panel-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="#">
+    <div class="logo-icon">🏥</div>
+    Geeta Polyclinic
+  </a>
+  <ul class="nav-links">
+    <li><a href="#" onclick="event.preventDefault(); openAboutPanel();">About</a></li>
+    <li><a href="#" onclick="event.preventDefault(); openServicesPanel();">Services</a></li>
+    <li><a href="#doctors">Doctors</a></li>
+    <li><a href="#store">Medical Store</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a class="nav-cta" href="#appointment">Book Appointment</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-decor"></div>
+  <div class="hero-decor2"></div>
+  <div class="hero-content">
+    <div class="hero-badge">🌿 Trusted Healthcare Since 2005</div>
+    <h1>Your Health, Our <span>Priority</span></h1>
+    <p>Geeta Polyclinic & Medical Store offers comprehensive healthcare services and quality medicines — all under one roof, right in your neighbourhood.</p>
+    <div class="hero-btns">
+      <a class="btn-primary" href="#appointment">📅 Book Appointment</a>
+      <a class="btn-secondary" href="#services">Our Services</a>
+    </div>
+  </div>
+  <div class="hero-cards">
+    <div class="stat-card"><div class="num">5000+</div><div class="label">Happy Patients</div></div>
+    <div class="stat-card"><div class="num">20+</div><div class="label">Years of Service</div></div>
+    <div class="stat-card"><div class="num">7</div><div class="label">Specialist Doctors</div></div>
+  </div>
 </section>
 
 <!-- DOCTORS -->
@@ -326,6 +703,19 @@
   </div>
   <div class="doctors-grid">
 
+    <!-- Dr. Anil Kumar Sahu -->
+    <div class="doctor-card" onclick="openDoctorPanel('anil')">
+      <div class="doctor-photo-wrap">
+        <img src="dr-anil.png" alt="Dr. Anil Kumar Sahu" onerror="this.style.display='none';">
+        <div class="doctor-name-overlay"><h3>Dr. Anil Kumar Sahu</h3></div>
+      </div>
+      <div class="doctor-compact-body">
+        <span class="doctor-spec">Neurologist</span>
+        <div id="badge-anil">Loading...</div>
+        <button class="view-profile-btn">View Profile →</button>
+      </div>
+    </div>
+
     <!-- Prof. Dr. Suvendu Narayan Mishra -->
     <div class="doctor-card" onclick="openDoctorPanel('suvendu')">
       <div class="doctor-photo-wrap">
@@ -333,38 +723,12 @@
         <div class="doctor-name-overlay"><h3>Prof. Dr. Suvendu Narayan Mishra</h3></div>
       </div>
       <div class="doctor-compact-body">
-        <span class="doctor-spec">Neuro Psychiatrist 🧠</span>
+        <span class="doctor-spec">Neuro Psychiatrist</span>
         <div id="badge-suvendu">Loading...</div>
         <button class="view-profile-btn">View Profile →</button>
       </div>
     </div>
 
-        <!-- Dr. Ratnakar Das -->
-    <div class="doctor-card" onclick="openDoctorPanel('ratnakar')">
-      <div class="doctor-photo-wrap">
-        <img src="dr-ratnakar.png" alt="Dr. Ratnakar Das" onerror="this.style.display='none';">
-        <div class="doctor-name-overlay"><h3>Dr. Ratnakar Das</h3></div>
-      </div>
-      <div class="doctor-compact-body">
-        <span class="doctor-spec">Medicine Specialist 💊</span>
-        <div id="badge-ratnakar">Loading...</div>
-        <button class="view-profile-btn">View Profile →</button>
-      </div>
-    </div>
-    
-        <!-- Dr. Anil Kumar Sahu -->
-    <div class="doctor-card" onclick="openDoctorPanel('anil')">
-      <div class="doctor-photo-wrap">
-        <img src="dr-anil.png" alt="Dr. Anil Kumar Sahu" onerror="this.style.display='none';">
-        <div class="doctor-name-overlay"><h3>Dr. Anil Kumar Sahu</h3></div>
-      </div>
-      <div class="doctor-compact-body">
-        <span class="doctor-spec">Neurologist 🧬</span>
-        <div id="badge-anil">Loading...</div>
-        <button class="view-profile-btn">View Profile →</button>
-      </div>
-    </div>
-    
     <!-- Dr. Srikant Swain -->
     <div class="doctor-card" onclick="openDoctorPanel('srikant')">
       <div class="doctor-photo-wrap">
@@ -372,21 +736,21 @@
         <div class="doctor-name-overlay"><h3>Dr. Srikant Swain</h3></div>
       </div>
       <div class="doctor-compact-body">
-        <span class="doctor-spec">Neuro Surgeon 👨🏻‍🏭</span>
+        <span class="doctor-spec">Neuro Surgeon</span>
         <div id="badge-srikant">Loading...</div>
         <button class="view-profile-btn">View Profile →</button>
       </div>
     </div>
 
-        <!-- Dr. Partha Sarthi Sahu -->
-    <div class="doctor-card" onclick="openDoctorPanel('partha')">
+    <!-- Dr. Debabrata Nayak -->
+    <div class="doctor-card" onclick="openDoctorPanel('debabrata')">
       <div class="doctor-photo-wrap">
-        <img src="dr-partha.png" alt="Dr. Partha Sarthi Sahu" onerror="this.style.display='none';">
-        <div class="doctor-name-overlay"><h3>Dr. Partha Sarthi Sahu</h3></div>
+        <img src="dr-debabrata.png" alt="Dr. Debabrata Nayak" onerror="this.style.display='none';">
+        <div class="doctor-name-overlay"><h3>Dr. Debabrata Nayak</h3></div>
       </div>
       <div class="doctor-compact-body">
-        <span class="doctor-spec">Gastro & Hepatologist ⚕</span>
-        <div id="badge-partha">Loading...</div>
+        <span class="doctor-spec">Dermatologist</span>
+        <div id="badge-debabrata">Loading...</div>
         <button class="view-profile-btn">View Profile →</button>
       </div>
     </div>
@@ -398,21 +762,34 @@
         <div class="doctor-name-overlay"><h3>Dr. Jyoti Mohan Tosh</h3></div>
       </div>
       <div class="doctor-compact-body">
-        <span class="doctor-spec">Urologist 🧪</span>
+        <span class="doctor-spec">Urologist</span>
         <div id="badge-jyoti">Loading...</div>
         <button class="view-profile-btn">View Profile →</button>
       </div>
     </div>
 
-        <!-- Dr. Debabrata Nayak -->
-    <div class="doctor-card" onclick="openDoctorPanel('debabrata')">
+    <!-- Dr. Partha Sarthi Sahu -->
+    <div class="doctor-card" onclick="openDoctorPanel('partha')">
       <div class="doctor-photo-wrap">
-        <img src="dr-debabrata.png" alt="Dr. Debabrata Nayak" onerror="this.style.display='none';">
-        <div class="doctor-name-overlay"><h3>Dr. Debabrata Nayak</h3></div>
+        <img src="dr-partha.png" alt="Dr. Partha Sarthi Sahu" onerror="this.style.display='none';">
+        <div class="doctor-name-overlay"><h3>Dr. Partha Sarthi Sahu</h3></div>
       </div>
       <div class="doctor-compact-body">
-        <span class="doctor-spec">Dermatologist 👨🏻‍⚕️</span>
-        <div id="badge-debabrata">Loading...</div>
+        <span class="doctor-spec">Gastro & Hepatologist</span>
+        <div id="badge-partha">Loading...</div>
+        <button class="view-profile-btn">View Profile →</button>
+      </div>
+    </div>
+
+    <!-- Dr. Ratnakar Das -->
+    <div class="doctor-card" onclick="openDoctorPanel('ratnakar')">
+      <div class="doctor-photo-wrap">
+        <img src="dr-ratnakar.png" alt="Dr. Ratnakar Das" onerror="this.style.display='none';">
+        <div class="doctor-name-overlay"><h3>Dr. Ratnakar Das</h3></div>
+      </div>
+      <div class="doctor-compact-body">
+        <span class="doctor-spec">Medicine Specialist</span>
+        <div id="badge-ratnakar">Loading...</div>
         <button class="view-profile-btn">View Profile →</button>
       </div>
     </div>
@@ -519,7 +896,7 @@
         <div class="timing-row"><span class="day">Emergency</span><span class="time">+91-9525300999</span></div>
       </div>
       <div style="margin-top:20px; background: white; border-radius:14px; padding:18px; border:1px solid rgba(26,107,74,0.12);">
-        <p style="font-size:0.85rem; color:var(--text-muted); line-height:1.6;">📍 <strong>Address:</strong> Station Club Market Complex, Near Hotel Panchajanya, O.T.Road Balasore, Odisha, India</p>
+        <p style="font-size:0.85rem; color:var(--text-muted); line-height:1.6;">📍 <strong>Address:</strong> Station Club Market Complex, OT Rd, near Hotel Panchajanya, Balasore, Odisha, India</p>
       </div>
     </div>
 
@@ -581,23 +958,15 @@
     <p class="section-desc" style="margin:0 auto;">Have questions? We're here to help. Reach us through any of the following.</p>
   </div>
   <div class="contact-grid">
-  <div class="contact-card">
-  <div class="c-icon">📍</div>
-  <h4>Address</h4>
-  <p>Station Club Market Complex, Near Hotel Panchajanya,<br>
-  O.T.Road, Balasore, Odisha</p>
-  <a href="https://maps.app.goo.gl/jnYd4Mdz2DAkzy5P6" 
-     target="_blank"
-     style="display:inline-block; margin-top:12px; background:var(--green); color:white; padding:9px 18px; border-radius:8px; font-size:0.85rem; font-weight:600; text-decoration:none;">
-    📍 Open in Google Maps
-  </a>
-</div>
     <div class="contact-card">
-    <div class="c-icon">📞</div>
-    <h4>Phone</h4>
-    <p>Clinic: <a href="tel:+919525300999">+91-9525300999</a><br>
-    Medical Store: <a href="tel:+919438600999">+91-9438600999</a><br>
-    Emergency: Available on call</p>
+      <div class="c-icon">📍</div>
+      <h4>Address</h4>
+      <p>Geeta Polyclinic & Medical Store<br>Station Club Market Complex, OT Rd,<br>near Hotel Panchajanya, Balasore, Odisha</p>
+    </div>
+    <div class="contact-card">
+      <div class="c-icon">📞</div>
+      <h4>Phone</h4>
+      <p>Clinic: <a href="tel:+919438600999">+91-9438600999</a><br>Medical Store: <a href="tel:+919525300999">+91-9525300999</a><br>Emergency: Available on call</p>
     </div>
     <div class="contact-card">
       <div class="c-icon">🕐</div>
@@ -786,7 +1155,7 @@
     const btn=document.querySelector('.submit-btn');
     btn.textContent='⏳ Submitting...'; btn.disabled=true;
     fetch(SHEET_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({name,gender:gender||'Not specified',phone,submittedAt:new Date().toLocaleString('en-IN'),doctor:dept})
+      body:JSON.stringify({date,name,gender:gender||'Not specified',phone,submittedAt:new Date().toLocaleString('en-IN'),doctor:dept})
     }).then(()=>{
       document.getElementById('successMsg').style.display='block';
       btn.textContent='✅ Confirm Appointment'; btn.disabled=false;
@@ -795,10 +1164,21 @@
     }).catch(()=>{ alert('Something went wrong. Please call us on +91-9525300999.'); btn.textContent='✅ Confirm Appointment'; btn.disabled=false; });
   }
 
-  document.addEventListener('DOMContentLoaded', function(){
   document.getElementById('bookingModal').addEventListener('click',function(e){ if(e.target===this)this.classList.remove('show'); });
-});
 
+
+  // ── SERVICES PANEL ──────────────────────────────
+  function openServicesPanel(){
+    document.getElementById('servicesPanelOverlay').classList.add('show');
+    document.body.style.overflow='hidden';
+  }
+  function closeServicesPanel(){
+    document.getElementById('servicesPanelOverlay').classList.remove('show');
+    document.body.style.overflow='';
+  }
+  function closeServicesPanelOnOverlay(e){
+    if(e.target===document.getElementById('servicesPanelOverlay')) closeServicesPanel();
+  }
 
   // ── SERVICES PANEL ──────────────────────────────
   function openServicesPanel(){
@@ -825,6 +1205,14 @@
   function closeAboutOnOverlay(e){
     if(e.target===document.getElementById('aboutPanelOverlay')) closeAboutPanel();
   }
+  // Hide upload hint once clinic image loads
+  document.addEventListener('DOMContentLoaded', () => {
+    const img = document.querySelector('.clinic-banner img');
+    if(img) img.addEventListener('load', () => {
+      const hint = document.getElementById('clinicPhotoHint');
+      if(hint) hint.style.display='none';
+    });
+  });
 
   document.querySelectorAll('a[href^="#"]').forEach(a=>{
     a.addEventListener('click',e=>{ const el=document.getElementById(a.getAttribute('href').slice(1)); if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'});} });
@@ -835,7 +1223,7 @@
 <div class="about-panel-overlay" id="aboutPanelOverlay" onclick="closeAboutOnOverlay(event)">
   <div class="about-panel" id="aboutPanel">
     <div class="about-panel-top">
-      <img src="clinic.png" alt="Geeta Polyclinic" onerror="this.style.display='none';">
+      <img src="clinic.jpg" alt="Geeta Polyclinic" onerror="this.style.display='none';">
       <button class="about-panel-close" onclick="closeAboutPanel()">✕</button>
       <div class="about-panel-top-overlay">
         <h2>About Geeta Polyclinic</h2>
@@ -843,15 +1231,15 @@
       </div>
     </div>
     <div class="about-panel-body">
-      <p>Geeta Polyclinic has been a cornerstone of healthcare in Balasore for over three decades. Founded with the vision of providing accessible, quality medical care to every patient, we have grown into a comprehensive healthcare facility trusted by thousands of families across the region.</p>
+      <p>Geeta Polyclinic has been a cornerstone of healthcare in Balasore for over two decades. Founded with the vision of providing accessible, quality medical care to every patient, we have grown into a comprehensive healthcare facility trusted by thousands of families across the region.</p>
       <p>Our team of experienced doctors and healthcare professionals work together to provide personalized care. We believe every patient deserves to be treated with compassion, respect, and the highest standard of medical excellence.</p>
 
       <div class="about-section-head">Clinic At a Glance</div>
       <div class="about-info-grid">
-        <div class="about-info-tile"><div class="tile-label">Established</div><div class="tile-val">1994</div></div>
+        <div class="about-info-tile"><div class="tile-label">Established</div><div class="tile-val">2005</div></div>
         <div class="about-info-tile"><div class="tile-label">Type</div><div class="tile-val">Polyclinic + Medical Store</div></div>
         <div class="about-info-tile"><div class="tile-label">Specialists</div><div class="tile-val">7 Visiting Doctors</div></div>
-        <div class="about-info-tile"><div class="tile-label">Patients Served</div><div class="tile-val">20000+</div></div>
+        <div class="about-info-tile"><div class="tile-label">Patients Served</div><div class="tile-val">5000+</div></div>
         <div class="about-info-tile"><div class="tile-label">Location</div><div class="tile-val">Balasore, Odisha</div></div>
         <div class="about-info-tile"><div class="tile-label">Emergency</div><div class="tile-val">Available on call</div></div>
       </div>
@@ -863,7 +1251,7 @@
         <li>💊 Attached medical store for all your medicine needs</li>
         <li>🧪 Diagnostic tests and health checkup packages</li>
         <li>🌿 Holistic and patient-centered care approach</li>
-        <li>📍 Conveniently located Near Hotel Panchajanya, OT Road</li>
+        <li>📍 Conveniently located near Hotel Panchajanya, OT Road</li>
       </ul>
     </div>
   </div>
