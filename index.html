@@ -229,13 +229,7 @@ nav {
   .contact-grid { grid-template-columns: 1fr; }
   #appointment { scroll-margin-top: 60px; }
 }
-  nav { height: 60px; padding: 0 4%; }
-  .logo-text .logo-top { font-size: 1.1rem; }
-  .logo-icon { width: 36px; height: 36px; border-radius: 8px; }
-  .logo-icon img { width: 36px; height: 36px; }
-  .mobile-menu { top: 60px; }
-  .hero { padding-top: 75px; }
-}
+
 @media (max-width: 600px) {
     .form-row { grid-template-columns: 1fr; }
     .services-grid { grid-template-columns: 1fr 1fr; }
@@ -307,6 +301,14 @@ nav {
 .mobile-menu a:last-child { border-bottom: none; }
 .mobile-menu a:hover { color: var(--green); }
 .mobile-book-btn { background: var(--green); color: white !important; text-align: center; border-radius: 10px; padding: 14px !important; margin-top: 8px; font-weight: 600 !important; border-bottom: none !important; }
+.mobile-search-box { position: relative; padding: 8px 0 12px; }
+.mobile-search-box input { width: 100%; padding: 11px 40px 11px 14px; border: 1.5px solid rgba(26,107,74,0.25); border-radius: 10px; font-size: 0.92rem; font-family: 'DM Sans', sans-serif; background: var(--green-pale); color: var(--text); outline: none; }
+.mobile-search-box input:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgba(26,107,74,0.1); }
+.mobile-search-clear { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: rgba(26,107,74,0.15); border: none; border-radius: 50%; width: 24px; height: 24px; font-size: 0.75rem; color: var(--green); cursor: pointer; display: flex; align-items: center; justify-content: center; font-weight: 700; }
+#mobileSearchResults { margin-bottom: 4px; }
+#mobileSearchResults a { display: flex; align-items: center; gap: 10px; padding: 10px 12px; font-size: 0.88rem; color: var(--text); font-weight: 500; border-radius: 8px; background: var(--green-pale); margin-bottom: 6px; text-decoration: none; border: 1px solid rgba(26,107,74,0.1); }
+.search-label { font-weight: 600; color: var(--green); font-size: 0.88rem; }
+.search-sub { font-size: 0.75rem; color: var(--text-muted); }
 </style>
 </head>
 <body>
@@ -339,7 +341,8 @@ nav {
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
   <div class="mobile-search-box">
-    <input type="text" id="mobileSearchInput" placeholder="🔍 Search doctors, services..." oninput="runMobileSearch()">
+    <input type="text" id="mobileSearchInput" placeholder="🔍 Search doctors, services..." oninput="runMobileSearch(this.value)">
+    <button class="mobile-search-clear" id="searchClearBtn" onclick="clearMobileSearch()" style="display:none;">✕</button>
   </div>
   <div id="mobileSearchResults"></div>
   <a href="#" onclick="openAboutPanel(); closeMobileMenu();">About</a>
@@ -920,7 +923,52 @@ function checkBookingWindow(key){
   document.querySelectorAll('a[href^="#"]').forEach(a=>{
     a.addEventListener('click',e=>{ const el=document.getElementById(a.getAttribute('href').slice(1)); if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'});} });
   });
+  
+// ── MOBILE SEARCH ────────────────────────────────
+const SEARCH_INDEX = [
+  { label: "Prof. Dr. Suvendu Narayan Mishra", sub: "Neuro Psychiatrist", key: "suvendu" },
+  { label: "Dr. Ratnakar Das", sub: "Medicine Specialist", key: "ratnakar" },
+  { label: "Dr. Anil Kumar Sahu", sub: "Neurologist", key: "anil" },
+  { label: "Dr. Srikant Swain", sub: "Neuro Surgeon", key: "srikant" },
+  { label: "Dr. Partha Sarthi Sahu", sub: "Gastro & Hepatologist", key: "partha" },
+  { label: "Dr. Jyoti Mohan Tosh", sub: "Urologist", key: "jyoti" },
+  { label: "Dr. Debabrata Nayak", sub: "Dermatologist", key: "debabrata" },
+  { label: "Book Appointment", sub: "Schedule a visit", key: null, href: "#appointment" },
+  { label: "Medical Store", sub: "Medicines & health products", key: null, href: "#store" },
+  { label: "Contact Us", sub: "Phone, address & hours", key: null, href: "#contact" },
+  { label: "Our Services", sub: "All medical services", key: null, panel: "services" },
+  { label: "About Geeta Polyclinic", sub: "Our story & info", key: null, panel: "about" },
+];
 
+function runMobileSearch(val){
+  const q = val.toLowerCase().trim();
+  const res = document.getElementById('mobileSearchResults');
+  const clearBtn = document.getElementById('searchClearBtn');
+  clearBtn.style.display = q ? 'flex' : 'none';
+  if(!q){ res.innerHTML=''; return; }
+  const matches = SEARCH_INDEX.filter(item =>
+    item.label.toLowerCase().includes(q) || item.sub.toLowerCase().includes(q)
+  ).slice(0,5);
+  if(matches.length===0){ res.innerHTML=`<div style="padding:8px 12px;font-size:0.85rem;color:var(--text-muted);">No results found</div>`; return; }
+  res.innerHTML = matches.map(item => {
+    let action = '';
+    if(item.key) action = `openDoctorPanel('${item.key}'); closeMobileMenu();`;
+    else if(item.panel==='services') action = `openServicesPanel(); closeMobileMenu();`;
+    else if(item.panel==='about') action = `openAboutPanel(); closeMobileMenu();`;
+    else action = `document.getElementById('${item.href.slice(1)}').scrollIntoView({behavior:'smooth'}); closeMobileMenu();`;
+    return `<a href="#" onclick="event.preventDefault(); ${action}">
+      <span>🔍</span>
+      <span><span class="search-label">${item.label}</span><br><span class="search-sub">${item.sub}</span></span>
+    </a>`;
+  }).join('');
+}
+
+function clearMobileSearch(){
+  document.getElementById('mobileSearchInput').value = '';
+  document.getElementById('mobileSearchResults').innerHTML = '';
+  document.getElementById('searchClearBtn').style.display = 'none';
+  document.getElementById('mobileSearchInput').focus();
+}
   // ── HAMBURGER MENU ──────────────────────────────
   function toggleMobileMenu(){
     const menu = document.getElementById('mobileMenu');
