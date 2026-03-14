@@ -38,7 +38,7 @@
   .nav-cta:hover { background: var(--green-light); transform: translateY(-1px); }
 
   /* HERO */
-  .hero { min-height: 100vh; display: flex; align-items: center; padding: 100px 5% 60px; background: linear-gradient(135deg, var(--cream) 40%, #d4ede1 100%); position: relative; overflow: hidden; }
+  .hero { min-height: 100vh; display: flex; align-items: center; padding: 80px 5% 40px; background: linear-gradient(135deg, var(--cream) 40%, #d4ede1 100%); position: relative; overflow: hidden; }
   .hero::before { content: ''; position: absolute; right: -100px; top: -100px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(26,107,74,0.12) 0%, transparent 65%); border-radius: 50%; }
   .hero::after { content: ''; position: absolute; left: -60px; bottom: -60px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(232,160,32,0.12) 0%, transparent 65%); border-radius: 50%; }
   .hero-content { max-width: 620px; position: relative; z-index: 1; }
@@ -199,12 +199,11 @@
   @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
   @keyframes fadeLeft { from { opacity: 0; transform: translate(30px, -50%); } to { opacity: 1; transform: translate(0, -50%); } }
 
-  @media (max-width: 900px) {
-    .hero-cards { display: none; }
-    .about-grid, .store-grid, .appt-wrapper { grid-template-columns: 1fr; gap: 30px; }
-    .contact-grid { grid-template-columns: 1fr; }
-    .nav-links { display: none; }
-    .hero { padding-top: 90px; }
+@media (max-width: 900px) {
+  .hamburger { display: flex; }
+  .desktop-only { display: none; }
+  .hero { padding-top: 76px; }
+}
   }
   @media (max-width: 600px) {
     .form-row { grid-template-columns: 1fr; }
@@ -867,6 +866,18 @@
   document.querySelectorAll('a[href^="#"]').forEach(a=>{
     a.addEventListener('click',e=>{ const el=document.getElementById(a.getAttribute('href').slice(1)); if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'});} });
   });
+
+  // ── HAMBURGER MENU ──────────────────────────────
+  function toggleMobileMenu(){
+    const menu = document.getElementById('mobileMenu');
+    const btn = document.querySelector('.hamburger');
+    menu.classList.toggle('open');
+    btn.classList.toggle('active');
+  }
+  function closeMobileMenu(){
+    document.getElementById('mobileMenu').classList.remove('open');
+    document.querySelector('.hamburger').classList.remove('active');
+  }
 </script>
 
 <!-- ABOUT PANEL -->
