@@ -215,14 +215,20 @@ nav {
   @keyframes fadeLeft { from { opacity: 0; transform: translate(30px, -50%); } to { opacity: 1; transform: translate(0, -50%); } }
 
 @media (max-width: 900px) {
-  .hamburger { display: flex; }
-  .desktop-only { display: none; }
-  .nav-links { display: none; }
-  .hero { padding-top: 90px; min-height: 100svh; padding-bottom: 60px; }
+  .hamburger { display: flex !important; }
+  .desktop-only { display: none !important; }
+  .nav-links { display: none !important; }
+  .logo-text .logo-top { font-size: 1.1rem; }
+  .logo-icon { width: 36px; height: 36px; border-radius: 8px; }
+  .logo-icon img { width: 36px; height: 36px; }
+  nav { height: 60px; }
+  .mobile-menu { top: 60px; }
+  .hero { padding-top: 75px; min-height: 100svh; padding-bottom: 60px; }
   .hero-cards { display: none; }
   .about-grid, .store-grid, .appt-wrapper { grid-template-columns: 1fr; gap: 30px; }
   .contact-grid { grid-template-columns: 1fr; }
-  #appointment { scroll-margin-top: 68px; }
+  #appointment { scroll-margin-top: 60px; }
+}
   nav { height: 60px; padding: 0 4%; }
   .logo-text .logo-top { font-size: 1.1rem; }
   .logo-icon { width: 36px; height: 36px; border-radius: 8px; }
@@ -287,9 +293,9 @@ nav {
   .services-panel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
   @media(max-width:500px){ .services-panel-grid { grid-template-columns: 1fr; } }
 
-  /* HAMBURGER */
-.hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; z-index: 200; }
-.hamburger span { display: block; width: 24px; height: 2.5px; background: var(--green); border-radius: 2px; transition: all 0.3s; }
+/* HAMBURGER */
+.hamburger { display: none; flex-direction: column; gap: 5px; background: none !important; border: none !important; cursor: pointer; padding: 6px; z-index: 200 !important; box-shadow: none !important; }
+.hamburger span { display: block; width: 26px; height: 2.5px; background: var(--green); border-radius: 2px; transition: all 0.3s; }
 .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
 .hamburger.active span:nth-child(2) { opacity: 0; }
 .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
