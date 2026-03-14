@@ -200,11 +200,11 @@
   @keyframes fadeLeft { from { opacity: 0; transform: translate(30px, -50%); } to { opacity: 1; transform: translate(0, -50%); } }
 
 @media (max-width: 900px) {
-  .hamburger { display: flex; }
-  .desktop-only { display: none; }
-  .nav-links { display: none; }
+  .hamburger { display: flex !important; }
+  .desktop-only { display: none !important; }
+  .nav-links { display: none !important; }
   .hero { padding-top: 76px; min-height: auto; padding-bottom: 40px; }
-  .hero-cards { display: none; }
+  .hero-cards { display: none !important; }
   .about-grid, .store-grid, .appt-wrapper { grid-template-columns: 1fr; gap: 30px; }
   .contact-grid { grid-template-columns: 1fr; }
 }
