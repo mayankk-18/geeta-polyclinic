@@ -836,24 +836,24 @@ function checkBookingWindow(key){
     btn.textContent='⏳ Submitting...'; btn.disabled=true;
     fetch(SHEET_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({name,gender:gender||'Not specified',phone,submittedAt:new Date().toLocaleString('en-IN'),doctor:dept})
+                     
 }).then(()=>{
-  document.getElementById('successMsg').style.display='block';
-  btn.textContent='✅ Confirm Appointment'; btn.disabled=false;
+      document.getElementById('successMsg').style.display='block';
+      btn.textContent='✅ Confirm Appointment'; btn.disabled=false;
 
-  // WhatsApp to CLINIC
-  const clinicMsg = `🏥 *New Appointment Booking*%0A%0A👤 *Name:* ${name}%0A📞 *Phone:* ${phone}%0A👨‍⚕️ *Doctor:* ${dept}%0A🕐 *Time:* ${new Date().toLocaleString('en-IN')}`;
-  window.open(`https://wa.me/919525300999?text=${clinicMsg}`, '_blank');
+      // WhatsApp to CLINIC
+      const clinicMsg = `🏥 *New Appointment Booking*%0A%0A👤 *Name:* ${name}%0A📞 *Phone:* ${phone}%0A👨‍⚕️ *Doctor:* ${dept}%0A🕐 *Time:* ${new Date().toLocaleString('en-IN')}`;
+      window.open(`https://wa.me/919525300999?text=${clinicMsg}`, '_blank');
 
-  // SMS to PATIENT
-  const patientPhone = phone.replace(/\D/g,'').slice(-10);
-  const smsMessage = `Appointment booked at Geeta Polyclinic. Doctor: ${dept}. We will call you to confirm. Contact: 9525300999`;
-  fetch(`https://www.fast2sms.com/dev/bulkV2?authorization=XqvSBLbV9JksFxRHofN57YMdDTGizmEhaP0WcZKwQOrljnyt844tNWrJhHsfYOI78VZ1nLzqXKxGBgba&route=q&message=${encodeURIComponent(smsMessage)}&language=english&flash=0&numbers=${patientPhone}`)
-  .then(()=> console.log('SMS sent'))
-  .catch(()=> console.log('SMS failed'));
-
-  ['name','phone','age','gender','dept'].forEach(id=>document.getElementById(id).value='');
-  setTimeout(()=>document.getElementById('successMsg').style.display='none',6000);
-}).catch(()=>{
+      // Reset form
+      ['name','phone','age','gender','dept'].forEach(id=>document.getElementById(id).value='');
+      setTimeout(()=>document.getElementById('successMsg').style.display='none',6000);
+    }).catch(()=>{ 
+      alert('Something went wrong. Please call us on +91-9525300999.'); 
+      btn.textContent='✅ Confirm Appointment'; 
+      btn.disabled=false; 
+    });
+  }
       
   // ── SERVICES PANEL ──────────────────────────────
   function openServicesPanel(){
