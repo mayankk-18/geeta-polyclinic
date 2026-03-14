@@ -76,6 +76,10 @@
   .info-row:last-child { border-bottom: none; }
   .info-row .key { opacity: 0.75; min-width: 90px; }
 
+  /* DOCTORS — compact cards */
+  #doctors { background: white; }
+  .doctors-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; margin-top: 48px; }
+  
   /* SERVICES */
   #services { background: var(--cream); }
   .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; margin-top: 48px; }
@@ -84,10 +88,6 @@
   .service-icon { width: 52px; height: 52px; background: var(--green-pale); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 18px; }
   .service-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 8px; }
   .service-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
-
-  /* DOCTORS — compact cards */
-  #doctors { background: white; }
-  .doctors-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; margin-top: 48px; }
 
   /* Compact card */
   .doctor-card {
