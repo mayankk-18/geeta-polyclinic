@@ -560,19 +560,17 @@ nav {
       <h2 class="section-title">Your Trusted Medicine Shop</h2>
       <p class="section-desc">Attached to the clinic, our fully stocked medical store ensures you get all prescribed medicines, health products, and supplements — conveniently, all at one place.</p>
       <ul class="feature-list" style="margin-top:24px;">
-        <li><span class="icon">💊</span> All branded & generic medicines available</li>
+        <li><span class="icon">💊</span> All brands medicines available</li>
         <li><span class="icon">🏷️</span> Competitive and fair pricing</li>
         <li><span class="icon">📋</span> Prescription medicines dispensed accurately</li>
         <li><span class="icon">🌡️</span> Medical equipment & health devices</li>
       </ul>
     </div>
     <div class="store-items">
-      <div class="store-item"><div class="emoji">💊</div><h4>Prescription Medicines</h4><p>All major brands available</p></div>
-      <div class="store-item"><div class="emoji">🌿</div><h4>Ayurvedic Products</h4><p>Herbal & natural remedies</p></div>
+      <div class="store-item"><div class="emoji">💊</div><h4>Prescription Medicines</h4><p>All brands available</p></div>  
       <div class="store-item"><div class="emoji">🍼</div><h4>Baby & Infant Care</h4><p>Baby food, diapers & more</p></div>
       <div class="store-item"><div class="emoji">🩺</div><h4>Medical Equipment</h4><p>BP monitors, glucometers</p></div>
       <div class="store-item"><div class="emoji">💉</div><h4>Surgical Supplies</h4><p>Bandages, syringes & kits</p></div>
-      <div class="store-item"><div class="emoji">🫀</div><h4>Health Supplements</h4><p>Vitamins & minerals</p></div>
     </div>
   </div>
 </section>
@@ -725,7 +723,7 @@ nav {
     suvendu: {
       name: "Prof. Dr. Suvendu Narayan Mishra", spec: "Neuro Psychiatrist", emoji: "🧬", img: "dr-suvendu.png",
       desc: "Expert in neuropsychiatric conditions including depression, anxiety, schizophrenia, bipolar disorder, and other complex brain-behaviour disorders.",
-      schedule: [["Every 2nd Saturday","5:00 PM – 9:00 PM"],["Every 2nd Sunday",""]],
+      schedule: [["Every 2nd Saturday","5:00 PM – 9:00 PM"],["Every 2nd Sunday","9:00 AM - 3PM"]],
       rule: () => { const a=nextNthWeekday(6,2),b=nextNthWeekday(0,2); if(!a)return b; if(!b)return a; return a<=b?a:b; }
     },
     srikant: {
