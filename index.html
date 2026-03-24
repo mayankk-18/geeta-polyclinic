@@ -163,7 +163,7 @@ nav {
   .next-date-badge { font-size: 0.8rem; color: var(--green); font-weight: 600; background: var(--green-pale); display: inline-block; padding: 3px 10px; border-radius: 6px; margin-bottom: 8px; }
 
   /* APPOINTMENT */
-  #appointment { background: var(--green-pale); scroll-margin-top: 68px; padding-top: 32px; }
+  #appointment { background: var(--green-pale); scroll-margin-top: 60px; padding-top: 24px; }
   #appt-form { scroll-margin-top: 80px; }
   .appt-wrapper { display: grid; grid-template-columns: 1fr 1.3fr; gap: 60px; align-items: start; margin-top: 20px; }
   .appt-info h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; margin-bottom: 16px; }
@@ -226,21 +226,20 @@ nav {
   .mobile-menu { top: 60px; }
   .hero { padding-top: 75px; min-height: 100svh; padding-bottom: 60px; }
   .hero-cards { display: none; }
-  .about-grid, .store-grid, .appt-wrapper { grid-template-columns: 1fr; gap: 30px; }
+  .about-grid, .store-grid { grid-template-columns: 1fr; gap: 30px; }
   .contact-grid { grid-template-columns: 1fr; }
   #appointment { scroll-margin-top: 60px; }
-  .appt-wrapper { display: flex; flex-direction: column; }
+  .appt-wrapper { grid-template-columns: 1fr; display: flex; flex-direction: column; margin-top: 12px; gap: 0; }
   .appt-form { order: 1; }
-  .appt-info { order: 2; }
+  .appt-info { order: 2; display: none; }
 }
 
 @media (max-width: 600px) {
-    .form-row { grid-template-columns: 1fr; }
-    .services-grid { grid-template-columns: 1fr 1fr; }
-    .store-items { grid-template-columns: 1fr; }
-    .doctors-grid { grid-template-columns: 1fr; }
-  }
-
+  .form-row { grid-template-columns: 1fr; }
+  .services-grid { grid-template-columns: 1fr 1fr; }
+  .store-items { grid-template-columns: 1fr; }
+  .doctors-grid { grid-template-columns: 1fr; }
+}
   /* BOOKING BLOCKED MODAL */
   .modal-overlay {
     display: none; position: fixed; inset: 0; z-index: 9999;
@@ -336,7 +335,7 @@ nav {
   <li><a href="#store">Medical Store</a></li>
   <li><a href="#contact">Contact</a></li>
 </ul>
-<a class="nav-cta desktop-only" href="#appt-form">Book Appointment</a>
+<a class="nav-cta desktop-only" href="#appointment">Book Appointment</a>
 <button class="hamburger" onclick="toggleMobileMenu()" aria-label="Menu" style="background:none; border:none; box-shadow:none;">
   <span></span><span></span><span></span>
 </button>
