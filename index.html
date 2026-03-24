@@ -801,7 +801,7 @@ function checkBookingWindow(key){
               <br><span class="next-date-badge">📅 Visit: ${formatDate(visitDate)}</span>`;
     } else {
       const openLabel = key==='ratnakar' ? 'Book on:' : '🔓 Opens:';
-      return `<span class="appt-status closed"><span class="dot"></span>🔴 Not Open Yet</span>
+      return `<span class="appt-status closed"><span class="dot"></span>🔴 Appointments Not Open Yet</span>
               <br><span class="next-date-badge">📅 Next Visit: ${formatDate(visitDate)}</span>
               ${!compact?`<br><span class="next-date-badge" style="background:#fff3e0;color:#b35a00;border:1px solid #f5c97a;">${openLabel} ${formatDate(opensOn)}</span>`:''}`;
     }
